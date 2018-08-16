@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-11">
+            <h2>Bienvenue{{userLog}}</h2>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-group-sm btn-deconnexio" (click)="onDeconnexion()">
+                Deconnexion
+            </button>
+        </div>
+    </div>
+    <div class="row adminButton">
+        <div class="col-4">
+            <button class="btn btn-default btn-bestiaire" (click)="onShowBestiaire()">Bestiaire</button>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-default btn-vegetal" (click)="onShowVegetal()">Vegetal</button>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-default btn-deco" (click)="onShowDeco()">Deco</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div *ngIf="showBestiaire">
+                <h4>
+                    Administration de la table Bestiaire</h4>
+                <div *ngFor="let oeuvre of bestiaire" class="list-group-item listOeuvre">
+                    <div class=" detailOeuvre">
+                        {{oeuvre.name}}
+                    </div>
+                    <i 
+                        class="fa fa-edit fa-3x btn-modifier"
+                        (click)="openDialogToEdit(oeuvre)"></i>
+                    <i
+                        class="fa fa-times-circle fa-3x btn-suppression"
+                        (click)="onDeleteBestiaire(oeuvre.id, oeuvre.name)"></i>
+
+                </div>
+
+                <button class="btn btn-primary" (click)="openDialogToAdd()">Ajoutez dans Bestiaire</button>
+            </div>
+            <div *ngIf="showVegetal">Administration de la table Vegetal</div>
+            <div *ngIf="showDeco">Administration de la table Deco</div>
+        </div>
+
+    </div>
+</div>

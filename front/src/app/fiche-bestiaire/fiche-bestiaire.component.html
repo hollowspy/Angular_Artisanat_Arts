@@ -1,0 +1,10 @@
+<h3>Detail de l'oeuvre !!</h3>
+<ul *ngIf="ficheBestiaire && ficheBestiaire.length > 0" class="list-group-item">
+  <li>{{ficheBestiaire[0].name}}</li>
+  <li>{{ficheBestiaire[0].materials}}</li>
+  <li>{{ficheBestiaire[0].width}}</li>
+  <li>{{ficheBestiaire[0].height}}</li>
+  <li>{{ficheBestiaire[0].reproduction}}</li>
+  <img src="../../../../back/public/images/dev03.jpg" alt="photo developpeur"/>
+  <!-- <img src={{ficheBestiaire[0].photo_principale}} alt="photo toto"> -->
+</ul>

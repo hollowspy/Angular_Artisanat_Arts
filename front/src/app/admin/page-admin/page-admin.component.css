@@ -1,0 +1,52 @@
+h2{
+    text-align: center
+}
+
+.adminButton{
+    margin-top : 5%; 
+    margin-bottom : 5%;
+}
+
+.btn-deconnexion{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+
+.btn-default{
+    height : 150px; 
+    width : 150px;
+    border-radius: 30px; 
+}
+
+.btn-bestiaire{
+    background-color: red;
+}
+
+.btn-vegetal{
+    background-color: blue;
+}
+
+.btn-deco{
+    background-color: green;
+}
+
+.listOeuvre{
+    display:flex;
+    justify-content: space-between;
+    text-align: center
+    
+}
+
+.btn-modifier{
+    flex : 1;
+}
+
+.btn-suppression{
+    flex:1;
+       
+}
+
+.detailOeuvre{
+    flex:4;
+   }

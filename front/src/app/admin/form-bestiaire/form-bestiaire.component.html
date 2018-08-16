@@ -1,0 +1,65 @@
+<div *ngIf="data === null">
+<h3>Nouvelle oeuvre, catégorie Bestiaire</h3>
+<form (ngSubmit)="OnAddBestiaire(f)" #f="ngForm">
+    <div class="form-group">
+        <label for="name">Nom de l'oeuvre</label>
+        <input *ngIf="data === null" id="name" type="text" class="form-control" name="name" ngModel>
+      
+      
+    </div>
+    <div class="form-group">
+        <label for="materials">Materials</label>
+        <input *ngIf="data === null" id="materials" type="text" class="form-control" name="materials" ngModel>
+       
+    </div>
+    <div class="form-group">
+        <label for="width">Largeur</label>
+        <input *ngIf="data === null" id="width" type="number" class="form-control" name="width" ngModel>
+       
+    </div> 
+    <div class="form-group">
+        <label for="height">Hauteur</label>
+        <input *ngIf="data === null" id="heigth" type="number" class="form-control" name="height" ngModel>
+       
+    </div>
+    <div class="form-group">
+        <label for="reproduction">Description</label>
+        <input *ngIf="data === null" id="reproduction" type="text-area" class="form-control" name="reproduction" ngModel>
+       
+    </div>
+    <button class="btn btn-success" type="submit" >Ajoutez</button>
+    <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
+   
+        </form>
+</div>
+
+<div *ngIf="data !== null">
+        <h3>Modification de l'oeuvre, catégorie Bestiaire</h3>
+        <form (ngSubmit)="onEditBestiaire(f, viewForm.id)" #f="ngForm">
+            <div class="form-group">
+                <label for="name">Nom de l'oeuvre</label>
+                <input id="name" type="text" class="form-control" name="name"  [ngModel]="viewForm.name">
+              
+            </div>
+            <div class="form-group">
+                <label for="materials">Materials</label>
+                 <input id="materials" type="text" class="form-control" name="materials" [ngModel]="viewForm.materials">
+            </div>
+            <div class="form-group">
+                <label for="width">Largeur</label>
+                <input id="width" type="number" class="form-control" name="width" value={{data.width}} [ngModel]="viewForm.width">
+            </div> 
+            <div class="form-group">
+                <label for="height">Hauteur</label>
+                <input id="height" type="number" class="form-control" name="height" value={{data.height}} [ngModel]="viewForm.height">
+            </div>
+            <div class="form-group">
+                <label for="reproduction">Description</label>
+                <input id="reproduction" type="text-area" class="form-control" name="reproduction" value={{data.reproduction}} [ngModel]="viewForm.reproduction">
+            </div>
+           
+            <button class="btn btn-success" type="submit" >Modifier</button>
+            <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
+           
+                </form>
+        </div>
