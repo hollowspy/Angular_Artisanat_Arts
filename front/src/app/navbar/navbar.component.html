@@ -1,15 +1,16 @@
-<ul class="nav flex-column navbar-light bg-light">
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link active" routerLink="/">Acceuil</a>
-  </li>
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="/bestiaire">Bestiaire</a>
-  </li>
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="/vegetal">Vegetal</a>
-  </li>
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="deco">Deco</a>
-  </li>
-</ul>
-
+<div *ngIf="router.url != '/'">
+    <ul class="nav flex-column navbar-light bg-light">
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link active" routerLink="/">Acceuil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/bestiaire">Bestiaire</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/vegetal">Vegetal</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="deco">Deco</a>
+        </li>
+    </ul>
+</div>

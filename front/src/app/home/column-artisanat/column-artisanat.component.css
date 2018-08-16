@@ -1,0 +1,20 @@
+.nav{
+    height:100vh;
+    background-color: rgb(250, 247, 60)
+}
+
+ul{
+    text-align: center;
+    
+}
+
+li{ 
+    list-style-type: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.firstWord, .secondWord{
+    margin-top : 5px; 
+    margin-bottom: 25px;
+}

@@ -20,6 +20,7 @@ import { FicheBestiaireComponent } from './fiche-bestiaire/fiche-bestiaire.compo
 import { formAdminComponent } from './admin/form-admin/formAdmin.component';
 import { PageAdminComponent } from './admin/page-admin/page-admin.component';
 import { FormBestiaireComponent } from './admin/form-bestiaire/form-bestiaire.component';
+import { ColumnArtisanatComponent } from './home/column-artisanat/column-artisanat.component';
 
 
 
@@ -43,6 +44,7 @@ const appRoutes : Routes = [ 
     formAdminComponent,
     PageAdminComponent,
     FormBestiaireComponent,
+    ColumnArtisanatComponent,
     
    
     
