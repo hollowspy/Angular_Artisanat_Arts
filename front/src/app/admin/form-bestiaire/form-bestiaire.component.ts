@@ -9,12 +9,7 @@ import {BestiaireService} from '../../service/bestiaire-service';
 export class FormBestiaireComponent implements OnInit {
 
     
-    // nameForm : string;
-    // materials : string;
-    // width : number;
-    // height : number;
-    // reproduction : string
-    viewForm : void
+    viewForm : Object
     
     
 
@@ -24,12 +19,10 @@ export class FormBestiaireComponent implements OnInit {
          if (this.data){
              this.viewForm = this.data;
              console.log('View Form', this.viewForm)
-
-            //  this.nameForm = this.data.name;
-            //  this.materials = this.data.materials;
-            //  this.width = this.data.width;
-            //  this.height = this.data.height;
-            //  this.reproduction = this.data.reproduction
+         
+         } 
+         else {
+             this.viewForm = new FicheBestiaire('', '',0,0, '', '', '', '', '', '');
          }
         
     }

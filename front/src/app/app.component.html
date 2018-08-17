@@ -6,20 +6,34 @@
             <app-navbar></app-navbar>
 
         </div>
-        
-        <div  *ngIf="router.url === '/'" class="col-11 ecranHome">
-            <div class="container-fluid acceuil">
+
+        <div *ngIf="router.url === '/'" class="col-11 acceuil">
+            <div class="ecranHome">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>
+                                WikiDiez Mosaïque !
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <app-menu></app-menu>
+                <app-carousel></app-carousel>
+            </div>
+            <div class="container-fluid container-muriel">
                 <div class="row">
-                    <div class="col-12">
-                        <h1>
-                            WikiDiez Mosaïque !
-                        </h1>
+                    <div class="col-4 offset-1 card cardMuriel">
+                        <app-card-muriel></app-card-muriel>
+                    </div>
+                    <div class="col-4 offset-2 card cardMuriel">
+                       <app-form-contact></app-form-contact>
                     </div>
                 </div>
             </div>
-            <app-menu></app-menu>
-            <app-carousel></app-carousel>
         </div>
+
         <router-outlet></router-outlet>
     </div>
+
 </div>

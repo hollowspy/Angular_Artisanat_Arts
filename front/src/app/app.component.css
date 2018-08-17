@@ -1,6 +1,13 @@
 .ecranHome{
    
-    background-color: rgb(214, 214, 209)
+    
+    padding-bottom: 50px;
+    
+}
+
+.acceuil{ 
+    padding-left:0;
+    padding-right:0;
 }
 
 .leftColum{
@@ -16,6 +23,21 @@ h1 {
 
 p{
     font-size: 14px; 
+}
+
+.container-muriel{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(214, 214, 209);
+}
+
+.cardMuriel{
+   
+    text-align: center;
+    vertical-align: middle; 
+    display: table-cell;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    border-radius: 10px;
 }
 
 

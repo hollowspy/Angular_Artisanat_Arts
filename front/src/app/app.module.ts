@@ -24,6 +24,8 @@ import { FormBestiaireComponent } from './admin/form-bestiaire/form-bestiaire.co
 import { ColumnArtisanatComponent } from './home/column-artisanat/column-artisanat.component';
 import { MenuComponent } from './home/menu/menu.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
+import { CardMurielComponent } from './home/card-muriel/card-muriel.component';
+import { FormContactComponent } from './home/form-contact/form-contact.component';
 
 
 
@@ -50,6 +52,8 @@ const appRoutes : Routes = [ 
     ColumnArtisanatComponent,
     MenuComponent,
     CarouselComponent,
+    CardMurielComponent,
+    FormContactComponent,
     ],
     
   imports: [

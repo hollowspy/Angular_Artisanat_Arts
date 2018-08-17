@@ -22,4 +22,10 @@ li{
 .firstWord, .secondWord{
     margin-top : 5px; 
     margin-bottom: 25px;
+    position: fixed;
+    left:45px
+}
+
+.secondWord{
+   top:450px;
 }

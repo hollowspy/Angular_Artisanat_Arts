@@ -1,0 +1,22 @@
+<h2> Contact </h2>
+<form (ngSubmit)="onSendMessage(f)" #f="ngForm">
+<div class="form-group">
+  <label for="lastName">Nom</label>
+  <input type="text" id="lastName" class="form-control" name="lastName" required ngModel>
+</div>
+<div class="form-group">
+  <label for="firstName">Prénom</label>
+  <input type="text" id="firstName" class="form-control" name="firstName" required ngModel>
+</div>
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="email" id="email" class="form-control" name="email" required ngModel>
+</div>
+<div class="form-group">
+  <label for="object">Objet du mail</label>
+  <input type="test" id="object" class="form-control" name="object" required ngModel>
+</div>
+<textarea class="form-control" name="message" id="message" rows="5"  placeholder="Rédigez votre message" required ngModel></textarea>
+<button class="btn btn-primary" type="sumbit" [disabled]="f.invalid">Envoyez</button>
+</form>
+
