@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,6 +22,8 @@ import { formAdminComponent } from './admin/form-admin/formAdmin.component';
 import { PageAdminComponent } from './admin/page-admin/page-admin.component';
 import { FormBestiaireComponent } from './admin/form-bestiaire/form-bestiaire.component';
 import { ColumnArtisanatComponent } from './home/column-artisanat/column-artisanat.component';
+import { MenuComponent } from './home/menu/menu.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
 
 
 
@@ -45,10 +48,10 @@ const appRoutes : Routes = [ 
     PageAdminComponent,
     FormBestiaireComponent,
     ColumnArtisanatComponent,
-    
-   
-    
+    MenuComponent,
+    CarouselComponent,
     ],
+    
   imports: [
   BrowserModule,
   HttpClientModule,
@@ -57,6 +60,7 @@ const appRoutes : Routes = [ 
   MatCardModule,
   MatButtonModule,
   BrowserAnimationsModule,
+  NgbModule,
   RouterModule.forRoot(appRoutes)
   ],
   entryComponents:[

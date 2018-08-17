@@ -1,16 +1,25 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-1">
-      <app-column-artisanat></app-column-artisanat>
-      <app-navbar></app-navbar>
-      
-    </div>
+    <div class="row">
+        <div class="col-1 leftColum">
+            <app-column-artisanat></app-column-artisanat>
+            <app-navbar></app-navbar>
 
-    <div class="col-11 testCol">
-      <h1> Bienvenue sur le site de {{title}}</h1>
-      <router-outlet></router-outlet>
+        </div>
+        
+        <div  *ngIf="router.url === '/'" class="col-11 ecranHome">
+            <div class="container-fluid acceuil">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>
+                            WikiDiez Mosaïque !
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <app-menu></app-menu>
+            <app-carousel></app-carousel>
+        </div>
+        <router-outlet></router-outlet>
     </div>
-
-  </div>
 </div>

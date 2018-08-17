@@ -1,8 +1,21 @@
+.ecranHome{
+   
+    background-color: rgb(214, 214, 209)
+}
+
+.leftColum{
+    padding-left:0;
+    padding-right: 0;
+}
+
+
+
 h1 {
     text-align: center
 }
 
 p{
     font-size: 14px; 
-    
 }
+
+
