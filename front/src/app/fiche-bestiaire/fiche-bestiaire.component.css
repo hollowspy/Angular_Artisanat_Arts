@@ -1,0 +1,15 @@
+.photoPrincipale{
+    width:300px;
+    height:300px;
+}
+
+.photoAnnexe{
+    width : 150px; 
+    height : 150px;
+    display: block;
+}
+
+.cardOeuvre{
+    display: flex; 
+    justify-content: space-around
+}

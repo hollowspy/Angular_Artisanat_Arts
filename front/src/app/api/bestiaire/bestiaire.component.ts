@@ -14,7 +14,7 @@ export class BestiaireComponent implements OnInit {
   private bestiaire : Bestiaire[];
   bestiaireSubject = new Subject < any[] > ();
   
-
+  
   constructor(private bestiaireService : BestiaireService, 
               private router : Router, 
               ) { }

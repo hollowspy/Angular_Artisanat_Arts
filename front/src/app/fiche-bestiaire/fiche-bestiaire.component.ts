@@ -12,7 +12,13 @@ export class FicheBestiaireComponent implements OnInit {
 
     ficheBestiaire : FicheBestiaire;
     id:number = this.route.snapshot.params['id'];
-    
+    photoPrincipale : string = ''; 
+    photoPrincipaleAnnexe : string = ''
+    photo_Annexe2 : string = '';
+    photo_Annexe3 : string = '';
+    photo_Annexe4 : string = '';
+   
+
     ngOnInit() {
         this
             .bestiaireService
@@ -20,10 +26,19 @@ export class FicheBestiaireComponent implements OnInit {
             .subscribe((data : FicheBestiaire) => {
                 this.ficheBestiaire = data
                 console.log('donnée fiche bestiaire', this.ficheBestiaire)
-            let photoPrincipale = data[0].photo_principale
-            console.log('test', photoPrincipale)
+            this.photoPrincipale = data[0].Aphoto_principale
+            this.photoPrincipaleAnnexe = data[0].Aphoto_principale
+            this.photo_Annexe2 = data[0].Aphoto_annexe2; 
+            this.photo_Annexe3 = data[0].Aphoto_annexe3; 
+            this.photo_Annexe4 = data[0].Aphoto_annexe4; 
+            console.log('photoPrincipale', this.photoPrincipale)
                 
             })
     }
 
+    onReplacePhotoPrincipale(url){
+        this.photoPrincipale = url;
+    }
+
+    
 }

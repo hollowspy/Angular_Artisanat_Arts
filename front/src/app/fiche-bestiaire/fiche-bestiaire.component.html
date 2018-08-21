@@ -1,10 +1,39 @@
-<h3>Detail de l'oeuvre !!</h3>
-<ul *ngIf="ficheBestiaire && ficheBestiaire.length > 0" class="list-group-item">
-  <li>{{ficheBestiaire[0].name}}</li>
-  <li>{{ficheBestiaire[0].materials}}</li>
-  <li>{{ficheBestiaire[0].width}}</li>
-  <li>{{ficheBestiaire[0].height}}</li>
-  <li>{{ficheBestiaire[0].reproduction}}</li>
-  <img src="../../../../back/public/images/dev03.jpg" alt="photo developpeur"/>
-  <!-- <img src={{ficheBestiaire[0].photo_principale}} alt="photo toto"> -->
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-12" *ngIf="ficheBestiaire && ficheBestiaire.length > 0">
+        <h3>Detail de l'oeuvre !!</h3>
+        <ul  class="list-group-item">
+          <div class="cardOeuvre">
+          <div>
+          <li>{{ficheBestiaire[0].name}}</li>
+          <li>{{ficheBestiaire[0].materials}}</li>
+          <li>{{ficheBestiaire[0].width}} de largeur</li>
+          <li>{{ficheBestiaire[0].height}} de hauteur</li>
+          <li>{{ficheBestiaire[0].reproduction}}</li>
+          </div>
+          <!-- <img src="../../../../back/public/images/dev03.jpg" alt="photo developpeur"/> -->
+          <img src={{photoPrincipale}} alt="photo toto" class="photoPrincipale">
+          </div>
+        </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-3">
+          <img src={{photoPrincipaleAnnexe}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photoPrincipaleAnnexe)">
+      </div>
+      <div class="col-3">
+          <img src={{photo_Annexe2}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photo_Annexe2)">
+      </div>
+      <div class="col-3">
+          <img src={{photo_Annexe3}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photo_Annexe3)">
+      </div>
+      <div class="col-3">
+          <img src={{photo_Annexe4}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photo_Annexe4)">
+      </div>
+       
+  </div>
+</div>
+
+

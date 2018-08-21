@@ -1,0 +1,11 @@
+.photoPrincipale{
+    width : 100px; 
+    height : 100px;
+    border:2px red solid;
+}
+
+.cardOeuvre{ 
+    display:flex;
+    justify-content: space-around
+}
+
