@@ -13,7 +13,9 @@ export class FormBestiaireComponent implements OnInit {
     
     
 
-    constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, private http : HttpClient, private bestiaireService : BestiaireService, @Inject(MAT_DIALOG_DATA)public data : any) {}
+    constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, 
+                private http : HttpClient, private bestiaireService : BestiaireService, 
+                @Inject(MAT_DIALOG_DATA)public data : any) {}
 
     ngOnInit() {
          if (this.data){

@@ -2,13 +2,17 @@ import {Component, OnInit} from '@angular/core';
 import {BestiaireService} from '../service/bestiaire-service';
 import {FicheBestiaire} from '../models/ficheBestiaire.models'
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import {ModalFicheComponent} from './modal-fiche/modal-fiche.component'
+import { map } from 'rxjs/operators';
 
 @Component({selector: 'app-fiche-bestiaire', templateUrl: './fiche-bestiaire.component.html', styleUrls: ['./fiche-bestiaire.component.css']})
 export class FicheBestiaireComponent implements OnInit {
 
     constructor(private bestiaireService : BestiaireService, 
                 private route : ActivatedRoute, 
-                private router : Router) {}
+                private router : Router,
+                public dialog : MatDialog) {}
 
     ficheBestiaire : FicheBestiaire;
     id:number = this.route.snapshot.params['id'];
@@ -17,6 +21,7 @@ export class FicheBestiaireComponent implements OnInit {
     photo_Annexe2 : string = '';
     photo_Annexe3 : string = '';
     photo_Annexe4 : string = '';
+    dialogResult = "";
    
 
     ngOnInit() {
@@ -39,6 +44,21 @@ export class FicheBestiaireComponent implements OnInit {
     onReplacePhotoPrincipale(url){
         this.photoPrincipale = url;
     }
+
+    openDialog(data){
+        console.log('je rentre dans openDialog')
+        let dialogRef = this.dialog.open(ModalFicheComponent, {
+            width : '900px', 
+            data
+        }); 
+
+
+        dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog closed: ${result}`);
+        this.dialogResult = result;
+        });
+    }
+   
 
     
 }
