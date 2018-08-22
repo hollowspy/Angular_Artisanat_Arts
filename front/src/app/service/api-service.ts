@@ -9,12 +9,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BestiaireService {
+export class ApiService {
 
- private bestiaire : Bestiaire
- 
-
-  constructor(private http : HttpClient, 
+   constructor(private http : HttpClient, 
               private router:Router,
               private authHttp : HttpClient) { }
 
@@ -22,12 +19,13 @@ export class BestiaireService {
      
 
   
-  getBestiaire(){
-    return this.http.get('/api/bestiaire')
+  getApi(url){
+    
+    return this.http.get(`/api/${url}`)
   }
 
 
-  getFicheBestiaire(id:number){ 
-    return this.http.get(`/api/bestiaire/${id}`)
+  getFicheApi(url, id:number){ 
+    return this.http.get(`/api/${url}/${id}`)
   }
 }

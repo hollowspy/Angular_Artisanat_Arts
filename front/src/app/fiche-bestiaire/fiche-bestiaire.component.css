@@ -9,6 +9,14 @@
     display: block;
 }
 
+.photoAnnexe:hover{
+   cursor: pointer;
+}
+
+.photoPrincipale:hover{
+    cursor: zoom-in;
+}
+
 .cardOeuvre{
     display: flex; 
     justify-content: space-around

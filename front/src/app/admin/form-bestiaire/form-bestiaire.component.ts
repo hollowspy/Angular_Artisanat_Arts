@@ -3,7 +3,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FicheBestiaire} from '../../models/ficheBestiaire.models';
 import {NgForm} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {BestiaireService} from '../../service/bestiaire-service';
+import {ApiService} from '../../service/api-service';
 
 @Component({selector: 'app-form-bestiaire', templateUrl: './form-bestiaire.component.html', styleUrls: ['./form-bestiaire.component.css']})
 export class FormBestiaireComponent implements OnInit {
@@ -14,7 +14,7 @@ export class FormBestiaireComponent implements OnInit {
     
 
     constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, 
-                private http : HttpClient, private bestiaireService : BestiaireService, 
+                private http : HttpClient, private apiService : ApiService, 
                 @Inject(MAT_DIALOG_DATA)public data : any) {}
 
     ngOnInit() {

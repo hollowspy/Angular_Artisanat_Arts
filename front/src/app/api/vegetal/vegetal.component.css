@@ -1,0 +1,14 @@
+.photoPrincipale{
+    height: 300px;
+    width: 300px;
+}
+
+.cardOeuvre{
+    text-align: center;
+    margin-top : 20px;
+    margin-bottom: 20px;
+}
+
+li{ 
+ list-style-type: none   
+}

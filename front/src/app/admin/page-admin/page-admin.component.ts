@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthServiceService} from '../../service/auth-service.service';
-import {BestiaireService} from '../../service/bestiaire-service';
+import {ApiService} from '../../service/api-service';
 import {Bestiaire} from '../../models/bestiaire.model';
 import {Subject} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -26,7 +26,7 @@ export class PageAdminComponent implements OnInit {
 
     constructor(private router : Router, 
                 private authService : AuthServiceService, 
-                private bestiaireService : BestiaireService, 
+                private apiService : ApiService, 
                 private http : HttpClient, 
                 public dialog : MatDialog) {}
 
@@ -47,7 +47,7 @@ export class PageAdminComponent implements OnInit {
     }
 
     getBestiaireData(){
-        this.bestiaireService.getBestiaire()
+        this.apiService.getApi('bestiaire')
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data
             this.emitBestiaire();

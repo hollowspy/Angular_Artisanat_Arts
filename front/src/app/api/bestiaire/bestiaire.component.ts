@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BestiaireService} from '../../service/bestiaire-service'
+import { ApiService} from '../../service/api-service'
 import { Bestiaire } from '../../models/bestiaire.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -15,12 +15,12 @@ export class BestiaireComponent implements OnInit {
   bestiaireSubject = new Subject < any[] > ();
   
   
-  constructor(private bestiaireService : BestiaireService, 
+  constructor(private apiService : ApiService, 
               private router : Router, 
               ) { }
 
   ngOnInit() {
-    this.bestiaireService.getBestiaire()
+    this.apiService.getApi('bestiaire')
    .subscribe((data : Bestiaire[]) => {
         this.bestiaire = data
         this.emitBestiaire();
@@ -34,8 +34,7 @@ export class BestiaireComponent implements OnInit {
   }
 
   onFicheDetail(id:number){
-    console.log('mon id', id)
-    this.router.navigate(['/bestiaire', id])
+     this.router.navigate(['/bestiaire', id])
   }
 
 }

@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BestiaireComponent } from './api/bestiaire/bestiaire.component';
-import { VegetalComponent } from './vegetal/vegetal.component';
+import { VegetalComponent } from './api/vegetal/vegetal.component';
 import { DecoComponent } from './deco/deco.component';
 import { FicheBestiaireComponent } from './fiche-bestiaire/fiche-bestiaire.component';
 import { formAdminComponent } from './admin/form-admin/formAdmin.component';
@@ -27,6 +27,7 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { CardMurielComponent } from './home/card-muriel/card-muriel.component';
 import { FormContactComponent } from './home/form-contact/form-contact.component';
 import { ModalFicheComponent } from './fiche-bestiaire/modal-fiche/modal-fiche.component';
+
 
 
 

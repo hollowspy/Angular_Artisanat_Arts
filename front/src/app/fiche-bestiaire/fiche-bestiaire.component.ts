@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BestiaireService} from '../service/bestiaire-service';
+import {ApiService} from '../service/api-service';
 import {FicheBestiaire} from '../models/ficheBestiaire.models'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Component({selector: 'app-fiche-bestiaire', templateUrl: './fiche-bestiaire.component.html', styleUrls: ['./fiche-bestiaire.component.css']})
 export class FicheBestiaireComponent implements OnInit {
 
-    constructor(private bestiaireService : BestiaireService, 
+    constructor(private apiService : ApiService, 
                 private route : ActivatedRoute, 
                 private router : Router,
                 public dialog : MatDialog) {}
@@ -26,17 +26,17 @@ export class FicheBestiaireComponent implements OnInit {
 
     ngOnInit() {
         this
-            .bestiaireService
-            .getFicheBestiaire(this.id)
+            .apiService
+            .getFicheApi('bestiaire', this.id)
             .subscribe((data : FicheBestiaire) => {
                 this.ficheBestiaire = data
-                console.log('donnée fiche bestiaire', this.ficheBestiaire)
+                // console.log('donnée fiche bestiaire', this.ficheBestiaire)
             this.photoPrincipale = data[0].Aphoto_principale
             this.photoPrincipaleAnnexe = data[0].Aphoto_principale
             this.photo_Annexe2 = data[0].Aphoto_annexe2; 
             this.photo_Annexe3 = data[0].Aphoto_annexe3; 
             this.photo_Annexe4 = data[0].Aphoto_annexe4; 
-            console.log('photoPrincipale', this.photoPrincipale)
+            // console.log('photoPrincipale', this.photoPrincipale)
                 
             })
     }

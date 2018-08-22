@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const connection = require('../bdd/bdd.js')
+const connection = require('../../bdd/bdd.js')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

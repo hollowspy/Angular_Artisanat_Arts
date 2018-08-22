@@ -10,7 +10,7 @@ var connection = require('./bdd/bdd');
 
 var index = require('./routes/index');
 var bestiaire = require('./routes/api/bestiaire');
-var vegetal = require('./routes/vegetal');
+var vegetal = require('./routes/api/vegetal');
 var admin = require('./routes/admin');
 var mail = require('./routes/mail');
 var debug = require('debug')('back:server');
@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 
 app.use('/', index);
 app.use('/api/bestiaire', bestiaire);
-app.use('/vegetal', vegetal);
+app.use('/api/vegetal', vegetal);
 app.use('/admin', admin);
 app.use('/mail', mail)
 
