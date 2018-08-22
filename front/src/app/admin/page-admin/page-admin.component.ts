@@ -158,18 +158,41 @@ export class PageAdminComponent implements OnInit {
        
     }
 
-    openDialogToAdd() {
+    openDialogToAdd(categorie) {
+    console.log(categorie)
     // console.log('data', data)
-    let dialogRef = this.dialog.open(FormBestiaireComponent, {
-          width: '600px',
-          
-    });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          console.log(`Dialog closed: ${result}`);
-          this.dialogResult = result;
-          this.getBestiaireData();
+
+    switch (categorie) {
+        case 'bestiaire':
+        console.log('je rentre dans modalBestiaire');
+        let dialogRef = this.dialog.open(FormBestiaireComponent, {
+            width: '600px',
         });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog closed: ${result}`);
+            this.dialogResult = result;
+            this.getBestiaireData();
+          });
+            
+            break;
+        case 'vegetal':
+        console.log('je rentre dans modalVegetal');
+        dialogRef = this.dialog.open(FormBestiaireComponent, {
+            width: '600px',
+        });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog closed: ${result}`);
+            this.dialogResult = result;
+            this.getVegetalData();
+          });
+            break;
+        default:
+        alert('Une erreur est survenue !! ')
+        
+    }
+ 
       }
 
       openDialogToEdit(data) {
