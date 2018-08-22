@@ -1,5 +1,14 @@
 .photoModal{
     width:800px;
     height:600px;
+}
 
+.containerModal{
+    text-align: center
+}
+
+.close{
+    position: absolute;
+    top:0;
+    right:0;
 }

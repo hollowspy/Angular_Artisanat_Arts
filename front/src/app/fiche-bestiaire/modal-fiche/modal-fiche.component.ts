@@ -17,4 +17,11 @@ export class ModalFicheComponent implements OnInit {
    this.urlPhotoPrincipale = this.data
   }
 
+  onCloseCancel() {
+    this
+        .thisDialogRef
+        .close('Modal Fermée');
+   
+}
+
 }

@@ -48,7 +48,7 @@ export class FicheBestiaireComponent implements OnInit {
     openDialog(data){
         console.log('je rentre dans openDialog')
         let dialogRef = this.dialog.open(ModalFicheComponent, {
-            width : '900px', 
+            width : '100vw', 
             data
         }); 
 

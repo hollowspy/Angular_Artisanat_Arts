@@ -15,15 +15,13 @@ export class ModalVegetalComponent implements OnInit {
 
   ngOnInit() {
     this.oeuvre = this.data; 
-    console.log('oeuvre', this.oeuvre)
   }
 
 
   onCloseCancel() {
     this
         .thisDialogRef
-        .close('Cancel');
-    console.log('formulaire annulé')
-}
+        .close('Modal Fermée');
+  }
 
 }
