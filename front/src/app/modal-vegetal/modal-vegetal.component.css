@@ -1,0 +1,17 @@
+.close{
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+.containerModal{
+    text-align: center
+}
+
+.list-group-item{
+    margin-top:20px;
+}
+
+.photoOeuvre{
+    height:70vh;
+}

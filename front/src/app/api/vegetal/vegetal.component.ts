@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FicheVegetal } from './../../models/ficheVegetal.model';
 import { Subject } from 'rxjs';
 import { ApiService } from './../../service/api-service';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ModalVegetalComponent } from './../../modal-vegetal/modal-vegetal.component';
 
 @Component({
   selector: 'app-vegetal',
@@ -15,8 +16,10 @@ export class VegetalComponent implements OnInit {
   vegetalSubject = new Subject < any[]> (); 
 
   constructor(private apiService : ApiService, 
-              private router : Router            
-  ) { }
+              public dialog:MatDialog            
+  ) {}
+
+  dialogResult = "";
 
   ngOnInit() {
     this.apiService.getApi('vegetal')
@@ -30,6 +33,19 @@ export class VegetalComponent implements OnInit {
 
   emitVegetal(){
     this.vegetalSubject.next(this.vegetal.slice())
+  }
+
+  openDialog(data){
+    console.log('je rentre dans openDialog Vegetal')
+    let dialogRef = this.dialog.open(ModalVegetalComponent, {
+      width : '100vw', 
+      data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result}`);
+      this.dialogResult = result;
+      });
   }
 
 }

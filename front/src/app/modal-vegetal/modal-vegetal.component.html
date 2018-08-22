@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 containerModal">
+      <img src={{oeuvre.Aphoto_principale}} alt="photo oeuvre" class="photoOeuvre">
+      <i class="fa fa-times-circle fa-3x close" (click)="onCloseCancel()"></i>
+    </div>
+    <div class="col-12">
+      <ul class="list-group-item">
+        <li>{{oeuvre.name}}</li>
+        <li>{{oeuvre.materials}}</li>
+        <li> largeur : {{oeuvre.width}} cm</li>
+        <li> hauteur : {{oeuvre.height}} cm</li>
+        <li>{{oeuvre.reproduction}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

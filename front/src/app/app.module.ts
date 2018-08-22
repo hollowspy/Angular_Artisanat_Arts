@@ -27,6 +27,7 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { CardMurielComponent } from './home/card-muriel/card-muriel.component';
 import { FormContactComponent } from './home/form-contact/form-contact.component';
 import { ModalFicheComponent } from './fiche-bestiaire/modal-fiche/modal-fiche.component';
+import { ModalVegetalComponent } from './modal-vegetal/modal-vegetal.component';
 
 
 
@@ -57,6 +58,7 @@ const appRoutes : Routes = [ 
     CardMurielComponent,
     FormContactComponent,
     ModalFicheComponent,
+    ModalVegetalComponent,
     ],
     
   imports: [
@@ -72,7 +74,8 @@ const appRoutes : Routes = [ 
   ],
   entryComponents:[
     FormBestiaireComponent,
-    ModalFicheComponent
+    ModalFicheComponent,
+    ModalVegetalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

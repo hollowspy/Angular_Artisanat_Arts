@@ -6,7 +6,7 @@
     <div class="col-6 cardOeuvre" *ngFor="let oeuvre of vegetal">
       <ul class="list-group-item">
         <li>nom : {{oeuvre.name}}</li>
-        <img src={{oeuvre.Aphoto_principale}} alt="photo oeuvre" class="photoPrincipale">
+        <img src={{oeuvre.Aphoto_principale}} alt="photo oeuvre" class="photoPrincipale" (click)="openDialog(oeuvre)">
       </ul>
       
     </div>
