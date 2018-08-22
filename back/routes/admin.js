@@ -80,4 +80,45 @@ router.put('/bestiaire/edit/:id', (req, res) => {
   });
 });
 
+
+router.post('/vegetal/new', (req, res) => {
+    console.log('ajout oeuvre bestiaire')
+    const name = req.body.name;
+    const materials = req.body.materials;
+    const width = req.body.width
+    const height = req.body.height
+    const reproduction = req.body.reproduction
+    let requeteSQL = `INSERT INTO vegetal 
+                  (name, materials, width, height, reproduction) 
+                  VALUES ('${name}','${materials}','${width}','${height}', '${reproduction}')`;
+    console.log(requeteSQL)
+    connection.query(requeteSQL, function (err, result) {
+        res.send((err === null)
+            ? {
+                msg: 'Vous venez d\'ajouter une nouvelle oeuvre dans Vegetal'
+            }
+            : {
+                msg: err
+            });
+    });
+});
+
+
+
+router.delete('/vegetal/delete/:id', (req, res) => {
+    const id = req.params.id;
+    let requeteSQL = `DELETE FROM vegetal WHERE id=${id}`;
+    console.log(requeteSQL)
+    connection.query(requeteSQL, (err, result) => {
+        res.send((err === null)
+            ? {
+                msg: 'Oeuvre supprimée'
+            }
+            : {
+                msg: err
+            });
+    });
+});
+
+
 module.exports = router;

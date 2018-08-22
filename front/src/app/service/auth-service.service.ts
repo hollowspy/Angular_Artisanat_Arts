@@ -8,7 +8,7 @@ export class AuthServiceService {
 
    constructor(private router : Router) { }
 
-   isAuth = false;
+   isAuth = true;
    userLog = '';
 
    onAuth(authentificated, user){

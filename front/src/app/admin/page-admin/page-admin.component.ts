@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
+import { FicheVegetal } from './../../models/ficheVegetal.model';
 
 @Component({selector: 'app-page-admin', templateUrl: './page-admin.component.html', styleUrls: ['./page-admin.component.css']})
 export class PageAdminComponent implements OnInit {
@@ -17,6 +18,8 @@ export class PageAdminComponent implements OnInit {
     userLog = ''
     private bestiaire : Bestiaire[];
     bestiaireSubject = new Subject < any[] > ();
+    private vegetal : FicheVegetal[];
+    vegetalSubject = new Subject <any[] > ();
     showBestiaire : boolean = false;
     showDeco : boolean = false;
     showVegetal : boolean = false;
@@ -43,17 +46,41 @@ export class PageAdminComponent implements OnInit {
         }
 
         this.getBestiaireData();
+        this.getVegetalData();
         
     }
 
     getBestiaireData(){
         this.apiService.getApi('bestiaire')
         .subscribe((data : Bestiaire[]) => {
-            this.bestiaire = data
+            this.bestiaire = data;
             this.emitBestiaire();
             console.log('Administration Bestiaire', this.bestiaire)
         })
     }
+
+    emitBestiaire() {
+        this
+            .bestiaireSubject
+            .next(this.bestiaire.slice())
+    }
+
+    getVegetalData(){
+        this.apiService.getApi('vegetal')
+        .subscribe(
+            (data : FicheVegetal[]) => { 
+                this.vegetal = data;
+                this.emitVegetal();
+                console.log('Admin Vegetal', this.vegetal)
+            }
+        )
+    }
+
+    emitVegetal(){
+        this.vegetalSubject.next(this.vegetal.slice())
+    }
+
+    
 
      
     onConnectionName(_user) {
@@ -80,11 +107,7 @@ export class PageAdminComponent implements OnInit {
             .onLogOut();
     }
 
-    emitBestiaire() {
-        this
-            .bestiaireSubject
-            .next(this.bestiaire.slice())
-    }
+  
 
     onShowBestiaire() {
         (this.showBestiaire === false)

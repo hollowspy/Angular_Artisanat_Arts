@@ -41,7 +41,27 @@
 
                 <button class="btn btn-primary" (click)="openDialogToAdd()">Ajoutez dans Bestiaire</button>
             </div>
-            <div *ngIf="showVegetal">Administration de la table Vegetal</div>
+            <div *ngIf="showVegetal">Administration de la table Vegetal
+                <h4>
+                    Administration de la table Vegetal</h4>
+                <div *ngFor="let oeuvre of vegetal" class="list-group-item listOeuvre">
+                    <div class=" detailOeuvre">
+                        {{oeuvre.name}}
+                    </div>
+                    <i 
+                        class="fa fa-edit fa-3x btn-modifier"
+                        (click)="openDialogToEdit(oeuvre)"></i>
+                    <i
+                        class="fa fa-times-circle fa-3x btn-suppression"
+                        (click)="onDeleteBestiaire(oeuvre.id, oeuvre.name)"></i>
+
+                </div>
+
+                <button class="btn btn-primary" (click)="openDialogToAdd()">Ajoutez dans Vegetal</button>
+
+
+
+            </div>
             <div *ngIf="showDeco">Administration de la table Deco</div>
         </div>
 
