@@ -1,0 +1,62 @@
+
+<div *ngIf="data === null">
+    <div>
+        <h3>Nouvelle oeuvre, catégorie Vegetal</h3>
+      </div>
+<form [formGroup]="vegetalForm" (ngSubmit)="onAddVegetal()">
+  <div class="form-group">
+    <label for="name">Nom de l'oeuvre</label>
+    <input type="text" id="name" class="form-control" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="materials">Materials</label>
+    <input type="text" id="materials" class="form-control" formControlName="materials">
+  </div>
+  <div class="form-group">
+    <label for="width">Largeur</label>
+    <input type="number" id="width" class="form-control" formControlName="width">
+  </div>
+  <div class="form-group">
+    <label for="height">Hauteur</label>
+    <input type="number" id="height" class="form-control" formControlName="height">
+  </div>
+  <div class="form-group">
+    <label for="reproduction">Description</label>
+    <input type="text" id="reproduction" class="form-control" formControlName="reproduction">
+  </div>
+  <button class="btn btn-success" type="submit" >Ajoutez</button>
+  <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
+
+</form>
+</div>
+<div *ngIf="data !== null">
+  <div>
+  <h3>Modification de l'oeuvre, catégorie Vegetal</h3>
+</div>
+<form [formGroup]="vegetalForm" (ngSubmit)="onEditVegetal(viewForm.id)">
+    <div class="form-group">
+      <label for="name">Nom de l'oeuvre</label>
+      <input type="text" id="name" class="form-control" [(value)]="viewForm.name" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="materials">Materials</label>
+      <input type="text" id="materials" class="form-control" [(value)]="viewForm.materials" formControlName="materials">
+    </div>
+    <div class="form-group">
+      <label for="width">Largeur</label>
+      <input type="number" id="width" class="form-control" [(value)]="viewForm.width" formControlName="width">
+    </div>
+    <div class="form-group">
+      <label for="height">Hauteur</label>
+      <input type="number" id="height" class="form-control" [(value)]="viewForm.height" formControlName="height">
+    </div>
+    <div class="form-group">
+      <label for="reproduction">Description</label>
+      <input type="text" id="reproduction" class="form-control" [(value)]="viewForm.reproduction"formControlName="reproduction">
+    </div>
+    <button class="btn btn-success" type="submit" >Mofifier</button>
+    <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
+  
+  </form>
+
+</div>

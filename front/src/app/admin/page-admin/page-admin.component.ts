@@ -9,13 +9,14 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
 import { FicheVegetal } from './../../models/ficheVegetal.model';
+import { FormVegetalComponent } from './../form-vegetal/form-vegetal.component';
 
 @Component({selector: 'app-page-admin', templateUrl: './page-admin.component.html', styleUrls: ['./page-admin.component.css']})
 export class PageAdminComponent implements OnInit {
 
    
 
-    userLog = ''
+    userLog = 'toto'
     private bestiaire : Bestiaire[];
     bestiaireSubject = new Subject < any[] > ();
     private vegetal : FicheVegetal[];
@@ -55,7 +56,7 @@ export class PageAdminComponent implements OnInit {
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data;
             this.emitBestiaire();
-            console.log('Administration Bestiaire', this.bestiaire)
+           // console.log('Administration Bestiaire', this.bestiaire)
         })
     }
 
@@ -71,7 +72,7 @@ export class PageAdminComponent implements OnInit {
             (data : FicheVegetal[]) => { 
                 this.vegetal = data;
                 this.emitVegetal();
-                console.log('Admin Vegetal', this.vegetal)
+               // console.log('Admin Vegetal', this.vegetal)
             }
         )
     }
@@ -134,16 +135,28 @@ export class PageAdminComponent implements OnInit {
         this.showVegetal = false;
     }
 
-    onDeleteBestiaire(id:number, name:string){
+    onDeleteOeuvre(categorie:string, id:number, name:string){
         const idDelete =  id;
         if(confirm(`Etes vous sûr de vouloir supprimer l'oeuvre suivante :  ${name}`)){
-            console.log(idDelete)
-            const url = `http://localhost:4000/admin/bestiaire/delete/${idDelete}`
+            console.log('id a supprimer', idDelete)
+            console.log('categorie a supprimer', categorie)
+            const url = `http://localhost:4000/admin/${categorie}/delete/${idDelete}`
             console.log('url à delete', url)
             this.http.delete(url).subscribe(
                 succes => {
                     console.log('success', succes)
-                    this.getBestiaireData();
+                    switch (categorie) {
+                        case 'bestiaire':
+                        this.getBestiaireData();
+                            break;
+                        case 'vegetal':
+                        this.getVegetalData();
+                            break
+                        default:
+                        alert('data non reactualisée')
+                            break;
+                    }
+                   
                 },err => {
                     console.log('error', err)
                 }
@@ -158,44 +171,22 @@ export class PageAdminComponent implements OnInit {
        
     }
 
-    openDialogToAdd(categorie) {
-    console.log(categorie)
-    // console.log('data', data)
+    openDialogToAddBestiaire() {
+   // console.log('data', data)
+    let dialogRef = this.dialog.open(FormBestiaireComponent, {
+        width: '600px',
+    });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog closed: ${result}`);
+        this.dialogResult = result;
+        this.getBestiaireData();
+      });
 
-    switch (categorie) {
-        case 'bestiaire':
-        console.log('je rentre dans modalBestiaire');
-        let dialogRef = this.dialog.open(FormBestiaireComponent, {
-            width: '600px',
-        });
-      
-          dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog closed: ${result}`);
-            this.dialogResult = result;
-            this.getBestiaireData();
-          });
-            
-            break;
-        case 'vegetal':
-        console.log('je rentre dans modalVegetal');
-        dialogRef = this.dialog.open(FormBestiaireComponent, {
-            width: '600px',
-        });
-      
-          dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog closed: ${result}`);
-            this.dialogResult = result;
-            this.getVegetalData();
-          });
-            break;
-        default:
-        alert('Une erreur est survenue !! ')
-        
+    
     }
  
-      }
-
-      openDialogToEdit(data) {
+        openDialogToEditBestiaire(data) {
         // console.log('data', data)
         let dialogRef = this.dialog.open(FormBestiaireComponent, {
               width: '600px',
@@ -209,6 +200,35 @@ export class PageAdminComponent implements OnInit {
               this.getBestiaireData();
             });
           }
+
+
+          openDialogToAddVegetal(){
+            let dialogRef = this.dialog.open(FormVegetalComponent, {
+                width: '600px',
+            });
+          
+              dialogRef.afterClosed().subscribe(result => {
+                console.log(`Dialog closed: ${result}`);
+                this.dialogResult = result;
+                this.getVegetalData();
+              });
+
+          }
+
+          openDialogToEditVegetal(data) {
+            // console.log('data', data)
+            let dialogRef = this.dialog.open(FormVegetalComponent, {
+                  width: '600px',
+                  data
+                  
+            });
+            
+                dialogRef.afterClosed().subscribe(result => {
+                  console.log(`Dialog closed: ${result}`);
+                  this.dialogResult = result;
+                  this.getVegetalData();
+                });
+              }
 
  
    

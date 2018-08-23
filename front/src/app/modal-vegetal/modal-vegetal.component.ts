@@ -14,7 +14,8 @@ export class ModalVegetalComponent implements OnInit {
   oeuvre : object 
 
   ngOnInit() {
-    this.oeuvre = this.data; 
+    this.oeuvre = this.data;
+    console.log('oeuvre', this.oeuvre) 
   }
 
 

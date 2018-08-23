@@ -121,4 +121,27 @@ router.delete('/vegetal/delete/:id', (req, res) => {
 });
 
 
+
+router.put('/vegetal/edit/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    const name = req.body.name;
+    const materials = req.body.materials;
+    const width = req.body.width
+    const height = req.body.height
+    const reproduction = req.body.reproduction
+    let requeteSQL = `UPDATE vegetal SET name='${name}', materials='${materials}', width=${width}, height=${height}, reproduction='${reproduction}' WHERE id=${id};`
+    console.log(requeteSQL)
+    connection.query(requeteSQL, (err, result) => {
+      res.send((err === null)
+          ? {
+              msg: 'Oeuvre modifie'
+          }
+          : {
+              msg: err
+          });
+  });
+});
+
+
 module.exports = router;

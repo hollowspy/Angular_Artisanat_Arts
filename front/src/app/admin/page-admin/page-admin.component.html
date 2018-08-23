@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-11">
-            <h2>Bienvenue{{userLog}}</h2>
+            <h2>Bienvenue {{userLog}}</h2>
         </div>
         <div class="col-1">
             <button class="btn btn-group-sm btn-deconnexio" (click)="onDeconnexion()">
@@ -32,16 +32,16 @@
                     </div>
                     <i 
                         class="fa fa-edit fa-3x btn-modifier"
-                        (click)="openDialogToEdit(oeuvre)"></i>
+                        (click)="openDialogToEditBestiaire(oeuvre)"></i>
                     <i
                         class="fa fa-times-circle fa-3x btn-suppression"
-                        (click)="onDeleteBestiaire(oeuvre.id, oeuvre.name)"></i>
+                        (click)="onDeleteOeuvre('bestiaire', oeuvre.id, oeuvre.name)"></i>
 
                 </div>
 
-                <button class="btn btn-primary" (click)="openDialogToAdd('bestiaire')">Ajoutez dans Bestiaire</button>
+                <button class="btn btn-primary" (click)="openDialogToAddBestiaire()">Ajoutez dans Bestiaire</button>
             </div>
-            <div *ngIf="showVegetal">Administration de la table Vegetal
+            <div *ngIf="showVegetal">
                 <h4>
                     Administration de la table Vegetal</h4>
                 <div *ngFor="let oeuvre of vegetal" class="list-group-item listOeuvre">
@@ -50,14 +50,14 @@
                     </div>
                     <i 
                         class="fa fa-edit fa-3x btn-modifier"
-                        (click)="openDialogToEdit(oeuvre)"></i>
+                        (click)="openDialogToEditVegetal(oeuvre)"></i>
                     <i
                         class="fa fa-times-circle fa-3x btn-suppression"
-                        (click)="onDeleteBestiaire(oeuvre.id, oeuvre.name)"></i>
+                        (click)="onDeleteOeuvre('vegetal',oeuvre.id, oeuvre.name)"></i>
 
                 </div>
 
-                <button class="btn btn-primary" (click)="openDialogToAdd('vegetal')">Ajoutez dans Vegetal</button>
+                <button class="btn btn-primary" (click)="openDialogToAddVegetal()">Ajoutez dans Vegetal</button>
 
 
 

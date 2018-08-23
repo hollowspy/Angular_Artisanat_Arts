@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
@@ -28,6 +28,7 @@ import { CardMurielComponent } from './home/card-muriel/card-muriel.component';
 import { FormContactComponent } from './home/form-contact/form-contact.component';
 import { ModalFicheComponent } from './fiche-bestiaire/modal-fiche/modal-fiche.component';
 import { ModalVegetalComponent } from './modal-vegetal/modal-vegetal.component';
+import { FormVegetalComponent } from './admin/form-vegetal/form-vegetal.component';
 
 
 
@@ -59,6 +60,7 @@ const appRoutes : Routes = [ 
     FormContactComponent,
     ModalFicheComponent,
     ModalVegetalComponent,
+    FormVegetalComponent,
     ],
     
   imports: [
@@ -70,12 +72,14 @@ const appRoutes : Routes = [ 
   MatButtonModule,
   BrowserAnimationsModule,
   NgbModule,
+  ReactiveFormsModule,
   RouterModule.forRoot(appRoutes)
   ],
   entryComponents:[
     FormBestiaireComponent,
     ModalFicheComponent,
-    ModalVegetalComponent
+    ModalVegetalComponent,
+    FormVegetalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
