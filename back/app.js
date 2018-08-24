@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 let passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 var connection = require('./bdd/bdd');
 var JWTStrategy = require('passport-jwt').Strategy,
     ExtractJWT = require('passport-jwt').ExtractJwt;
@@ -96,7 +97,7 @@ passport.use(
               return done(null, false, {
                 flash: 'No user found',
               });
-            } else if (password === rows[0].password) {
+            } else if (bcrypt.compareSync(password, rows[0].password)) {
               const user = rows[0].alias; 
               console.log('App', user)            
               return done(null, user);

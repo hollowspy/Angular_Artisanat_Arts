@@ -3,6 +3,7 @@ var router = express.Router();
 const passport = require('passport');
 const connection = require('../bdd/bdd.js')
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 router.post('/', (req, res) => {
     passport.authenticate('local', (err, user) => {
@@ -144,6 +145,7 @@ router.post('/newuser', (req, res) => {
     isAlreadySign = false;
     res.setHeader('Content-Type', 'application/json');
     console.log('je rentre dans newUser')
+    const hash = bcrypt.hashSync(req.body.password, 10)
     const email = req.body.email;
     const password = req.body.password;
     const passwordCheck = req.body.passwordCheck
@@ -172,7 +174,7 @@ router.post('/newuser', (req, res) => {
                 else {
                     let requeteSQL_Insert = `INSERT INTO admin 
                     (mail, password, alias) 
-                    VALUES ('${email}','${password}','${alias}')`;
+                    VALUES ('${email}','${hash}','${alias}')`;
                     connection.query(requeteSQL_Insert, (err, result) => {
                         (err === null) ? 
                         res.send(JSON.stringify({
