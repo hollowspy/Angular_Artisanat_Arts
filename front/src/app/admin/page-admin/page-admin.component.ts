@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthServiceService} from '../../service/auth-service.service';
+import {AuthService} from '../../service/auth-service.service';
 import {ApiService} from '../../service/api-service';
 import {Bestiaire} from '../../models/bestiaire.model';
 import {Subject} from 'rxjs';
@@ -16,7 +16,7 @@ export class PageAdminComponent implements OnInit {
 
    
 
-    userLog = 'toto'
+    userLog = ''
     private bestiaire : Bestiaire[];
     bestiaireSubject = new Subject < any[] > ();
     private vegetal : FicheVegetal[];
@@ -29,28 +29,36 @@ export class PageAdminComponent implements OnInit {
    
 
     constructor(private router : Router, 
-                private authService : AuthServiceService, 
+                private authService : AuthService, 
                 private apiService : ApiService, 
                 private http : HttpClient, 
                 public dialog : MatDialog) {}
 
     ngOnInit() {
-        if (this.authService.isAuth == false) {
-            console.log('Looser')
-            this
-                .router
-                .navigate(['/admin'])
-        } else {
-            this.userLog = this.authService.userLog
-            console.log(`bienvenue ! ${this.userLog}`)
-            this.onConnectionName(this.userLog)
-        }
-
+        // if (this.authService.isAuth == false) {
+        //     console.log('Looser')
+        //     this
+        //         .router
+        //         .navigate(['/admin'])
+        // } else {
+        //     this.userLog = this.authService.userLog
+        //     console.log(`bienvenue ! ${this.userLog}`)
+        //     this.onConnectionName(this.userLog)
+        // }
+        
+        this.isAuthenticate();
+        this.onConnectionName(this.userLog)
         this.getBestiaireData();
         this.getVegetalData();
         
     }
 
+
+    isAuthenticate(){
+       this.authService.isToken();
+    }
+    
+    
     getBestiaireData(){
         this.apiService.getApi('bestiaire')
         .subscribe((data : Bestiaire[]) => {
@@ -228,6 +236,11 @@ export class PageAdminComponent implements OnInit {
                   this.dialogResult = result;
                   this.getVegetalData();
                 });
+              }
+
+
+              onNavigateNewUser(){
+                  this.router.navigate(['/admin', 'newuser'])
               }
 
  

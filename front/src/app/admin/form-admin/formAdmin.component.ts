@@ -3,14 +3,14 @@ import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import { Admin } from '../../models/admin'
-import { AuthServiceService } from '../../service/auth-service.service';
+import { AuthService } from '../../service/auth-service.service';
 
 @Component({selector: 'app-admin', templateUrl: './formAdmin.component.html', styleUrls: ['./formAdmin.component.css']})
 export class formAdminComponent implements OnInit {
 
     constructor(private router : Router,
                 private http : HttpClient,
-                private authService : AuthServiceService) {}
+                private authService : AuthService) {}
 
     ngOnInit() {}
 
@@ -22,7 +22,7 @@ export class formAdminComponent implements OnInit {
     
 
     onConnexion(form:NgForm) {
-        const admin = new Admin('','')
+        const admin = new Admin('','', '')
         admin.email = form.value['name'];
         admin.password = form.value['password']
         let user = ''
@@ -36,17 +36,19 @@ export class formAdminComponent implements OnInit {
                 this.data = resp;
                 console.log('youpi ca marche', this.data);
                 user = this.data.user
+                this.authService.OnAuth(this.data.token)
                 this.isAuth = true; 
-                this.authService.onAuth('true', user)
+                // this.router.navigate(['/admin'])
+                // this.authService.onAuth('true', user)
                 setTimeout(
                     ()=> { 
-                    this.router.navigate(['/admin', user])
+                    this.router.navigate(['/admin'])
                     }, 1000
                 )
             }, err => {
                 
                 console.log('y\'a une couille dans le potage', err);
-                this.authService.onAuth('false', user)
+                // this.authService.onAuth('false', user)
                 this.isAuth = false;
             });
         }

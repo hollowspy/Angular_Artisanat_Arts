@@ -4,17 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors')
 let passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy;
 var connection = require('./bdd/bdd');
+var JWTStrategy = require('passport-jwt').Strategy,
+    ExtractJWT = require('passport-jwt').ExtractJwt;
 
 var index = require('./routes/index');
 var bestiaire = require('./routes/api/bestiaire');
 var vegetal = require('./routes/api/vegetal');
+var auth = require('./routes/auth');
 var admin = require('./routes/admin');
 var mail = require('./routes/mail');
 var debug = require('debug')('back:server');
 var app = express();
+var router = express.Router();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +28,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cors())
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,8 +45,14 @@ app.use(function(req, res, next) {
 app.use('/', index);
 app.use('/api/bestiaire', bestiaire);
 app.use('/api/vegetal', vegetal);
-app.use('/admin', admin);
 app.use('/mail', mail)
+app.use('/auth', auth);
+app.use('/admin', admin)
+// router.get("/admin", passport.authenticate('jwt',app.get("/admin", passport.authenticate('jwt', { session:  false }),function (req, res) {
+//   res.send(req.user);
+//  })))
+
+
 
 
 // catch 404 and forward to error handler
@@ -85,7 +97,7 @@ passport.use(
                 flash: 'No user found',
               });
             } else if (password === rows[0].password) {
-              const user = rows[0].name; 
+              const user = rows[0].alias; 
               console.log('App', user)            
               return done(null, user);
             } else {
@@ -101,6 +113,17 @@ passport.use(
     }
   )
 );
+
+passport.use(
+  new JWTStrategy(
+  {  
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),  
+    secretOrKey   : 'mon_token_jwt',
+  },  
+  function (jwtPayload, cb){  
+    return cb(null, jwtPayload);
+  }  
+));
 
 let server = app.listen(process.env.PORT || 4000, function() {
   console.log('Listening on port ' + server.address().port);

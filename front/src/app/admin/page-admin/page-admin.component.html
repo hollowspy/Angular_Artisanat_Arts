@@ -1,12 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="col-11">
+        <div class="col-8">
             <h2>Bienvenue {{userLog}}</h2>
         </div>
-        <div class="col-1">
-            <button class="btn btn-group-sm btn-deconnexio" (click)="onDeconnexion()">
+        <div class="col-4">
+            <button class="btn btn-group-sm btn-deconnexion" (click)="onDeconnexion()">
                 Deconnexion
             </button>
+            <button class="btn btn-group-sm" (click)="onNavigateNewUser()"> Ajoutez un utilisateur </button>
         </div>
     </div>
     <div class="row adminButton">

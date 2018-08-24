@@ -29,6 +29,7 @@ import { FormContactComponent } from './home/form-contact/form-contact.component
 import { ModalFicheComponent } from './fiche-bestiaire/modal-fiche/modal-fiche.component';
 import { ModalVegetalComponent } from './modal-vegetal/modal-vegetal.component';
 import { FormVegetalComponent } from './admin/form-vegetal/form-vegetal.component';
+import { NewUserComponent } from './admin/new-user/new-user.component';
 
 
 
@@ -38,8 +39,11 @@ const appRoutes : Routes = [ 
   {path : 'bestiaire/:id', component : FicheBestiaireComponent},
   {path : 'vegetal', component : VegetalComponent},
   {path : 'deco', component : DecoComponent},
-  {path : 'admin', component : formAdminComponent},
-  {path : 'admin/:id', component : PageAdminComponent }
+  {path : 'auth', component : formAdminComponent},
+  {path : 'admin', component : PageAdminComponent },
+  {path : 'admin/newuser', component : NewUserComponent}
+  
+ 
 ]
 
 @NgModule({
@@ -61,6 +65,7 @@ const appRoutes : Routes = [ 
     ModalFicheComponent,
     ModalVegetalComponent,
     FormVegetalComponent,
+    NewUserComponent,
     ],
     
   imports: [

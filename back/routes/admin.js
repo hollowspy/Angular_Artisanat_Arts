@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 const connection = require('../bdd/bdd.js')
+const jwt = require('jsonwebtoken');
 
 router.post('/', (req, res) => {
     passport.authenticate('local', (err, user) => {
@@ -18,7 +19,8 @@ router.post('/', (req, res) => {
                 .status(400)
                 .json({flash: 'Not a yet a Success'});
         }
-        return res.json({user, flash: 'ok'});
+        const token = jwt.sign(user, 'mon_token_jwt')
+        return res.json({user, token, flash: 'ok'});
     })(req, res);
 });
 
@@ -70,16 +72,15 @@ router.put('/bestiaire/edit/:id', (req, res) => {
     let requeteSQL = `UPDATE bestiaire SET name='${name}', materials='${materials}', width=${width}, height=${height}, reproduction='${reproduction}' WHERE id=${id};`
     console.log(requeteSQL)
     connection.query(requeteSQL, (err, result) => {
-      res.send((err === null)
-          ? {
-              msg: 'Oeuvre modifie'
-          }
-          : {
-              msg: err
-          });
-  });
+        res.send((err === null)
+            ? {
+                msg: 'Oeuvre modifie'
+            }
+            : {
+                msg: err
+            });
+    });
 });
-
 
 router.post('/vegetal/new', (req, res) => {
     console.log('ajout oeuvre bestiaire')
@@ -103,8 +104,6 @@ router.post('/vegetal/new', (req, res) => {
     });
 });
 
-
-
 router.delete('/vegetal/delete/:id', (req, res) => {
     const id = req.params.id;
     let requeteSQL = `DELETE FROM vegetal WHERE id=${id}`;
@@ -120,8 +119,6 @@ router.delete('/vegetal/delete/:id', (req, res) => {
     });
 });
 
-
-
 router.put('/vegetal/edit/:id', (req, res) => {
     const id = req.params.id;
     console.log(id)
@@ -133,15 +130,64 @@ router.put('/vegetal/edit/:id', (req, res) => {
     let requeteSQL = `UPDATE vegetal SET name='${name}', materials='${materials}', width=${width}, height=${height}, reproduction='${reproduction}' WHERE id=${id};`
     console.log(requeteSQL)
     connection.query(requeteSQL, (err, result) => {
-      res.send((err === null)
-          ? {
-              msg: 'Oeuvre modifie'
-          }
-          : {
-              msg: err
-          });
-  });
+        res.send((err === null)
+            ? {
+                msg: 'Oeuvre modifie'
+            }
+            : {
+                msg: err
+            });
+    });
 });
 
+router.post('/newuser', (req, res) => {
+    isAlreadySign = false;
+    res.setHeader('Content-Type', 'application/json');
+    console.log('je rentre dans newUser')
+    const email = req.body.email;
+    const password = req.body.password;
+    const passwordCheck = req.body.passwordCheck
+    const alias = req.body.alias
+    console.log(req.body)
+    let reqSQLcheck = `SELECT alias FROM admin where mail = '${email}'`;
+    console.log(reqSQLcheck)
+    connection.query(reqSQLcheck, (err, result) => {
+        if (err) 
+            throw err;
+        else {
+            if (result.length >= 1) {
+                console.log('mail trouvé, pas de création', result)
+                isAlreadySign = true; 
+                res.send(JSON.stringify({
+                    message : "mail trouvé pas de création"
+                }))
+            }
+            else {
+                if (password !== passwordCheck){
+                    console.log('password different')
+                    res.send(JSON.stringify({
+                        message : "password differents"
+                    }))
+                }
+                else {
+                    let requeteSQL_Insert = `INSERT INTO admin 
+                    (mail, password, alias) 
+                    VALUES ('${email}','${password}','${alias}')`;
+                    connection.query(requeteSQL_Insert, (err, result) => {
+                        (err === null) ? 
+                        res.send(JSON.stringify({
+                            message : "le compte vient d\'etre ajouté"
+                        })) : 
+                        res.send(JSON.stringify({ 
+                            message : err
+                        }))
+                 })
+                }
+                
+            }
+        }
+    })
+
+});
 
 module.exports = router;
