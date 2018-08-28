@@ -1,20 +1,21 @@
 <div class="row">
     <div class="col-8 offset-2">
-        <h3>Administration du site</h3>
-        <form (ngSubmit)="onConnexion(f)" #f="ngForm">
-            <div class="form-group">
-                <label for="name">Adresse mail</label>
-                <input type=text id="name" class="form-control" name="name" ngModel>
-
-                    <label for="password">Mot de passe</label>
-                    <input type=password id="password" class="form-control" name="password" ngModel>
-                        <button class="btn btn-success" type="submit">Connexion</button>
-                    </div>
-                    <p *ngIf="isAuth === false">
-                        login et/ou mot de passe incorrect. Veuillez réessayer</p>
-                    <p *ngIf="isAuth === true">
-                        Connexion réussie</p>
-                </form>
-            </div>
+    <h3>Administration du site</h3>
+    <form (ngSubmit)="onConnexion(f)" #f="ngForm">
+        <div class="form-group">
+            <label for="name">Adresse mail</label>
+            <input type=text id="name" class="form-control" name="name" ngModel>
         </div>
-    
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type=password id="password" class="form-control" name="password" ngModel>
+            <button class="btn btn-success" type="submit">Connexion</button>
+        </div>
+                <p *ngIf="isAuth === false">
+                    login et/ou mot de passe incorrect. Veuillez réessayer</p>
+                <p *ngIf="isAuth === true">
+                    Connexion réussie</p>
+            </form>
+            <a class="nav-link" routerLink="forgotPassword">Mot de passe oublié ?</a>
+        </div>
+    </div>

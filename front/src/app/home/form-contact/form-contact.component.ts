@@ -19,9 +19,7 @@ export class FormContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  onResetMessage(){
-    
-  }
+  
 
   onSendMessage(form:NgForm){ 
     const newMail = new Mail('','','','','');

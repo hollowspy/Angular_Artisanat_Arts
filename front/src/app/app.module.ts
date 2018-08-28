@@ -30,6 +30,8 @@ import { ModalFicheComponent } from './fiche-bestiaire/modal-fiche/modal-fiche.c
 import { ModalVegetalComponent } from './modal-vegetal/modal-vegetal.component';
 import { FormVegetalComponent } from './admin/form-vegetal/form-vegetal.component';
 import { NewUserComponent } from './admin/new-user/new-user.component';
+import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './admin/update-password/update-password.component';
 
 
 
@@ -41,7 +43,9 @@ const appRoutes : Routes = [ 
   {path : 'deco', component : DecoComponent},
   {path : 'auth', component : formAdminComponent},
   {path : 'admin', component : PageAdminComponent },
-  {path : 'admin/newuser', component : NewUserComponent}
+  {path : 'admin/newuser', component : NewUserComponent},
+  {path : 'auth/forgotPassword', component : ForgotPasswordComponent},
+  {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent}
   
  
 ]
@@ -66,6 +70,8 @@ const appRoutes : Routes = [ 
     ModalVegetalComponent,
     FormVegetalComponent,
     NewUserComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent,
     ],
     
   imports: [

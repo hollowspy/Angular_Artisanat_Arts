@@ -126,6 +126,17 @@ passport.use(
   }  
 ));
 
+passport.use(
+  new JWTStrategy(
+  {  
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),  
+    secretOrKey   : 'tokenForgotMail',
+  },  
+  function (jwtPayload, cb){  
+    return cb(null, jwtPayload);
+  }  
+));
+
 let server = app.listen(process.env.PORT || 4000, function() {
   console.log('Listening on port ' + server.address().port);
 });
