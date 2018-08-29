@@ -11,10 +11,18 @@ import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.compone
 import { FicheVegetal } from './../../models/ficheVegetal.model';
 import { FormVegetalComponent } from './../form-vegetal/form-vegetal.component';
 import { Carousel } from './../../models/carouse.model';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
-@Component({selector: 'app-page-admin', templateUrl: './page-admin.component.html', styleUrls: ['./page-admin.component.css']})
+
+const URL = 'http://localhost:4000/file/upload'
+
+@Component({selector: 'app-page-admin', 
+            templateUrl: './page-admin.component.html', 
+            styleUrls: ['./page-admin.component.css']})
+
 export class PageAdminComponent implements OnInit {
-
+    
+    public uploader: FileUploader = new FileUploader({url: URL});
    
 
     userLog = ''
@@ -36,7 +44,8 @@ export class PageAdminComponent implements OnInit {
                 private authService : AuthService, 
                 private apiService : ApiService, 
                 private http : HttpClient, 
-                public dialog : MatDialog) {}
+                public dialog : MatDialog
+                ) {}
 
     ngOnInit() {
         // if (this.authService.isAuth == false) {
@@ -56,6 +65,14 @@ export class PageAdminComponent implements OnInit {
         this.getVegetalData();
         this.getCarouselData()   
 
+        this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+        this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+             console.log('ImageUpload:uploaded:', item, status, response);
+             alert('File uploaded successfully');
+         };
+     
+       
+        
         
     }
 

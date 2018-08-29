@@ -32,7 +32,7 @@ import { FormVegetalComponent } from './admin/form-vegetal/form-vegetal.componen
 import { NewUserComponent } from './admin/new-user/new-user.component';
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './admin/update-password/update-password.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -72,6 +72,7 @@ const appRoutes : Routes = [ 
     NewUserComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
+       
     ],
     
   imports: [
@@ -84,6 +85,7 @@ const appRoutes : Routes = [ 
   BrowserAnimationsModule,
   NgbModule,
   ReactiveFormsModule,
+  FileUploadModule,
   RouterModule.forRoot(appRoutes)
   ],
   entryComponents:[

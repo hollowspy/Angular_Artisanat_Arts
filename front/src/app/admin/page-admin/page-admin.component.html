@@ -24,7 +24,7 @@
             <button class="btn btn-default btn-deco" (click)="onShowDeco()">Deco</button>
         </div>
         <div class="col-3">
-            <button class="btn btn-default btn-carousel" (click)="onShowCarousel()">Deco</button>
+            <button class="btn btn-default btn-carousel" (click)="onShowCarousel()">Carousel</button>
         </div>
     </div>
     <div class="row">
@@ -75,10 +75,21 @@
                     </div>
                     <div>
                         <img src={{photo.Asource}} alt="photo_carousel" class="photo_carousel">
-                        <button>Modifier la photo</button>
+                            <input type="file" name="photo" ng2FileSelect [uploader]="uploader"/>
+
+                            <button
+                                type="button"
+                                class="btn btn-success btn-s"
+                                (click)="uploader.uploadAll()"
+                                [disabled]="!uploader.getNotUploadedItems().length">
+                                Upload an Image
+                            </button>
+                            <!-- <button type="button" class="btn btn-danger" (click)="item.remove()">
+                                Cancer
+                            </button> -->
+                        </div>
+
                     </div>
-                        
-                </div>                
 
                 </div>
             </div>
