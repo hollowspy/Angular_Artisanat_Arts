@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
 import { FicheVegetal } from './../../models/ficheVegetal.model';
 import { FormVegetalComponent } from './../form-vegetal/form-vegetal.component';
+import { Carousel } from './../../models/carouse.model';
 
 @Component({selector: 'app-page-admin', templateUrl: './page-admin.component.html', styleUrls: ['./page-admin.component.css']})
 export class PageAdminComponent implements OnInit {
@@ -21,9 +22,12 @@ export class PageAdminComponent implements OnInit {
     bestiaireSubject = new Subject < any[] > ();
     private vegetal : FicheVegetal[];
     vegetalSubject = new Subject <any[] > ();
+    private carousel  : Carousel[];
+    carouselSubject = new Subject <any[]> ();
     showBestiaire : boolean = false;
     showDeco : boolean = false;
     showVegetal : boolean = false;
+    showCarousel : boolean = false;
     dialogResult = "";
     ficheToEdit = {}
    
@@ -50,6 +54,8 @@ export class PageAdminComponent implements OnInit {
         this.onConnectionName(this.userLog)
         this.getBestiaireData();
         this.getVegetalData();
+        this.getCarouselData()   
+
         
     }
 
@@ -89,6 +95,19 @@ export class PageAdminComponent implements OnInit {
         this.vegetalSubject.next(this.vegetal.slice())
     }
 
+
+    getCarouselData(){
+        this.apiService.getApi('carousel')
+        .subscribe(
+            (data : Carousel[]) => {
+                this.carousel = data;
+                this.emitCarousel();
+            })
+       }
+
+       emitCarousel(){
+           this.carouselSubject.next(this.carousel.slice())
+       }
     
 
      
@@ -124,6 +143,7 @@ export class PageAdminComponent implements OnInit {
             : this.showBestiaire = false;
         this.showDeco = false;
         this.showVegetal = false;
+        this.showCarousel = false;
       
     }
 
@@ -133,6 +153,7 @@ export class PageAdminComponent implements OnInit {
         (this.showVegetal === false)
             ? this.showVegetal = true
             : this.showVegetal = false;
+            this.showCarousel = false;
     }
 
     onShowDeco() {
@@ -141,6 +162,17 @@ export class PageAdminComponent implements OnInit {
             ? this.showDeco = true
             : this.showDeco = false;
         this.showVegetal = false;
+        this.showCarousel = false;
+    }
+
+    onShowCarousel(){
+        this.showBestiaire = false;
+        this.showDeco = false;
+        (this.showCarousel === false)
+            ? this.showCarousel = true
+            : this.showCarousel = false;
+        this.showVegetal = false;
+
     }
 
     onDeleteOeuvre(categorie:string, id:number, name:string){

@@ -1,24 +1,30 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Bienvenue {{userLog}}</h2>
+            <h2>Bienvenue
+                {{userLog}}</h2>
         </div>
         <div class="col-4">
             <button class="btn btn-group-sm btn-deconnexion" (click)="onDeconnexion()">
                 Deconnexion
             </button>
-            <button class="btn btn-group-sm" (click)="onNavigateNewUser()"> Ajoutez un utilisateur </button>
+            <button class="btn btn-group-sm" (click)="onNavigateNewUser()">
+                Ajoutez un utilisateur
+            </button>
         </div>
     </div>
     <div class="row adminButton">
-        <div class="col-4">
+        <div class="col-3">
             <button class="btn btn-default btn-bestiaire" (click)="onShowBestiaire()">Bestiaire</button>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <button class="btn btn-default btn-vegetal" (click)="onShowVegetal()">Vegetal</button>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <button class="btn btn-default btn-deco" (click)="onShowDeco()">Deco</button>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-default btn-carousel" (click)="onShowCarousel()">Deco</button>
         </div>
     </div>
     <div class="row">
@@ -31,7 +37,7 @@
                     <div class=" detailOeuvre">
                         {{oeuvre.name}}
                     </div>
-                    <i 
+                    <i
                         class="fa fa-edit fa-3x btn-modifier"
                         (click)="openDialogToEditBestiaire(oeuvre)"></i>
                     <i
@@ -49,7 +55,7 @@
                     <div class=" detailOeuvre">
                         {{oeuvre.name}}
                     </div>
-                    <i 
+                    <i
                         class="fa fa-edit fa-3x btn-modifier"
                         (click)="openDialogToEditVegetal(oeuvre)"></i>
                     <i
@@ -60,11 +66,22 @@
 
                 <button class="btn btn-primary" (click)="openDialogToAddVegetal()">Ajoutez dans Vegetal</button>
 
-
-
             </div>
             <div *ngIf="showDeco">Administration de la table Deco</div>
-        </div>
+            <div *ngIf="showCarousel">
+                <div *ngFor="let photo of carousel" class="list-group-item blocCarousel">
+                    <div class="namePhotoCarousel">
+                        {{photo.name}}
+                    </div>
+                    <div>
+                        <img src={{photo.Asource}} alt="photo_carousel" class="photo_carousel">
+                        <button>Modifier la photo</button>
+                    </div>
+                        
+                </div>                
 
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>

@@ -50,3 +50,13 @@ h2{
 .detailOeuvre{
     flex:4;
    }
+.blocCarousel{
+    display:flex;
+    justify-content: space-around;
+    align-items: center
+}
+
+.photo_carousel{
+    width : 100px;
+    height : 100px;
+}

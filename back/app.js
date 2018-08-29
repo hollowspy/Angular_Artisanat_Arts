@@ -13,6 +13,7 @@ var JWTStrategy = require('passport-jwt').Strategy,
     ExtractJWT = require('passport-jwt').ExtractJwt;
 
 var index = require('./routes/index');
+var carousel = require('./routes/api/carousel');
 var bestiaire = require('./routes/api/bestiaire');
 var vegetal = require('./routes/api/vegetal');
 var auth = require('./routes/auth');
@@ -44,6 +45,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', index);
+app.use('/api/carousel/', carousel)
 app.use('/api/bestiaire', bestiaire);
 app.use('/api/vegetal', vegetal);
 app.use('/mail', mail)

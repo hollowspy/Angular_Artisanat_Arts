@@ -18,7 +18,8 @@ export class formAdminComponent implements OnInit {
     // password = form.value['password'];   console.log('test form',name,password) }
 
     data : any;
-    isAuth : boolean;
+    isAuth : boolean; 
+  
     
 
     onConnexion(form:NgForm) {
@@ -26,7 +27,7 @@ export class formAdminComponent implements OnInit {
         admin.email = form.value['name'];
         admin.password = form.value['password']
         let user = ''
-        
+       
         
         console.log('je rentre dans onConnexnion avec ces identifiant', admin)
         this
