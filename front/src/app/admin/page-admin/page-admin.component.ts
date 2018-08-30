@@ -323,7 +323,7 @@ export class PageAdminComponent implements OnInit {
                     formData.append('file', this.SelectedFile, this.SelectedFile.name)
                     formData.append('id', id)
                                    
-                    this.http.post('http://localhost:4000/file/upload', formData)
+                    this.http.post('http://localhost:4000/upload/upload_carousel', formData)
                     .subscribe(
                           (res) => {
                             let message:any = res
@@ -331,6 +331,7 @@ export class PageAdminComponent implements OnInit {
                             if (message.message === 'source photo MAJ'){
                                 alert('Photo mise à jour ')
                                 this.getCarouselData()  
+                                this.SelectedFile = null;
     
                             }
                             else {

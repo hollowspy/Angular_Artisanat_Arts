@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer'); 
-const connection = require('../bdd/bdd.js')
+const connection = require('../../bdd/bdd.js')
 var fs = require('fs');
 var path = require('path');
 
@@ -32,7 +32,7 @@ var upload = multer({
     })
     .single('file');
 
-router.post('/upload', function(req, res, next){
+router.post('/', function(req, res, next){
     upload(req, res, function(err){
         const id = req.body.id;
         console.log('id', id)
