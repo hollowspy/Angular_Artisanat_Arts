@@ -291,7 +291,24 @@ export class PageAdminComponent implements OnInit {
 
               onFileChanged(event) {
                 this.SelectedFile = <File>event.target.files[0]
-                console.log('fichier choisit', this.SelectedFile)
+                console.log('type', this.SelectedFile.size)
+                if (this.SelectedFile.type !== 'image/jpg' && this.SelectedFile.type !== 'image/jpeg'){
+                    alert('Format image accepte : jpg, jpeg ou png')
+                    this.SelectedFile = null;
+                }
+                else {
+                    if (this.SelectedFile.size > 300000){
+                        alert('Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids')
+                        this.SelectedFile = null;
+                    }                  
+                    else{
+                        console.log('fichier choisit', this.SelectedFile)
+                    }
+                 
+                    
+                }
+               
+               
               }
 
               onUpload(id:any){
@@ -309,18 +326,29 @@ export class PageAdminComponent implements OnInit {
                     this.http.post('http://localhost:4000/file/upload', formData)
                     .subscribe(
                           (res) => {
-                            const message:any = res
+                            let message:any = res
                             console.log(message.message)
                             if (message.message === 'source photo MAJ'){
                                 alert('Photo mise à jour ')
+                                this.getCarouselData()  
     
                             }
                             else {
                                 console.log(message.message)
                                 alert('Pas de mise à jour')
+                                 
                             }
                           }, (err) => {
-                              console.log(err)
+                            let message:any = err
+                            console.log('message erreur', message)
+                            if(message.error.formatImage === true){
+                                alert('pb de format d\'image')
+                            }
+                            
+                            if ( message.error.error.code === 'LIMIT_FILE_SIZE'){
+                                alert('Taille de fichier supérieur à 3Mo. ')
+                            }
+                                                       
                           }
                         
                         )

@@ -5,10 +5,6 @@ const connection = require('../bdd/bdd.js')
 var fs = require('fs');
 var path = require('path');
 
-router.get('/', (req, res)=> {
-    res.send('ok file')
-})
-
 var store = multer.diskStorage({
     destination:function(req, file, cb){
         cb(null, './public/images/carousel')
@@ -18,16 +14,20 @@ var store = multer.diskStorage({
     },
  
 });
-
+let pbFormatImage = false;
 var upload = multer({
     storage:store, 
     fileFilter:function(req,file,cb){
         const ext = path.extname(file.originalname); 
         if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg'){
             console.log('erreur file type image')
+            pbFormatImage = true
             return cb (new Error('Only jpeg, jpg or png are allowed'))
         }
         cb(null, true)
+    },
+    limits: {
+        fileSize: 300000
     }
     })
     .single('file');
@@ -37,9 +37,10 @@ router.post('/upload', function(req, res, next){
         const id = req.body.id;
         console.log('id', id)
         if (err){
-            console.log(err)
+            console.log('err', err)
             return res.status(501).json({
-                error : err
+                error : err,
+                formatImage : pbFormatImage
             })
         }
 
