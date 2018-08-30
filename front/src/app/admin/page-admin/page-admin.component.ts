@@ -11,18 +11,20 @@ import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.compone
 import { FicheVegetal } from './../../models/ficheVegetal.model';
 import { FormVegetalComponent } from './../form-vegetal/form-vegetal.component';
 import { Carousel } from './../../models/carouse.model';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload';
 
+const URL = 'http://localhost:4000/file/upload';
 
-const URL = 'http://localhost:4000/file/upload'
 
 @Component({selector: 'app-page-admin', 
             templateUrl: './page-admin.component.html', 
             styleUrls: ['./page-admin.component.css']})
 
 export class PageAdminComponent implements OnInit {
-    
-    public uploader: FileUploader = new FileUploader({url: URL});
+  
+  
+  public uploader:FileUploader = new FileUploader({url: URL});
+  
    
 
     userLog = ''
@@ -37,7 +39,8 @@ export class PageAdminComponent implements OnInit {
     showVegetal : boolean = false;
     showCarousel : boolean = false;
     dialogResult = "";
-    ficheToEdit = {}
+    ficheToEdit = {}; 
+    SelectedFile : File = null;
    
 
     constructor(private router : Router, 
@@ -65,14 +68,7 @@ export class PageAdminComponent implements OnInit {
         this.getVegetalData();
         this.getCarouselData()   
 
-        this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-        this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-             console.log('ImageUpload:uploaded:', item, status, response);
-             alert('File uploaded successfully');
-         };
-     
-       
-        
+             
         
     }
 
@@ -292,6 +288,50 @@ export class PageAdminComponent implements OnInit {
                   this.router.navigate(['/admin', 'newuser'])
               }
 
- 
+
+              onFileChanged(event) {
+                this.SelectedFile = <File>event.target.files[0]
+                console.log('fichier choisit', this.SelectedFile)
+              }
+
+              onUpload(id:any){
+                const httpOptions = {
+                    headers: new HttpHeaders({
+                      'Content-Type':  'multipart/form-data'
+                    })
+                  };
+                console.log('test id upload', id)
+                const formData = new FormData(); // Currently empty
+                if (this.SelectedFile !== null){
+                    formData.append('file', this.SelectedFile, this.SelectedFile.name)
+                    formData.append('id', id)
+                                   
+                    this.http.post('http://localhost:4000/file/upload', formData)
+                    .subscribe(
+                          (res) => {
+                            const message:any = res
+                            console.log(message.message)
+                            if (message.message === 'source photo MAJ'){
+                                alert('Photo mise à jour ')
+    
+                            }
+                            else {
+                                console.log(message.message)
+                                alert('Pas de mise à jour')
+                            }
+                          }, (err) => {
+                              console.log(err)
+                          }
+                        
+                        )
+                    this.getCarouselData()  
+                 }
+                 else{
+                     alert('merci de bien vouloir selectionner un fichier au préalable')
+                 }
+                }
+             
+                
+            
    
 }
