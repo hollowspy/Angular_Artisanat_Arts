@@ -26,7 +26,8 @@ export class NewUserComponent implements OnInit {
 
   ngOnInit() {
     this.isAuthenticate();
-    this.initForm(); 
+    this.initForm();
+    console.log('nouvel utilisateur', this.newUserForm) 
   }
 
   isAuthenticate(){
@@ -40,7 +41,6 @@ export class NewUserComponent implements OnInit {
   passwordCheck : ['', Validators.required], 
   alias : ['', Validators.required]
    })
-   console.log(this.newUserForm)
  }
 
  onAddUser(){ 

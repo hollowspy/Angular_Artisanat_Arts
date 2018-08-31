@@ -26,16 +26,10 @@ export class FormVegetalComponent implements OnInit {
   ngOnInit() {
     if (this.data){
       this.viewForm = this.data
-      console.log('view Form', this.viewForm)
-    } else {
-      this.viewForm = this.vegetalForm
+      this.vegetalForm = this.viewForm
     }
-
-
-    this.initForm();
-    console.log(this.data)
-   
-  }
+       this.initForm();
+   }
 
   initForm(){
     if (!this.data){
@@ -46,6 +40,7 @@ export class FormVegetalComponent implements OnInit {
         height : ["", Validators.required],
         reproduction : ["", Validators.required]
       })
+      
     } else {
       this.vegetalForm = this.formbuilder.group({
         name : [this.viewForm.name, Validators.required], 
@@ -57,17 +52,18 @@ export class FormVegetalComponent implements OnInit {
 
     }
    
-   
+    console.log(this.vegetalForm)
   }
 
   onAddVegetal(){
+    console.log('view Form on add', this.viewForm)
     const name = this.vegetalForm.get('name').value;
     const materials = this.vegetalForm.get('materials').value;
     const width = this.vegetalForm.get('width').value;
     const height = this.vegetalForm.get('height').value;
     const reproduction = this.vegetalForm.get('reproduction').value;
-    const newVegetal = new FicheVegetal(name, materials,width, height, reproduction, '','')
-    console.log(newVegetal)
+    const newVegetal = new FicheVegetal(name, materials,width, height, reproduction, 'noUlr','noURL')
+    console.log('new Vegetal', newVegetal)
     this.http.post('http://localhost:4000/admin/vegetal/new', newVegetal)
     .subscribe((res)=> { 
       this.data = res

@@ -33,7 +33,7 @@
   <div>
   <h3>Modification de l'oeuvre, catégorie Vegetal</h3>
 </div>
-<form [formGroup]="vegetalForm" (ngSubmit)="onEditVegetal(viewForm.id)">
+<form *ngIf="viewForm != undefined" [formGroup]="vegetalForm" (ngSubmit)="onEditVegetal(viewForm.id)">
     <div class="form-group">
       <label for="name">Nom de l'oeuvre</label>
       <input type="text" id="name" class="form-control" [(value)]="viewForm.name" formControlName="name">

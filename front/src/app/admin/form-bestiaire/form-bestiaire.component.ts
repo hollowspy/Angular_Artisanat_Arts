@@ -113,9 +113,9 @@ export class FormBestiaireComponent implements OnInit {
         console.log('longueur',event.target.files.length)
         this.PhotoAnnexe2 = <File>event.target.files[0]
         this.PhotoAnnexe3 = <File>event.target.files[1]
-        console.log('PhotoAnnexe2', this.PhotoAnnexe2)
-        console.log('PhotoAnnexe3', this.PhotoAnnexe3)
-
+        this.PhotoAnnexe4 = <File>event.target.files[2]
+        this.PhotoAnnexe5 = <File>event.target.files[3]
+        this.PhotoAnnexe6 = <File>event.target.files[4]
     }
 
     onUpload(){
@@ -129,6 +129,9 @@ export class FormBestiaireComponent implements OnInit {
           formData.append('file', this.PhotoPrincipale, this.PhotoPrincipale.name)
           formData.append('file', this.PhotoAnnexe2, this.PhotoAnnexe2.name)
           formData.append('file', this.PhotoAnnexe3, this.PhotoAnnexe3.name)
+          formData.append('file', this.PhotoAnnexe4, this.PhotoAnnexe4.name)
+          formData.append('file', this.PhotoAnnexe5, this.PhotoAnnexe5.name)
+          formData.append('file', this.PhotoAnnexe6, this.PhotoAnnexe6.name)
           this.http.post('http://localhost:4000/upload/upload_bestiaire', formData)
           .subscribe(
               (res) => {
