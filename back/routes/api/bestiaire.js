@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     }
     else{
       res.send(JSON.stringify(result));
-      console.log(result)
+     // console.log(result)
     }
   })
 });
@@ -32,7 +32,7 @@ router.get('/:id', function(req, res, next) {
     }
     else{
       res.send(JSON.stringify(result));
-      console.log(result)
+     // console.log(result)
     }
   })
 });

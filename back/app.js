@@ -20,6 +20,7 @@ var auth = require('./routes/auth');
 var admin = require('./routes/admin');
 var mail = require('./routes/mail');
 var upload_carousel = require('./routes/upload/upload_carousel')
+var upload_bestiaire = require('./routes/upload/upload_bestiaire')
 var debug = require('debug')('back:server');
 var app = express();
 var router = express.Router();
@@ -55,6 +56,7 @@ app.use('/mail', mail)
 app.use('/auth', auth);
 app.use('/admin', admin)
 app.use('/upload/upload_carousel', upload_carousel)
+app.use('/upload/upload_bestiaire', upload_bestiaire)
 // router.get("/admin", passport.authenticate('jwt',app.get("/admin", passport.authenticate('jwt', { session:  false }),function (req, res) {
 //   res.send(req.user);
 //  })))

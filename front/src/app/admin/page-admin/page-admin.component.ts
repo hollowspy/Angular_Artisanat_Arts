@@ -13,8 +13,6 @@ import { FormVegetalComponent } from './../form-vegetal/form-vegetal.component';
 import { Carousel } from './../../models/carouse.model';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = 'http://localhost:4000/file/upload';
-
 
 @Component({selector: 'app-page-admin', 
             templateUrl: './page-admin.component.html', 
@@ -23,10 +21,7 @@ const URL = 'http://localhost:4000/file/upload';
 export class PageAdminComponent implements OnInit {
   
   
-  public uploader:FileUploader = new FileUploader({url: URL});
-  
-   
-
+    
     userLog = ''
     private bestiaire : Bestiaire[];
     bestiaireSubject = new Subject < any[] > ();
@@ -67,6 +62,8 @@ export class PageAdminComponent implements OnInit {
         this.getBestiaireData();
         this.getVegetalData();
         this.getCarouselData()   
+        
+     
 
              
         
