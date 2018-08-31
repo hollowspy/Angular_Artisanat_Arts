@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap'
 import {map} from 'rxjs/operators';
-import { ApiService } from './../../service/api-service';
+import { ApiService } from '../../service/api-service';
 
 @Component({selector: 'app-carousel', 
             templateUrl: './carousel.component.html',

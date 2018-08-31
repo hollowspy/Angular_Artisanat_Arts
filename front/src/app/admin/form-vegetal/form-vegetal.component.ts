@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../service/api-service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { FicheVegetal } from './../../models/ficheVegetal.model';
+import { FicheVegetal } from '../../models/ficheVegetal.model';
 
 
 @Component({

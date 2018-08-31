@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../service/api-service';
 import { FileUploader } from 'ng2-file-upload';
+import { ValidUploadImageService } from '../../service/valid-upload-image.service';
 
 const URL = 'http://localhost:4000/upload/upload_bestiaire';
 
@@ -23,7 +24,9 @@ export class FormBestiaireComponent implements OnInit {
     public uploader:FileUploader = new FileUploader({url: URL});
     
     constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, 
-                private http : HttpClient, private apiService : ApiService, 
+                private http : HttpClient, 
+                private apiService : ApiService, 
+                private validFormatImage : ValidUploadImageService,
                 @Inject(MAT_DIALOG_DATA)public data : any) {}
 
     ngOnInit() {
@@ -61,6 +64,7 @@ export class FormBestiaireComponent implements OnInit {
             .subscribe((res) => {
                 this.data = res
                 console.log('reponse new Bestiaire', this.data)
+                this.onUpload();
                 this
                     .thisDialogRef
                     .close('Oeuvre Ajoutee')
@@ -107,6 +111,7 @@ export class FormBestiaireComponent implements OnInit {
 
     onPhotoPrincipale(event){
         this.PhotoPrincipale = <File>event.target.files[0]
+        this.validFormatImage.onValidFormatImage(this.PhotoPrincipale)
         console.log('photo principale', this.PhotoPrincipale)
     }
     onFileChanged(event) {
@@ -116,6 +121,7 @@ export class FormBestiaireComponent implements OnInit {
         this.PhotoAnnexe4 = <File>event.target.files[2]
         this.PhotoAnnexe5 = <File>event.target.files[3]
         this.PhotoAnnexe6 = <File>event.target.files[4]
+        this.validFormatImage.onValidFormatImages(event.target.files)
     }
 
     onUpload(){
@@ -132,12 +138,18 @@ export class FormBestiaireComponent implements OnInit {
           formData.append('file', this.PhotoAnnexe4, this.PhotoAnnexe4.name)
           formData.append('file', this.PhotoAnnexe5, this.PhotoAnnexe5.name)
           formData.append('file', this.PhotoAnnexe6, this.PhotoAnnexe6.name)
+          console.log('formdata',formData)
           this.http.post('http://localhost:4000/upload/upload_bestiaire', formData)
           .subscribe(
               (res) => {
                   console.log('reponse',res)
               }, (err) => { 
-                  console.log('erreur', err)
+                console.log('erreur', err)
+                let message:any = err
+                if ( message.error.error.code === 'LIMIT_FILE_SIZE'){
+                    alert('Taille de fichier supérieur à 3Mo. ')
+                }
+                  
               }
           )
     }

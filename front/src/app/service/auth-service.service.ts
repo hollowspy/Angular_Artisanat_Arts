@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LOCALE_DATA } from '../../../node_modules/@angular/common/src/i18n/locale_data';
+import { LOCALE_DATA } from '@angular/common/src/i18n/locale_data';
 
 @Injectable({
   providedIn: 'root'

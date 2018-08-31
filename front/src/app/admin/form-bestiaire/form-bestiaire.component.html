@@ -27,17 +27,16 @@
         <input *ngIf="data === null" id="reproduction" type="text-area" class="form-control" name="reproduction" ngModel>
        
     </div>
-    <button class="btn btn-success" type="submit"  >Ajoutez</button>
-    <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
+    <button class="btn btn-success" type="submit">Ajoutez</button>
+    <button class="btn btn-danger" type="button" (click)="onCloseCancel()">Annuler</button>
    
         </form>
-        <div>
-            <div> Test </div>
+         
             <label for="file">Photo Principale</label>
             <input type="file" name="file" (change)="onPhotoPrincipale($event)" accept="image/x-png,image/jpeg"/>
             <label for="file">Photos Annexes (5 photos possibles)</label>
             <input type="file" name="file" (change)="onFileChanged($event)" accept="image/x-png,image/jpeg" multiple/>
-        </div>
+        
 </div>
 
 <div *ngIf="data !== null">

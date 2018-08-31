@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FicheVegetal } from './../../models/ficheVegetal.model';
+import { FicheVegetal } from '../../models/ficheVegetal.model';
 import { Subject } from 'rxjs';
-import { ApiService } from './../../service/api-service';
+import { ApiService } from '../../service/api-service';
 import { MatDialog } from '@angular/material';
-import { ModalVegetalComponent } from './../../modal-vegetal/modal-vegetal.component';
+import { ModalVegetalComponent } from '../../modal-vegetal/modal-vegetal.component';
 
 @Component({
   selector: 'app-vegetal',

@@ -8,10 +8,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
-import { FicheVegetal } from './../../models/ficheVegetal.model';
-import { FormVegetalComponent } from './../form-vegetal/form-vegetal.component';
-import { Carousel } from './../../models/carouse.model';
+import { FicheVegetal } from '../../models/ficheVegetal.model';
+import { FormVegetalComponent } from '../form-vegetal/form-vegetal.component';
+import { Carousel } from '../../models/carouse.model';
 import { FileUploader } from 'ng2-file-upload';
+import { ValidUploadImageService } from './../../service/valid-upload-image.service';
 
 
 @Component({selector: 'app-page-admin', 
@@ -42,7 +43,8 @@ export class PageAdminComponent implements OnInit {
                 private authService : AuthService, 
                 private apiService : ApiService, 
                 private http : HttpClient, 
-                public dialog : MatDialog
+                public dialog : MatDialog, 
+                private validformatImage : ValidUploadImageService
                 ) {}
 
     ngOnInit() {
@@ -286,26 +288,28 @@ export class PageAdminComponent implements OnInit {
               }
 
 
-              onFileChanged(event) {
+            //   onFileChanged(event) {
+            //     this.SelectedFile = <File>event.target.files[0]
+            //     console.log('type', this.SelectedFile.size)
+            //     if (this.SelectedFile.type !== 'image/jpg' && this.SelectedFile.type !== 'image/jpeg'){
+            //         alert('Format image accepte : jpg, jpeg ou png')
+            //         this.SelectedFile = null;
+            //     }
+            //     else {
+            //         if (this.SelectedFile.size > 300000){
+            //             alert('Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids')
+            //             this.SelectedFile = null;
+            //         }                  
+            //         else{
+            //             console.log('fichier choisit', this.SelectedFile)
+            //         }
+            //     }
+            //  }
+
+              onFileChanged(event){
                 this.SelectedFile = <File>event.target.files[0]
-                console.log('type', this.SelectedFile.size)
-                if (this.SelectedFile.type !== 'image/jpg' && this.SelectedFile.type !== 'image/jpeg'){
-                    alert('Format image accepte : jpg, jpeg ou png')
-                    this.SelectedFile = null;
-                }
-                else {
-                    if (this.SelectedFile.size > 300000){
-                        alert('Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids')
-                        this.SelectedFile = null;
-                    }                  
-                    else{
-                        console.log('fichier choisit', this.SelectedFile)
-                    }
-                 
-                    
-                }
-               
-               
+                console.log('type fichier page admin', this.SelectedFile)
+                this.validformatImage.onValidFormatImage(this.SelectedFile)
               }
 
               onUpload(id:any){
