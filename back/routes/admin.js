@@ -4,6 +4,8 @@ const passport = require('passport');
 const connection = require('../bdd/bdd.js')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+var fs = require('fs');
+var rimraf = require('rimraf');
 
 router.post('/', (req, res) => {
     passport.authenticate('local', (err, user) => {
@@ -61,6 +63,15 @@ router.delete('/bestiaire/delete/:id', (req, res) => {
             : {
                 msg: err
             });
+            if (err === null){
+               rimraf(`public/images/bestiaire/${id}`, function (err){
+                if (err){
+                    console.log('erreur', err)
+                } else {
+                    console.log('fichier supprimés avec succès')
+                }
+               });
+            }
     });
 });
 
