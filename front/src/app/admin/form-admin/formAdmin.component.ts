@@ -12,7 +12,13 @@ export class formAdminComponent implements OnInit {
                 private http : HttpClient,
                 private authService : AuthService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+       if (localStorage.getItem('token')){
+           this.router.navigate(['/admin'])
+           console.log('je peux continuer')
+       } 
+      
+    }
 
     // onConnexion(form:NgForm) {   const name = form.value['name'];   const
     // password = form.value['password'];   console.log('test form',name,password) }

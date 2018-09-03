@@ -1,13 +1,11 @@
 .ecranHome{
-   
-    
     padding-bottom: 50px;
-    
 }
 
 .acceuil{ 
     padding-left:0;
     padding-right:0;
+    
 }
 
 .leftColum{
@@ -40,4 +38,7 @@ p{
     border-radius: 10px;
 }
 
-
+.footerHome, .footerNotHome{
+      text-align: center;
+      background-color: rgb(148, 148, 143);
+}

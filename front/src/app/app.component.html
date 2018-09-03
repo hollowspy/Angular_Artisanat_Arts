@@ -4,9 +4,7 @@
         <div class="col-1 d-none d-sm-block leftColum">
             <app-column-artisanat></app-column-artisanat>
             <app-navbar></app-navbar>
-
         </div>
-
         <div *ngIf="router.url === '/'" class="col-11 acceuil">
             <div class="ecranHome">
                 <div class="container-fluid">
@@ -29,14 +27,27 @@
                     <div class="col-4 offset-2 card cardMuriel">
                         <app-form-contact></app-form-contact>
                     </div>
+                   
                 </div>
             </div>
-
+            <div class="col-12 footerHome">
+                <app-footer></app-footer>
+            </div>
+         
+          
         </div>
-        <div class="col-11">
+        <div class="col-11 acceuil">
             <router-outlet></router-outlet>
         </div>
-
+        
+           <div *ngIf="router.url != '/'" class="col-12 footerNotHome">
+               <app-footer></app-footer>
+           </div>
+        
+        </div>
     </div>
 
-</div>
+
+
+    
+

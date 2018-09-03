@@ -33,6 +33,7 @@ import { NewUserComponent } from './admin/new-user/new-user.component';
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './admin/update-password/update-password.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -72,6 +73,7 @@ const appRoutes : Routes = [ 
     NewUserComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
+    FooterComponent,
        
     ],
     
