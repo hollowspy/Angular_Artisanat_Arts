@@ -59,7 +59,4 @@ export class formAdminComponent implements OnInit {
                 this.isAuth = false;
             });
         }
-        
-
-    
 }

@@ -1,19 +1,23 @@
+<div class="col-12 logo_rsocial">
+    <a
+        href="https://www.facebook.com/wicki.diezmosaiques/photos?lst=1438346835%3A100001561591837%3A1535981896&source_ref=pb_friends_tl"
+        target="blank">
+        <i class="fa fa-facebook-square fa-2x logo"></i>
+    </a>
+    <a href="https://www.twitter.com" target="blank">
+        <i class="fa fa-twitter-square fa-2x logo"></i>
+    </a>
+    <a href="https://www.instagram.com/" target="blank">
+        <i class="fa fa-instagram fa-2x logo"></i>
+    </a>
+</div>
+<div class="col-12">
+    Tout droit réservé - NIEDZWIECKI Muriel - 
 
-         <div class="col-12">
-           La Mure Mosaique sur les réseaux sociaux
-         </div>
-         <div class="col-12 logo_rsocial">
-          <a href="https://www.facebook.com/wicki.diezmosaiques/photos?lst=1438346835%3A100001561591837%3A1535981896&source_ref=pb_friends_tl" target="blank"><i class="fa fa-facebook-square fa-2x logo"></i></a>
-          <a href="https://www.twitter.com" target="blank"><i class="fa fa-twitter-square fa-2x logo"></i></a>
-          <a href="https://www.instagram.com/" target="blank"><i class="fa fa-instagram fa-2x logo"></i></a>          
-         </div>
-         <div class="col-12">
-           Tout droit réservé - NIEDZWIECKI Muriel
-         </div>
-         <div *ngIf="router.url != '/admin'" class="col-12">
-            <a routerLink="/auth">Administration</a>
-          </div>
-          <div *ngIf="router.url === '/admin'" class="col-12">
-            <a (click)="onDeconnexion()" routerLink="/auth">Deconnection</a>
-          </div>
-          
+    <span *ngIf="router.url != '/admin'">
+        <a routerLink="/auth">Administration</a>
+    </span>
+    <span *ngIf="router.url === '/admin'">
+        <a (click)="onDeconnexion()" routerLink="/auth">Deconnection</a>
+    </span>
+</div>
