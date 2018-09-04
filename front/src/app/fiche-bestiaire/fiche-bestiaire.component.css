@@ -7,6 +7,8 @@
     width : 150px; 
     height : 150px;
     display: block;
+    margin:auto;
+   
 }
 
 .photoAnnexe:hover{
@@ -17,7 +19,35 @@
     cursor: zoom-in;
 }
 
+.containerCard{
+    margin-bottom : 100px;
+   
+}
+
+.containerPhotos{
+     background-image:url('http://localhost:4000/images/ligne.jpg');
+     background-repeat: repeat-x;
+     background-position: 50% 50%;
+
+   
+}
+
+
 .cardOeuvre{
     display: flex; 
-    justify-content: space-around
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    border-radius: 10px;
+    padding : 30px 30px 30px 30px
+}
+
+li{
+    list-style-type: none;
+    margin : 20px 0px 20px 0px;
+}
+
+span{
+  font-weight: bold;
+  text-decoration: underline;
 }
