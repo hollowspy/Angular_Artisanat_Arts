@@ -10,7 +10,7 @@ var smtpTransport = nodemailer.createTransport({
     host: 'smtp-relay.gmail.com',
     auth: {
         user: "wild.not.you@gmail.com",
-        pass: "wow&wow11"
+        pass: "wow&wow12"
     }
 });
 
