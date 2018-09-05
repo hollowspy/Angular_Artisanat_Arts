@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiService } from '../../service/api-service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FicheVegetal } from '../../models/ficheVegetal.model';
+import { ValidUploadImageService } from './../../service/valid-upload-image.service';
 
 
 @Component({
@@ -15,11 +16,13 @@ export class FormVegetalComponent implements OnInit {
 
   vegetalForm : FormGroup
   viewForm : any
+  PhotoPrincipale : File = null;
 
   constructor(public thisDialogRef : MatDialogRef <FormVegetalComponent>, 
               private http : HttpClient, 
               private apiService : ApiService,
               private formbuilder : FormBuilder,
+              private validFormatImage : ValidUploadImageService,
               @Inject(MAT_DIALOG_DATA) public data : any
     ) { }
 
@@ -68,6 +71,7 @@ export class FormVegetalComponent implements OnInit {
     .subscribe((res)=> { 
       this.data = res
       console.log('reponse new Vegetal', this.data)
+      this.onUpload();
       this.thisDialogRef.close('oeuvre Vegetal ajoutée')
     },(err) => {
       console.log('erreur dans l\'ajout du végétal', err)
@@ -91,6 +95,37 @@ export class FormVegetalComponent implements OnInit {
       console.log('erreur dans l\'ajout du végétal', err)
     });
   }
+
+  onPhotoPrincipale(event){
+    this.PhotoPrincipale = <File>event.target.files[0]
+    this.validFormatImage.onValidFormatImage(this.PhotoPrincipale)
+    console.log('photo principale', this.PhotoPrincipale)
+}
+
+onUpload(){
+  console.log('je rentre dans onUpload')
+  const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'multipart/form-data'
+      })
+    };
+    const formData = new FormData();
+    formData.append('file', this.PhotoPrincipale, this.PhotoPrincipale.name)
+    console.log('formdata',formData)
+    this.http.post('http://localhost:4000/upload/upload_vegetal', formData)
+    .subscribe(
+        (res) => {
+            console.log('reponse',res)
+        }, (err) => { 
+          console.log('erreur', err)
+          let message:any = err
+          if ( message.error.error.code === 'LIMIT_FILE_SIZE'){
+              alert('Taille de fichier supérieur à 3Mo. ')
+          }
+            
+        }
+    )
+}
 
 
 
