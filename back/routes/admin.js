@@ -36,7 +36,7 @@ router.post('/bestiaire/new', (req, res) => {
     const reproduction = req.body.reproduction
     let requeteSQL = `INSERT INTO bestiaire 
                   (name, materials, width, height, reproduction) 
-                  VALUES ('${name}','${materials}','${width}','${height}', '${reproduction}')`;
+                  VALUES ("${name}","${materials}","${width}","${height}", "${reproduction}")`;
     console.log(requeteSQL)
     connection.query(requeteSQL, function (err, result) {
         res.send((err === null)
@@ -83,7 +83,7 @@ router.put('/bestiaire/edit/:id', (req, res) => {
     const width = req.body.width
     const height = req.body.height
     const reproduction = req.body.reproduction
-    let requeteSQL = `UPDATE bestiaire SET name='${name}', materials='${materials}', width=${width}, height=${height}, reproduction='${reproduction}' WHERE id=${id};`
+    let requeteSQL = `UPDATE bestiaire SET name="${name}", materials="${materials}", width=${width}, height=${height}, reproduction="${reproduction}" WHERE id=${id};`
     console.log(requeteSQL)
     connection.query(requeteSQL, (err, result) => {
         res.send((err === null)
@@ -105,7 +105,7 @@ router.post('/vegetal/new', (req, res) => {
     const reproduction = req.body.reproduction
     let requeteSQL = `INSERT INTO vegetal 
                   (name, materials, width, height, reproduction) 
-                  VALUES ('${name}','${materials}','${width}','${height}', '${reproduction}')`;
+                  VALUES ("${name}","${materials}","${width}","${height}", "${reproduction}")`;
     console.log(requeteSQL)
     connection.query(requeteSQL, function (err, result) {
         res.send((err === null)
@@ -141,7 +141,7 @@ router.put('/vegetal/edit/:id', (req, res) => {
     const width = req.body.width
     const height = req.body.height
     const reproduction = req.body.reproduction
-    let requeteSQL = `UPDATE vegetal SET name='${name}', materials='${materials}', width=${width}, height=${height}, reproduction='${reproduction}' WHERE id=${id};`
+    let requeteSQL = `UPDATE vegetal SET name="${name}", materials="${materials}", width=${width}, height=${height}, reproduction="${reproduction}" WHERE id=${id};`
     console.log(requeteSQL)
     connection.query(requeteSQL, (err, result) => {
         res.send((err === null)
