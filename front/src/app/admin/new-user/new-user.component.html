@@ -4,8 +4,12 @@
       <form [formGroup]="newUserForm" (ngSubmit)="onAddUser()" >
         <h4>Ajouter un nouvel administrateur au site</h4>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-control" formControlName="email">
+          <label for="firstName">Prenom</label>
+          <input type="text" id="firstName" class="form-control" formControlName="firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Nom</label>
+          <input type="text" id="lastName" class="form-control"  formControlName="lastName">
         </div>
         <div class="form-group">
           <label for="password">Mot de passe</label>
@@ -16,12 +20,8 @@
           <input type="text" id="passwordCheck" class="form-control" formControlName="passwordCheck">
         </div>
         <div class="form-group">
-          <label for="firstName">Prenom et Nom</label>
-          <input type="text" id="firstName" class="form-control" formControlName="firstName">
-        </div>
-        <div class="form-group">
-          <label for="lastName">Prenom et Nom</label>
-          <input type="text" id="lastName" class="form-control"  formControlName="lastName">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" formControlName="email">
         </div>
         <button class="btn btn-default">Enregistrer</button>
       </form>
