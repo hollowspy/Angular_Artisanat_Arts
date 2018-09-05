@@ -2,18 +2,7 @@ var express = require('express');
 var router = express.Router();
 const connection = require('../bdd/bdd.js')
 const nodemailer = require("nodemailer");
-
-
-var smtpTransport = nodemailer.createTransport({
-    service: "gmail",
-    port: 587,
-    host: 'smtp-relay.gmail.com',
-    auth: {
-        user: "wild.not.you@gmail.com",
-        pass: "wow&wow12"
-    }
-});
-
+const smtpTransport = require('../mails/configMail.js')
 
 
 router.post('/', function(req, res){

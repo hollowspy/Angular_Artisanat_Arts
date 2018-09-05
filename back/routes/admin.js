@@ -5,6 +5,7 @@ const connection = require('../bdd/bdd.js')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 var rimraf = require('rimraf');
+const smtpTransport = require('../mails/configMail.js')
 
 router.post('/', (req, res) => {
     passport.authenticate('local', (err, user) => {
@@ -198,14 +199,36 @@ router.post('/newuser', (req, res) => {
                     (mail, password, firstName, lastName) 
                     VALUES ("${email}","${hash}","${firstName}", "${lastName}")`;
                     connection.query(requeteSQL_Insert, (err, result) => {
-                        (err === null) ? 
-                        res.send(JSON.stringify({
-                            message : "le compte vient d\'etre ajouté"
-                        })) : 
-                        res.send(JSON.stringify({ 
-                            message : err
-                        }))
-                 })
+                        if (err === null){
+                            smtpTransport.sendMail({
+                                to : email, 
+                                subject : "Création d'un compte sur La MureMosaique", 
+                                text : "Création d'un compte sur La MureMosaique",
+                                html : `
+                                       <h3> Création d'un compte sur La Mure Mosaïque</h3>
+                                       <div>   
+                                            <p> Merci d'avoir créer un compte sur mon site</p>
+                                            <p>Voici vos identifiants</p>
+                                            <ul>
+                                            <li>login : ${email}</li>
+                                            <li>Mot de passe : ${password}</li>
+                                            </ul>
+                                            <div> Gardez bien précieusement vos identifiants. Si vous perdez votre mot de passe,
+                                            vous pourrez toujours le ré-initialiser </div>
+                                        </div>
+                                        `
+                            })
+                            console.log('ca marcheeee ! ')
+                            res.send(JSON.stringify({
+                                message : "le compte vient d\'etre ajouté"
+                            }))  
+
+                        } else {
+                            res.send(JSON.stringify({ 
+                                message : err
+                            }))
+                        }
+                  })
                 }
                 
             }

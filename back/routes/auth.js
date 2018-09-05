@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require("nodemailer");
 const connection = require('../bdd/bdd.js')
 const bcrypt = require('bcrypt');
+const smtpTransport = require('../mails/configMail.js')
 
 router.post('/', (req, res) => {
     console.log('je rentre dans auth')
@@ -25,16 +26,6 @@ router.post('/', (req, res) => {
         const token = jwt.sign(user, 'mon_token_jwt')
         return res.json({user, token, flash: 'ok'});
     })(req, res);
-});
-
-var smtpTransport = nodemailer.createTransport({
-    service: "gmail",
-    port: 587,
-    host: 'smtp-relay.gmail.com',
-    auth: {
-        user: "wild.not.you@gmail.com",
-        pass: "wow&wow12"
-    }
 });
 
 router.post('/forgotPassword', (req, res)=> {
