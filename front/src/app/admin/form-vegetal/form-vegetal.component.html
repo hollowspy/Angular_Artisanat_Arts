@@ -24,6 +24,10 @@
     <label for="reproduction">Description</label>
     <input type="text" id="reproduction" class="form-control" formControlName="reproduction">
   </div>
+  <div>
+    <label for="file">Photo Principale</label>
+    <input type="file" name="file" (change)="onPhotoPrincipale($event)" accept="image/x-png,image/jpeg"/>
+  </div>
   <button class="btn btn-success" type="submit" >Ajoutez</button>
   <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
 
@@ -54,7 +58,7 @@
       <label for="reproduction">Description</label>
       <input type="text" id="reproduction" class="form-control" [(value)]="viewForm.reproduction"formControlName="reproduction">
     </div>
-    <button class="btn btn-success" type="submit" >Mofifier</button>
+    <button class="btn btn-success" type="submit" >Modifier</button>
     <button class="btn btn-danger" type="button" (click)="onCloseCancel()" >Annuler</button>
   
   </form>

@@ -1,5 +1,8 @@
 <div *ngIf="router.url != '/'">
-    <ul class="nav flex-column navbar-light bg-light">
+    <ul @color
+        class="nav flex-column navbar-light menuNav">
+        <img src="http://localhost:4000/images/logoNavBar.jpg" alt="Logo" class="logoNavBar">
+        <div class="containerMenu">
         <li class="nav-item" routerLinkActive="active">
             <a class="nav-link active" routerLink="/">Acceuil</a>
         </li>
@@ -12,5 +15,6 @@
         <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="deco">Deco</a>
         </li>
+        </div>
     </ul>
 </div>

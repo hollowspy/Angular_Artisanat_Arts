@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   port : 3306,
 })
 
-// Utilisation via MySQL online sur www.db4free.net
+//Utilisation via MySQL online sur www.db4free.net
 // const connection = mysql.createConnection({
 //   multipleStatements: true,
 //   host     : 'sql7.freemysqlhosting.net',

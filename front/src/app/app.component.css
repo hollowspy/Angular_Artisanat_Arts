@@ -1,18 +1,17 @@
 .ecranHome{
-   
-    
     padding-bottom: 50px;
-    
 }
 
 .acceuil{ 
     padding-left:0;
     padding-right:0;
+    
 }
 
 .leftColum{
     padding-left:0;
     padding-right: 0;
+    background-color: rgb(148, 148, 143);
 }
 
 
@@ -40,4 +39,7 @@ p{
     border-radius: 10px;
 }
 
-
+.footer{
+      text-align: center;
+      background-color: rgb(241, 241, 231);
+}

@@ -23,7 +23,8 @@ export class PageAdminComponent implements OnInit {
   
   
     
-    userLog = ''
+    firstName:string;
+    lastName:string;
     private bestiaire : Bestiaire[];
     bestiaireSubject = new Subject < any[] > ();
     private vegetal : FicheVegetal[];
@@ -48,19 +49,8 @@ export class PageAdminComponent implements OnInit {
                 ) {}
 
     ngOnInit() {
-        // if (this.authService.isAuth == false) {
-        //     console.log('Looser')
-        //     this
-        //         .router
-        //         .navigate(['/admin'])
-        // } else {
-        //     this.userLog = this.authService.userLog
-        //     console.log(`bienvenue ! ${this.userLog}`)
-        //     this.onConnectionName(this.userLog)
-        // }
-        
+         
         this.isAuthenticate();
-        this.onConnectionName(this.userLog)
         this.getBestiaireData();
         this.getVegetalData();
         this.getCarouselData()   
@@ -74,6 +64,9 @@ export class PageAdminComponent implements OnInit {
 
     isAuthenticate(){
        this.authService.isToken();
+       this.firstName = this.authService.firstName;
+       this.lastName = this.authService.lastName;
+       console.log('page admin auth', this.firstName, this.lastName)
     }
     
     
@@ -121,25 +114,6 @@ export class PageAdminComponent implements OnInit {
            this.carouselSubject.next(this.carousel.slice())
        }
     
-
-     
-    onConnectionName(_user) {
-        let arrayChar = _user.split('');
-        let arrayResult = []
-        let space = ' '
-        for (let i = 0; i < arrayChar.length; i++) {
-            if (arrayChar[i].match(/[A-Z]/, 'g')) {
-                arrayResult.push(space);
-                arrayResult.push(arrayChar[i])
-
-            } else {
-                arrayResult.push(arrayChar[i])
-
-            }
-        }
-        this.userLog = arrayResult.join('')
-        return this.userLog
-    }
 
     onDeconnexion() {
         this

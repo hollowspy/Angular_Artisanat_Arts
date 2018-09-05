@@ -34,7 +34,7 @@ export class UpdatePasswordComponent implements OnInit {
 
 
   onUpdatePassword(form:NgForm){
-    const updateAdmin = new Admin(this.mailForPassword,'','','');
+    const updateAdmin = new Admin(this.mailForPassword,'','','', '');
     updateAdmin.password = form.value['password']; 
     updateAdmin.passwordCheck = form.value['passwordCheck'];
     console.log(updateAdmin)

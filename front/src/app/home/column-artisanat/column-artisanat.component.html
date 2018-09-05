@@ -1,23 +1,14 @@
 <div *ngIf="router.url === '/'" class="leftColumn">
-  <ul class="nav flex-column">
-    <div class="firstWord">
-      <li>A</li>
-      <li>R</li>
-      <li>T</li>
-      <li>I</li>
-      <li>S</li>
-      <li>A</li>
-      <li>N</li>
-      <li>A</li>
-      <li>T</li>
-      <li></li>
+  <div 
+    class="firstWord">
+    <ul @fade *ngFor="let letterArtisanat of artisanat" class="nav">
+      <li>{{letterArtisanat}}</li>
+    </ul>
+  </div>
+  <div 
+    class="secondWord">
+      <ul @fade *ngFor="let letterArt of art" class="nav">
+        <li>{{letterArt}}</li>
+      </ul>
     </div>
-    <div class="secondWord">
-      <li>D'</li>
-      <li>A</li>
-      <li>R</li>
-      <li>T</li>
-      <li>S</li>
-    </div>
-  </ul>
 </div>

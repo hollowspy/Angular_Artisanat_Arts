@@ -1,3 +1,87 @@
 .nav{
     height:100vh;
+    
 }
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+.containerMenu{
+    margin-top : 50px;
+}
+
+.nav-item{ 
+    margin-top:50px;
+}
+
+.logoNavBar{
+    width : 100px;
+    height: 100px;
+}
+
+.menuNav{
+    width:100%;
+    background-color: rgb(148, 148, 143);
+    
+}
+
+
+.menuNav {
+    font-family: 'Muli', Arial, sans-serif;
+    letter-spacing: 1.5px;
+    line-height: 1em;
+    
+    text-transform: uppercase;
+  }
+  .menuNav li {
+    display: inline-block;
+    list-style: outside none none;
+    margin-top:  50px;
+    position: relative;
+  }
+  .menuNav li a {
+    color : black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .menuNav li:before,
+  .menuNav li:after {
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    height: 2px;
+    width: 35%;
+    background-color: black;
+    position: absolute;
+    content: '';
+    opacity: 0;
+  }
+  .menuNav li:before {
+    top: 0;
+    left: 0;
+  }
+  .menuNav li:after {
+    bottom: 0;
+    right: 0;
+  }
+  .menuNav li:hover:before,
+  .menuNav li.hover:before,
+  .menuNav li:hover:after,
+  .menuNav li.hover:after {
+    opacity: 1;
+  }
+  .menuNav li:hover:before,
+  .menuNav li.hover:before {
+    left: 65%;
+  }
+  .menuNav li:hover:after,
+  .menuNav li.hover:after {
+    right: 65%;
+  }
+  /* Demo purposes only */
+  body {
+    background-color: #212121;
+    padding: 50px 0;
+    text-align: center;
+  }

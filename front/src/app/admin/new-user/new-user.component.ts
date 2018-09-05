@@ -39,7 +39,8 @@ export class NewUserComponent implements OnInit {
   email : ['', Validators.required], 
   password : ['', Validators.required], 
   passwordCheck : ['', Validators.required], 
-  alias : ['', Validators.required]
+  firstName : ['', Validators.required],
+  lastName : ['', Validators.required]
    })
  }
 
@@ -47,8 +48,9 @@ export class NewUserComponent implements OnInit {
    const email = this.newUserForm.get('email').value
    const password = this.newUserForm.get('password').value
    const passwordCheck = this.newUserForm.get('passwordCheck').value
-   const alias = this.newUserForm.get('alias').value
-   const newUser = new Admin(email,password,passwordCheck,alias)
+   const firstName = this.newUserForm.get('firstName').value
+   const lastName = this.newUserForm.get('lastName').value
+   const newUser = new Admin(email,password,passwordCheck,firstName, lastName)
    this.http.post('http://localhost:4000/admin/newuser',newUser)
    .subscribe((res)=> {
      this.response = res; 

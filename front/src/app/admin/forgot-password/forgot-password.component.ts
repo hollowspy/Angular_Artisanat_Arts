@@ -15,7 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     onForgotPassword(form : NgForm) {
         const email = form.value['email']
-        const newUser = new Admin(email, '', '', '')
+        const newUser = new Admin(email, '', '', '', '')
         this
             .http
             .post('http://localhost:4000/auth/forgotPassword', newUser)

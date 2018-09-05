@@ -21,6 +21,7 @@ var admin = require('./routes/admin');
 var mail = require('./routes/mail');
 var upload_carousel = require('./routes/upload/upload_carousel')
 var upload_bestiaire = require('./routes/upload/upload_bestiaire')
+var upload_vegetal = require('./routes/upload/upload_vegetal')
 var debug = require('debug')('back:server');
 var app = express();
 var router = express.Router();
@@ -57,9 +58,8 @@ app.use('/auth', auth);
 app.use('/admin', admin)
 app.use('/upload/upload_carousel', upload_carousel)
 app.use('/upload/upload_bestiaire', upload_bestiaire)
-// router.get("/admin", passport.authenticate('jwt',app.get("/admin", passport.authenticate('jwt', { session:  false }),function (req, res) {
-//   res.send(req.user);
-//  })))
+app.use('/upload/upload_vegetal', upload_vegetal)
+
 
 
 
@@ -106,7 +106,10 @@ passport.use(
                 flash: 'No user found',
               });
             } else if (bcrypt.compareSync(password, rows[0].password)) {
-              const user = rows[0].alias; 
+              const user = {
+                firstName : rows[0].firstName, 
+                lastName : rows[0].lastName
+              }
               console.log('App', user)            
               return done(null, user);
             } else {
