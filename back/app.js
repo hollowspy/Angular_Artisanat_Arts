@@ -108,7 +108,10 @@ passport.use(
                 flash: 'No user found',
               });
             } else if (bcrypt.compareSync(password, rows[0].password)) {
-              const user = rows[0].alias; 
+              const user = {
+                firstName : rows[0].firstName,
+                lastName : rows[0].lastName
+              }
               console.log('App', user)            
               return done(null, user);
             } else {

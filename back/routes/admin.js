@@ -4,7 +4,6 @@ const passport = require('passport');
 const connection = require('../bdd/bdd.js')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-var fs = require('fs');
 var rimraf = require('rimraf');
 
 router.post('/', (req, res) => {
@@ -130,6 +129,15 @@ router.delete('/vegetal/delete/:id', (req, res) => {
             : {
                 msg: err
             });
+            if (err === null){
+                rimraf(`public/images/vegetal/${id}`, function (err){
+                 if (err){
+                     console.log('erreur', err)
+                 } else {
+                     console.log('fichier supprimés avec succès')
+                 }
+                });
+             }
     });
 });
 
@@ -161,10 +169,11 @@ router.post('/newuser', (req, res) => {
     const hash = bcrypt.hashSync(req.body.password, 10)
     const email = req.body.email;
     const password = req.body.password;
-    const passwordCheck = req.body.passwordCheck
-    const alias = req.body.alias
+    const passwordCheck = req.body.passwordCheck;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName
     console.log(req.body)
-    let reqSQLcheck = `SELECT alias FROM admin where mail = '${email}'`;
+    let reqSQLcheck = `SELECT firstName, lastName FROM admin where mail = '${email}'`;
     console.log(reqSQLcheck)
     connection.query(reqSQLcheck, (err, result) => {
         if (err) 
@@ -187,7 +196,7 @@ router.post('/newuser', (req, res) => {
                 else {
                     let requeteSQL_Insert = `INSERT INTO admin 
                     (mail, password, alias) 
-                    VALUES ('${email}','${hash}','${alias}')`;
+                    VALUES ("${email}","${hash}","${firstName}", "${lastName}")`;
                     connection.query(requeteSQL_Insert, (err, result) => {
                         (err === null) ? 
                         res.send(JSON.stringify({

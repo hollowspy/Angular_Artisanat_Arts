@@ -12,6 +12,11 @@ export class formAdminComponent implements OnInit {
                 private http : HttpClient,
                 private authService : AuthService) {}
 
+
+    data : any;
+    isAuth : boolean; 
+  
+
     ngOnInit() {
        if (localStorage.getItem('token')){
            this.router.navigate(['/admin'])
@@ -20,16 +25,10 @@ export class formAdminComponent implements OnInit {
       
     }
 
-    // onConnexion(form:NgForm) {   const name = form.value['name'];   const
-    // password = form.value['password'];   console.log('test form',name,password) }
-
-    data : any;
-    isAuth : boolean; 
-  
-    
+     
 
     onConnexion(form:NgForm) {
-        const admin = new Admin('','', '','')
+        const admin = new Admin('','', '','', '')
         admin.email = form.value['name'];
         admin.password = form.value['password']
         let user = ''
@@ -44,7 +43,9 @@ export class formAdminComponent implements OnInit {
                 console.log('youpi ca marche', this.data);
                 user = this.data.user
                 this.authService.OnAuth(this.data.token)
+                this.authService.onLogInt(user)
                 this.isAuth = true; 
+                              
                 // this.router.navigate(['/admin'])
                 // this.authService.onAuth('true', user)
                 setTimeout(

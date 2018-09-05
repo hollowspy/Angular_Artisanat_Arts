@@ -1,8 +1,7 @@
 <div class="container containerData">
     <div class="row">
         <div class="col-8">
-            <h2>Bienvenue
-                {{userLog}}</h2>
+            <h2>Bienvenue {{firstName}} {{lastName | uppercase }}</h2>
         </div>
         <div class="col-4">
             <button class="btn btn-group-sm btn-deconnexion" (click)="onNavigateNewUser()">

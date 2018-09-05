@@ -8,8 +8,8 @@ const bcrypt = require('bcrypt');
 
 router.post('/', (req, res) => {
     console.log('je rentre dans auth')
-    passport.authenticate('local', (err, user) => {
-        console.log('route admin', user)
+    passport.authenticate('local', (err, user, lastName) => {
+        console.log('route admin', user, lastName)
         if (err) {
             console.log('erreur dans la route dans auth/sign')
             return res
