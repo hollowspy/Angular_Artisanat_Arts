@@ -5,6 +5,11 @@ h2{
 .adminButton{
     margin-top : 5%; 
     margin-bottom : 5%;
+    border:2px red solid;
+}
+
+.btnTable{ 
+    border:2px blue solid;
 }
 
 .btn-deconnexion{
@@ -14,9 +19,11 @@ h2{
 }
 
 .btn-default{
-    height : 150px; 
+    height :85px; 
     width : 150px;
-    border-radius: 30px; 
+    border-radius: 10px; 
+    border:2px green solid;
+    margin:auto;
 }
 
 .btn-bestiaire{

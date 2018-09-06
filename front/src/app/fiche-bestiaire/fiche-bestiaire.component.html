@@ -11,25 +11,24 @@
           <li><span>Hauteur (cm) : </span>{{ficheBestiaire[0].height}}</li>
           <li><span>Description : </span>{{ficheBestiaire[0].reproduction}}</li>
             </div>
-          <!-- <img src="../../../../back/public/images/dev03.jpg" alt="photo developpeur"/> -->
           <img src={{photoPrincipale}} alt="photo principale" class="photoPrincipale" (click)="openDialog(photoPrincipale)">
           </div>
         </ul>
     </div>
   </div>
 </div>
-<div class="container-fluid containerPhotos">
+<div class="container-fluid ">
   <div class="row">
-      <div class="col-3">
+      <div class="col-6 col-sm-3 containerPhotos">
           <img src={{photoPrincipaleAnnexe}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photoPrincipaleAnnexe)">
       </div>
-      <div class="col-3">
+      <div class="col-6 col-sm-3 containerPhotos">
           <img src={{photo_Annexe2}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photo_Annexe2)">
       </div>
-      <div class="col-3">
+      <div class="col-6 col-sm-3 containerPhotos">
           <img src={{photo_Annexe3}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photo_Annexe3)">
       </div>
-      <div class="col-3">
+      <div class="col-6 col-sm-3 containerPhotos">
           <img src={{photo_Annexe4}} alt="photo annexe" class="photoAnnexe" (click)="onReplacePhotoPrincipale(photo_Annexe4)">
       </div>
        
