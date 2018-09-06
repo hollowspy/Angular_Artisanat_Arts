@@ -10,16 +10,16 @@
         </div>
     </div>
     <div class="row adminButton">
-        <div class="col-12 col-md-3 btnTable">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-bestiaire" (click)="onShowBestiaire()">Bestiaire</button>
         </div>
-        <div class="col-12 col-md-3 btnTable">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-vegetal" (click)="onShowVegetal()">Vegetal</button>
         </div>
-        <div class="col-12 col-md-3 btnTable">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-deco" (click)="onShowDeco()">Deco</button>
         </div>
-        <div class="col-12 col-md-3 btnTable">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-carousel" (click)="onShowCarousel()">Carousel</button>
         </div>
     </div>
@@ -73,7 +73,7 @@
                         <img src={{photo.Asource}} alt="photo_carousel" class="photo_carousel">
                         <form action="/file/upload" method="POST" enctype="multipart/form-data">
                             <div>
-                            <input type="file" name="file" (change)="onFileChanged($event)" accept="image/x-png,image/jpeg" />>
+                            <input type="file" name="file" (change)="onFileChanged($event)" accept="image/x-png,image/jpeg" />
                             </div>
                             <div>
                             <button (click)="onUpload(photo.id)">Envoyer</button>

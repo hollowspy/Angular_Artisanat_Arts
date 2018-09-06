@@ -5,11 +5,6 @@ h2{
 .adminButton{
     margin-top : 5%; 
     margin-bottom : 5%;
-    border:2px red solid;
-}
-
-.btnTable{ 
-    border:2px blue solid;
 }
 
 .btn-deconnexion{
@@ -22,7 +17,7 @@ h2{
     height :85px; 
     width : 150px;
     border-radius: 10px; 
-    border:2px green solid;
+    display: block;
     margin:auto;
 }
 
@@ -60,10 +55,32 @@ h2{
 .blocCarousel{
     display:flex;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
 }
 
 .photo_carousel{
     width : 100px;
     height : 100px;
+    
 }
+
+@media screen and (max-width: 540px) {
+    .btn-default {
+      width: 100px;
+      height:50px;
+      margin : 10px 5px 10px 5px;
+    }
+    .fa{
+        width:50%;
+        height:50%;
+        margin:0px 10px 0px 10px;
+    }
+    .blocCarousel{
+        flex-direction: column;
+    }
+    .photo_carousel{
+        width:50px; 
+        height : 50px;
+    }
+    
+  }
