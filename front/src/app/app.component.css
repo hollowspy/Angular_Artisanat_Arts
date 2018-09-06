@@ -5,7 +5,7 @@
 .acceuil{ 
     padding-left:0;
     padding-right:0;
-    
+    margin:auto;
 }
 
 .leftColum{
@@ -37,6 +37,7 @@ p{
     display: table-cell;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 .footer{
