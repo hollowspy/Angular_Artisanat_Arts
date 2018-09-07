@@ -47,7 +47,8 @@ const appRoutes : Routes = [ 
   {path : 'admin', component : PageAdminComponent },
   {path : 'admin/newuser', component : NewUserComponent},
   {path : 'auth/forgotPassword', component : ForgotPasswordComponent},
-  {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent}
+  {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent},
+  {path : 'search', component : ResultSearchComponent}
   
  
 ]
@@ -75,8 +76,8 @@ const appRoutes : Routes = [ 
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     FooterComponent,
-    SearchBarComponen,
-    ResultSearchComponentt,
+    SearchBarComponent,
+    ResultSearchComponent,
        
     ],
     

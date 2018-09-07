@@ -15,11 +15,11 @@ export class SearchDataService {
 
   dataBestiaire(data:FicheBestiaire[]){
     this.bestiaire = data;
-    console.log('dans service bestiaire',this.bestiaire)
   }
 
   dataVegetal(data:FicheVegetal[]){
     this.vegetal = data;
-    console.log('dans service vegetal', this.vegetal)
   }
+
+
 }

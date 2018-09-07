@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Mail } from '../models/mail';
 import { SearchDataService } from './../service/search-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -14,7 +15,8 @@ export class SearchBarComponent implements OnInit {
   data : any
 
   constructor(private http:HttpClient, 
-              private searchData : SearchDataService) { }
+              private searchData : SearchDataService, 
+              private router:Router) { }
 
   ngOnInit() {
   }
@@ -34,6 +36,7 @@ export class SearchBarComponent implements OnInit {
       this.data = res
       this.searchData.dataBestiaire(this.data.bestiaire)
       this.searchData.dataVegetal(this.data.vegetal)
+      this.router.navigate(['/search'])
     }, (err)=> { 
       console.log('erreur recherche', err)
     })

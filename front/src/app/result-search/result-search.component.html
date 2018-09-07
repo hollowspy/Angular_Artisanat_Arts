@@ -1,3 +1,32 @@
-<p>
-  result-search works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      Resultat de votre recherche
+    </div>
+    <div class="col-12">
+      <div *ngIf="bestiaire.length == 0">
+        Aucun résultat dans la catégorie Bestiaire
+      </div>
+      <div *ngIf="bestiaire && bestiaire.length > 0">Pour la catégorie Vegetal</div>
+      <div *ngFor="let oeuvre of bestiaire">
+        <ul>
+          <li>{{oeuvre.name}}</li>
+          <li>{{oeuvre.reproduction}}</li>
+          <img src={{oeuvre.Aphoto_principale}} alt="photo oeuvre" class="photoOeuvre">
+          <button class="btn btn-default" (click)="onDetailBestiaire(oeuvre.id)">Plus de détail</button>
+        </ul>
+      </div>
+      <div *ngIf="vegetal.length == 0">
+          Aucun résultat dans la catégorie Vegetal
+        </div>
+        <div *ngIf="vegetal.length > 0">Pour la catégorie Vegetal</div>
+      <div *ngFor="let oeuvre of vegetal">
+          <ul>
+            <li>{{oeuvre.name}}</li>
+            <li>{{oeuvre.reproduction}}</li>
+            <img src={{oeuvre.Aphoto_principale}} alt="photo oeuvre" class="photoOeuvre" (click)="openDialog(oeuvre)">
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>

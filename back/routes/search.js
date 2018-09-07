@@ -16,7 +16,7 @@ router.post('/',(req, res)=> {
                                 WHERE name LIKE '%${wordSearch}%'
                                 OR materials LIKE '%${wordSearch}%' 
                                 OR reproduction LIKE '%${wordSearch}%';
-                                SELECT id,name, materials Aphoto_principale, reproduction FROM vegetal 
+                                SELECT * FROM vegetal 
                                 WHERE name LIKE '%${wordSearch}%'
                                 OR materials LIKE '%${wordSearch}%'
                                 OR reproduction LIKE '%${wordSearch}%'; `
