@@ -33,6 +33,8 @@ import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password
 import { UpdatePasswordComponent } from './admin/update-password/update-password.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FooterComponent } from './footer/footer.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ResultSearchComponent } from './result-search/result-search.component';
 
 
 
@@ -73,6 +75,8 @@ const appRoutes : Routes = [ 
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     FooterComponent,
+    SearchBarComponen,
+    ResultSearchComponentt,
        
     ],
     

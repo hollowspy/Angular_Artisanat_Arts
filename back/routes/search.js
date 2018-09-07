@@ -11,7 +11,6 @@ router.get('/', (req, res)=> {
 
 
 router.post('/',(req, res)=> {
-    console.log(req.body)
     const wordSearch = req.body.wordSearch
     const  requeteSQL =   `SELECT id,name, materials, Aphoto_principale, reproduction FROM bestiaire 
                                 WHERE name LIKE '%${wordSearch}%'

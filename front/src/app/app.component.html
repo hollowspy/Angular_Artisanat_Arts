@@ -9,10 +9,13 @@
             <div class="ecranHome">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-9">
                             <h1>
                                 La Mure Mosaïques
                             </h1>
+                        </div>
+                        <div class="col-3">
+                            <app-search-bar></app-search-bar>
                         </div>
                     </div>
                 </div>
@@ -38,6 +41,7 @@
         </div>
         <div class="col-11">
             <router-outlet></router-outlet>
+          
         </div>
         
            <div *ngIf="router.url != '/'" class="col-12 footer">
