@@ -38,6 +38,7 @@ export class PageAdminComponent implements OnInit {
     dialogResult = "";
     ficheToEdit = {}; 
     SelectedFile : File = null;
+    owner = localStorage.getItem('idConnected')   
    
 
     constructor(private router : Router, 
@@ -53,7 +54,8 @@ export class PageAdminComponent implements OnInit {
         this.isAuthenticate();
         this.getBestiaireData();
         this.getVegetalData();
-        this.getCarouselData()   
+        this.getCarouselData();
+      
         
      
 
@@ -71,16 +73,8 @@ export class PageAdminComponent implements OnInit {
     
     
     getBestiaireData(){
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'application/x-www-form-urlencoded'
-            })
-          };
-        const owner = localStorage.getItem('idConnected')
-        const body = new HttpParams()
-        .set('owner', owner )
-        // this.apiService.getApi('bestiaire', null)
-        this.http.post('http://localhost:4000/api/bestiaire', body.toString(), httpOptions)
+        this.apiService.getApi('bestiaire', this.owner)
+        // this.http.post('http://localhost:4000/api/bestiaire', body.toString())
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data;
             this.emitBestiaire();
@@ -95,7 +89,7 @@ export class PageAdminComponent implements OnInit {
     }
 
     getVegetalData(){
-        this.apiService.getApi('vegetal', null)
+        this.apiService.getApi('vegetal', this.owner)
         .subscribe(
             (data : FicheVegetal[]) => { 
                 this.vegetal = data;

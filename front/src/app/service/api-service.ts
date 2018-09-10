@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Bestiaire } from '../models/bestiaire.model';
 import { Subject } from 'rxjs';
@@ -17,12 +17,17 @@ export class ApiService {
 
   // url = 'http://localhost:4000';
      
-
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/x-www-form-urlencoded'
+    })
+  };
   
-  getApi(url, admin:number){
-    const owner = admin
-    console.log('mon owner dans serviced', owner)
-    return this.http.post(`/api/${url}`, owner)
+  getApi(url, owner){
+    const body = new HttpParams()
+    .set('owner', owner)
+    console.log('admin service', owner)
+     return this.http.post(`/api/${url}`, body.toString(), this.httpOptions)
   }
 
 

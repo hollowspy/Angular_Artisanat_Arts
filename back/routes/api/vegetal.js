@@ -3,9 +3,16 @@ var router = express.Router();
 const connection = require('../../bdd/bdd.js')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  console.log('je rentre dans back route get bestiaire')
-  connection.query('SELECT * FROM vegetal', function(err, result, fields){
+router.post('/', function(req, res, next) {
+  console.log('je rentre dans back route get vegetal')
+  const owner = req.body.owner
+  console.log('owner', owner)
+  if (owner === 'null' || owner === 'undefined'){
+    requeteSQL = `SELECT * from vegetal`;
+  } else {
+    requeteSQL = `SELECT * FROM vegetal WHERE owner = ${owner}`; 
+  }
+  connection.query(requeteSQL, function(err, result, fields){
     if (err){
       res.status(500).json({
         "status code" : 500,

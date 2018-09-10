@@ -4,10 +4,16 @@ const connection = require('../../bdd/bdd.js')
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  console.log('req body post bestiaire', req.body)
   const owner = req.body.owner
-  console.log('je rentre dans back route get bestiaire', owner)
-  connection.query(`SELECT * FROM bestiaire WHERE owner = '${owner}'`, function(err, result, fields){
+  console.log('owner', owner)
+  if (owner === 'null' || owner === 'undefined'){
+    requeteSQL = `SELECT * from bestiaire`;
+  } else {
+    requeteSQL = `SELECT * FROM bestiaire WHERE owner = ${owner}`; 
+  }
+ 
+  console.log('requeteSQL', requeteSQL)
+  connection.query(requeteSQL, function(err, result, fields){
     if (err){
       res.status(500).json({
         "status code" : 500,
