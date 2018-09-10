@@ -4,9 +4,10 @@ const connection = require('../../bdd/bdd.js')
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
+  console.log('body bestiaire', req.body)
   const owner = req.body.owner
   console.log('owner', owner)
-  if (owner === 'null' || owner === 'undefined'){
+  if (owner === 'null' || owner === 'undefined' || owner === '0'){
     requeteSQL = `SELECT * from bestiaire`;
   } else {
     requeteSQL = `SELECT * FROM bestiaire WHERE owner = ${owner}`; 

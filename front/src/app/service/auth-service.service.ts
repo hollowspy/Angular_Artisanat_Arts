@@ -43,6 +43,7 @@ export class AuthService {
 
    onLogOut(){
       localStorage.removeItem('token');
+      localStorage.removeItem('idConnected')
       this.router.navigate(['/auth'])
 
    }

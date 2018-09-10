@@ -27,7 +27,7 @@ export class ApiService {
     const body = new HttpParams()
     .set('owner', owner)
     console.log('admin service', owner)
-     return this.http.post(`/api/${url}`, body.toString(), this.httpOptions)
+     return this.http.post(`/api/${url}`, body, this.httpOptions)
   }
 
 

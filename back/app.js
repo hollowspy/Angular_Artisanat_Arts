@@ -107,6 +107,7 @@ passport.use(
                 flash: 'No user found',
               });
             } else if (bcrypt.compareSync(password, rows[0].password)) {
+              console.log('user connected', rows[0])
               const user = {
                 id : rows[0].id,
                 firstName : rows[0].firstName, 
