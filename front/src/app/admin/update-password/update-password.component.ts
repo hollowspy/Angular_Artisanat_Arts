@@ -37,31 +37,35 @@ export class UpdatePasswordComponent implements OnInit {
     const updateAdmin = new Admin(this.mailForPassword,'','','', '');
     updateAdmin.password = form.value['password']; 
     updateAdmin.passwordCheck = form.value['passwordCheck'];
-    console.log(updateAdmin)
-    this.http.post('http://localhost:4000/auth/updatePassword', updateAdmin)
-    .subscribe((res) => {
-      this.data = res; 
-      switch (this.data.message) {
-        case'les mots de passes sont différents':
-          this.isDifferentsPassword = true;
-          break
-        case 'mail mis à jour':
-          this.isPasswordUpdated = true;
-          setTimeout(
-            () => {
-              localStorage.removeItem('forgotPassword'); 
-              localStorage.removeItem('mailForPassword');
-              this.router.navigate(['/auth'])
-            }, 4000
-          )
-          
-
-          break;
-        default:
-          console.log('pb de maj password')
-          break;
-      }
-    })
+    if (updateAdmin.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')){
+      console.log(updateAdmin)
+      this.http.post('http://localhost:4000/auth/updatePassword', updateAdmin)
+      .subscribe((res) => {
+        this.data = res; 
+        switch (this.data.message) {
+          case'les mots de passes sont différents':
+            this.isDifferentsPassword = true;
+            break
+          case 'mail mis à jour':
+            this.isPasswordUpdated = true;
+            setTimeout(
+              () => {
+                localStorage.removeItem('forgotPassword'); 
+                localStorage.removeItem('mailForPassword');
+                this.router.navigate(['/auth'])
+              }, 4000
+            )
+            break;
+          default:
+            console.log('pb de maj password')
+            break;
+        }
+      })
+    }
+    else{
+      alert('Vous devez avoir une majuscule, un chiffre et votre mot de passe doit faire 8 caractères ')
+    }
+ 
   }
 
 }
