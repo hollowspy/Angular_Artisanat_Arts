@@ -65,6 +65,10 @@
             </div>
             <div *ngIf="showDeco">Administration de la table Deco</div>
             <div *ngIf="showCarousel">
+                <div *ngIf="isSuperAdmin === false"> 
+                 Vous n'etes pas super administrateur et ne pouvait pas modifier le carousel
+                 </div>
+                 <div *ngIf="isSuperAdmin === true">
                 <div *ngFor="let photo of carousel" class="list-group-item blocCarousel">
                     <div class="namePhotoCarousel">
                         {{photo.name}}
@@ -82,8 +86,10 @@
                         </div>
 
                     </div>
+                 </div>
 
                 </div>
+               
                 
             </div>
 

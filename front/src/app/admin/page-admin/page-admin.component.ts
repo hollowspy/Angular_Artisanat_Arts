@@ -38,7 +38,8 @@ export class PageAdminComponent implements OnInit {
     dialogResult = "";
     ficheToEdit = {}; 
     SelectedFile : File = null;
-    owner = localStorage.getItem('idConnected')   
+    owner = localStorage.getItem('idConnected')
+    isSuperAdmin:boolean = false;   
    
 
     constructor(private router : Router, 
@@ -105,12 +106,19 @@ export class PageAdminComponent implements OnInit {
 
 
     getCarouselData(){
-        this.apiService.getApi('carousel', null)
-        .subscribe(
-            (data : Carousel[]) => {
-                this.carousel = data;
-                this.emitCarousel();
-            })
+             this.apiService.getApi('carousel', null)
+            .subscribe(
+                (data : Carousel[]) => {
+                    this.carousel = data;
+                    this.emitCarousel();
+                })
+            if (localStorage.getItem('idConnected') === '0'){
+                this.isSuperAdmin = true;
+            } else {
+                this.isSuperAdmin = false;
+            }
+        
+       
        }
 
        emitCarousel(){
