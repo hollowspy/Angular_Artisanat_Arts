@@ -4,7 +4,7 @@ import {AuthService} from '../../service/auth-service.service';
 import {ApiService} from '../../service/api-service';
 import {Bestiaire} from '../../models/bestiaire.model';
 import {Subject} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
@@ -71,7 +71,16 @@ export class PageAdminComponent implements OnInit {
     
     
     getBestiaireData(){
-        this.apiService.getApi('bestiaire')
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/x-www-form-urlencoded'
+            })
+          };
+        const owner = localStorage.getItem('idConnected')
+        const body = new HttpParams()
+        .set('owner', owner )
+        // this.apiService.getApi('bestiaire', null)
+        this.http.post('http://localhost:4000/api/bestiaire', body.toString(), httpOptions)
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data;
             this.emitBestiaire();
@@ -86,7 +95,7 @@ export class PageAdminComponent implements OnInit {
     }
 
     getVegetalData(){
-        this.apiService.getApi('vegetal')
+        this.apiService.getApi('vegetal', null)
         .subscribe(
             (data : FicheVegetal[]) => { 
                 this.vegetal = data;
@@ -102,7 +111,7 @@ export class PageAdminComponent implements OnInit {
 
 
     getCarouselData(){
-        this.apiService.getApi('carousel')
+        this.apiService.getApi('carousel', null)
         .subscribe(
             (data : Carousel[]) => {
                 this.carousel = data;

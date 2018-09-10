@@ -36,7 +36,7 @@ export class FormBestiaireComponent implements OnInit {
          
          } 
          else {
-             this.viewForm = new FicheBestiaire('', '',0,0, '', '', '', '', '', '');
+             this.viewForm = new FicheBestiaire('', '',0,0, '', '', '', '', '', '', 0);
          }
 
          this.uploader.onBeforeUploadItem = (item)=> {console.log("Item"); console.log(item)};
@@ -51,12 +51,15 @@ export class FormBestiaireComponent implements OnInit {
 
     OnAddBestiaire(form : NgForm) {
         console.log('je rentre dans add Bestiaire formulaire');
-        const newBestiaire = new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '');
+        const newBestiaire = new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '',0);
         newBestiaire.name = form.value['name'];
         newBestiaire.materials = form.value['materials'];
         newBestiaire.width = form.value['width'];
         newBestiaire.height = form.value['height'];
-        newBestiaire.reproduction = form.value['reproduction']
+        newBestiaire.reproduction = form.value['reproduction'];
+        const id = localStorage.getItem('idConnected'); 
+        console.log(id)
+        newBestiaire.owner = parseInt(id);
         console.log(newBestiaire)
         this
             .http
@@ -76,7 +79,7 @@ export class FormBestiaireComponent implements OnInit {
 
     onEditBestiaire(form : NgForm, id:number) {
         console.log('je vais modifier cette oeuvre', form)
-        const editBestiaire =  new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '');
+        const editBestiaire =  new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '', 0);
         editBestiaire.name = form.value['name'];
         editBestiaire.materials = form.value['materials'];
         editBestiaire.width = form.value['width'];

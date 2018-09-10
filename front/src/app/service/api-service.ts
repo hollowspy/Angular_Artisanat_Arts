@@ -19,9 +19,10 @@ export class ApiService {
      
 
   
-  getApi(url){
-    
-    return this.http.get(`/api/${url}`)
+  getApi(url, admin:number){
+    const owner = admin
+    console.log('mon owner dans serviced', owner)
+    return this.http.post(`/api/${url}`, owner)
   }
 
 

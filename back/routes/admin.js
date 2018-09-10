@@ -34,9 +34,10 @@ router.post('/bestiaire/new', (req, res) => {
     const width = req.body.width
     const height = req.body.height
     const reproduction = req.body.reproduction
+    const owner = req.body.owner
     let requeteSQL = `INSERT INTO bestiaire 
-                  (name, materials, width, height, reproduction) 
-                  VALUES ("${name}","${materials}","${width}","${height}", "${reproduction}")`;
+                  (name, materials, width, height, reproduction, owner) 
+                  VALUES ("${name}","${materials}","${width}","${height}", "${reproduction}", "${owner}")`;
     console.log(requeteSQL)
     connection.query(requeteSQL, function (err, result) {
         res.send((err === null)

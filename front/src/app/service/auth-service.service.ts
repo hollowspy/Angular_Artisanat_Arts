@@ -37,6 +37,7 @@ export class AuthService {
     console.log('je rentre dans Log IN', user)
     this.firstName = user.firstName;
     this.lastName = user.lastName;
+    localStorage.setItem('idConnected', user.id)
     console.log('servvice auth', this.firstName, this.lastName )
   }
 

@@ -108,6 +108,7 @@ passport.use(
               });
             } else if (bcrypt.compareSync(password, rows[0].password)) {
               const user = {
+                id : rows[0].id,
                 firstName : rows[0].firstName, 
                 lastName : rows[0].lastName
               }
