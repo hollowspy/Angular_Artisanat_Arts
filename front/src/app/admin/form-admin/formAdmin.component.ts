@@ -30,18 +30,27 @@ export class formAdminComponent implements OnInit {
      
 
     onConnexion(form:NgForm) {
-        const admin = new Admin('','', '','', '')
+        const admin = new Admin(null,'','', '','', '')
         admin.email = form.value['name'];
         admin.password = form.value['password']
-        let user = ''
+        
        
         
         console.log('je rentre dans onConnexnion avec ces identifiant', admin)
              this.adminSerice.postAdmin(null, admin)
             .subscribe(resp => {
+                console.log('reponse', resp)
                 this.data = resp;
                 console.log('youpi ca marche', this.data);
-                user = this.data.user
+                let user = {
+                   id : this.data.user.id, 
+                   email : '',
+                   password : '', 
+                   passwordCheck : '', 
+                   firstName : this.data.user.firstName, 
+                   lastName : this.data.user.lastName,
+                }
+
                 this.authService.OnAuth(this.data.token)
                 this.authService.onLogInt(user)
                 this.isAuth = true; 

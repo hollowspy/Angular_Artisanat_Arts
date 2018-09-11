@@ -4,7 +4,7 @@
             <h2>Bienvenue {{firstName}} {{lastName | uppercase }}</h2>
         </div>
         <div class="col-4">
-            <button class="btn btn-group-sm btn-deconnexion" (click)="onNavigateNewUser()">
+            <button *ngIf="isSuperAdmin === true" class="btn btn-group-sm btn-deconnexion" (click)="onNavigateNewUser()">
                 Ajout Administrateur
             </button>
         </div>

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Bestiaire } from '../models/bestiaire.model';
-import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 
 
@@ -21,7 +19,7 @@ export class ApiService {
     })
   };
   
-  postApi(url, owner){
+  postApi(url:string, owner:string):Observable<any>{
     const body = new HttpParams()
     .set('owner', owner)
     console.log('admin service', owner)
@@ -29,7 +27,7 @@ export class ApiService {
   }
 
 
-  getFicheApi(url, id:number){ 
+  getFicheApi(url:string, id:number):Observable<any>{ 
     return this.http.get(`/api/${url}/${id}`)
   }
 

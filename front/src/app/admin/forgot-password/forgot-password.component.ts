@@ -17,7 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     onForgotPassword(form : NgForm) {
         const email = form.value['email']
-        const newUser = new Admin(email, '', '', '', '')
+        const newUser = new Admin(0,email, '', '', '', '')
         this.authService.postPassword('forgotPassword', newUser)
             .subscribe((res) => {
                 this.token = res

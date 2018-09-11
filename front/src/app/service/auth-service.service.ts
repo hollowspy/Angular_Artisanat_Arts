@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LOCALE_DATA } from '@angular/common/src/i18n/locale_data';
 import { HttpClient } from '@angular/common/http';
+import { Admin } from './../models/admin';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class AuthService {
 
  
 
-  OnAuth(token){
+  OnAuth(token:string){
     localStorage.setItem('token', token)
   }
 
@@ -35,11 +36,12 @@ export class AuthService {
     }
   }
 
-  onLogInt(user){
+  onLogInt(user:Admin){
     console.log('je rentre dans Log IN', user)
     this.firstName = user.firstName;
     this.lastName = user.lastName;
-    localStorage.setItem('idConnected', user.id)
+    const id = user.id.toString();
+    localStorage.setItem('idConnected',id)
     console.log('servvice auth', this.firstName, this.lastName )
   }
 
@@ -50,7 +52,7 @@ export class AuthService {
 
    }
 
-   postPassword(url, form){
+   postPassword(url:string, form:Admin){
      return this.http.post(`http://localhost:4000/auth/${url}`, form)
    }
 

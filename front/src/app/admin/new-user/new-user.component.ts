@@ -29,9 +29,15 @@ export class NewUserComponent implements OnInit {
   
 
   ngOnInit() {
-    this.isAuthenticate();
-    this.initForm();
-    console.log('nouvel utilisateur', this.newUserForm) 
+    if (localStorage.getItem('idConnected') === '0'){
+      this.isAuthenticate();
+      this.initForm();
+      console.log('nouvel utilisateur', this.newUserForm) 
+    } else {
+      alert('Seul le super admin peut rajouter d\'autres administrateurs')
+      this.router.navigate(['/admin'])
+    }
+   
     
   }
 
@@ -62,6 +68,7 @@ export class NewUserComponent implements OnInit {
     onAddUser(){ 
       const formValue = this.newUserForm.value
       const newUser = new Admin(
+        0,
         formValue['email'], 
         formValue['password'], 
         formValue['passwordCheck'],

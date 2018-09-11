@@ -7,7 +7,7 @@ export class UploadImageService {
     constructor(private http:HttpClient) {}
 
 
-    onUploadImage(url, form){
+    onUploadImage(url:string, form){
         return this.http.post(`http://localhost:4000/upload/${url}`, form)
     }
 

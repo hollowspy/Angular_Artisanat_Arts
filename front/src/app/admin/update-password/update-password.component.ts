@@ -36,7 +36,7 @@ export class UpdatePasswordComponent implements OnInit {
 
 
   onUpdatePassword(form:NgForm){
-    const updateAdmin = new Admin(this.mailForPassword,'','','', '');
+    const updateAdmin = new Admin(0,this.mailForPassword,'','','', '');
     updateAdmin.password = form.value['password']; 
     updateAdmin.passwordCheck = form.value['passwordCheck'];
     if (updateAdmin.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')){
