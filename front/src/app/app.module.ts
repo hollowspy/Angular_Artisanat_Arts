@@ -35,6 +35,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ResultSearchComponent } from './result-search/result-search.component';
+import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
 
 
 
@@ -78,6 +79,7 @@ const appRoutes : Routes = [ 
     FooterComponent,
     SearchBarComponent,
     ResultSearchComponent,
+    NavbarMobileComponent,
        
     ],
     

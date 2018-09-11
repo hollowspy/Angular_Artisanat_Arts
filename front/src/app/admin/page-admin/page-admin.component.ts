@@ -5,7 +5,6 @@ import {ApiService} from '../../service/api-service';
 import {Bestiaire} from '../../models/bestiaire.model';
 import {Subject} from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
 import { FicheVegetal } from '../../models/ficheVegetal.model';
