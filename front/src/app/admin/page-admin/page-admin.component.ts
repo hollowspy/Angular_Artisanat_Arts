@@ -74,7 +74,7 @@ export class PageAdminComponent implements OnInit {
     
     
     getBestiaireData(){
-        this.apiService.getApi('bestiaire', this.owner)
+        this.apiService.postApi('bestiaire', this.owner)
         // this.http.post('http://localhost:4000/api/bestiaire', body.toString())
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data;
@@ -90,7 +90,7 @@ export class PageAdminComponent implements OnInit {
     }
 
     getVegetalData(){
-        this.apiService.getApi('vegetal', this.owner)
+        this.apiService.postApi('vegetal', this.owner)
         .subscribe(
             (data : FicheVegetal[]) => { 
                 this.vegetal = data;
@@ -106,7 +106,7 @@ export class PageAdminComponent implements OnInit {
 
 
     getCarouselData(){
-             this.apiService.getApi('carousel', null)
+             this.apiService.postApi('carousel', null)
             .subscribe(
                 (data : Carousel[]) => {
                     this.carousel = data;

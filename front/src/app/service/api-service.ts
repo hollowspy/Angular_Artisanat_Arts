@@ -15,15 +15,13 @@ export class ApiService {
               private router:Router,
               private authHttp : HttpClient) { }
 
-  // url = 'http://localhost:4000';
-     
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/x-www-form-urlencoded'
     })
   };
   
-  getApi(url, owner){
+  postApi(url, owner){
     const body = new HttpParams()
     .set('owner', owner)
     console.log('admin service', owner)
@@ -34,4 +32,7 @@ export class ApiService {
   getFicheApi(url, id:number){ 
     return this.http.get(`/api/${url}/${id}`)
   }
+
+
+
 }

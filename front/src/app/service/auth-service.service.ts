@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LOCALE_DATA } from '@angular/common/src/i18n/locale_data';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class AuthService {
 
   ;
 
-   constructor(private router : Router) { }
+   constructor(private router : Router, 
+              private http: HttpClient) { }
 
    isAuth = false;
    firstName:string = '';
@@ -46,6 +48,10 @@ export class AuthService {
       localStorage.removeItem('idConnected')
       this.router.navigate(['/auth'])
 
+   }
+
+   postPassword(url, form){
+     return this.http.post(`http://localhost:4000/auth/${url}`, form)
    }
 
 

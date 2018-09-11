@@ -22,7 +22,7 @@ export class VegetalComponent implements OnInit {
   dialogResult:string= "";
 
   ngOnInit() {
-    this.apiService.getApi('vegetal', null)
+    this.apiService.postApi('vegetal', null)
     .subscribe(
       (data : FicheVegetal[]) => { 
         this.vegetal = data

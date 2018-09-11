@@ -29,7 +29,7 @@ export class BestiaireComponent implements OnInit {
   ngOnInit() {
     let urlImageApi = 'http://localhost:4000/images/'
     console.log(this.srcImage)
-    this.apiService.getApi('bestiaire', null)
+    this.apiService.postApi('bestiaire', null)
    .subscribe((data : Bestiaire[]) => {
         this.bestiaire = data
         this.emitBestiaire();

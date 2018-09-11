@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Admin } from './../../models/admin';
+import { AuthService } from './../../service/auth-service.service';
 
 @Component({
   selector: 'app-update-password',
@@ -12,7 +13,8 @@ import { Admin } from './../../models/admin';
 export class UpdatePasswordComponent implements OnInit {
 
   constructor(private http : HttpClient, 
-              private router : Router) { }
+              private router : Router, 
+              private authService : AuthService) { }
   
   mailForPassword : string = ''    
   data : any;
@@ -39,7 +41,7 @@ export class UpdatePasswordComponent implements OnInit {
     updateAdmin.passwordCheck = form.value['passwordCheck'];
     if (updateAdmin.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')){
       console.log(updateAdmin)
-      this.http.post('http://localhost:4000/auth/updatePassword', updateAdmin)
+      this.authService.postPassword('updatePassword', updateAdmin)
       .subscribe((res) => {
         this.data = res; 
         switch (this.data.message) {

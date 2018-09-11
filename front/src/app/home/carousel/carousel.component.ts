@@ -28,7 +28,7 @@ export class CarouselComponent implements OnInit {
 
 
    getCarouselData(){
-    this.apiService.getApi('carousel', null)
+    this.apiService.postApi('carousel', null)
     .subscribe(
       (res) => {
         this.images = res
