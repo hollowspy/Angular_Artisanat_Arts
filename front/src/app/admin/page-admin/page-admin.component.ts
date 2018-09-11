@@ -12,7 +12,7 @@ import { FicheVegetal } from '../../models/ficheVegetal.model';
 import { FormVegetalComponent } from '../form-vegetal/form-vegetal.component';
 import { Carousel } from '../../models/carouse.model';
 import { FileUploader } from 'ng2-file-upload';
-import { ValidUploadImageService } from './../../service/valid-upload-image.service';
+import { UploadImageService } from '../../service/upload-image.service';
 
 
 @Component({selector: 'app-page-admin', 
@@ -47,7 +47,7 @@ export class PageAdminComponent implements OnInit {
                 private apiService : ApiService, 
                 private http : HttpClient, 
                 public dialog : MatDialog, 
-                private validformatImage : ValidUploadImageService
+                private uploadImageService : UploadImageService
                 ) {}
 
     ngOnInit() {
@@ -294,7 +294,7 @@ export class PageAdminComponent implements OnInit {
               onFileChanged(event){
                 this.SelectedFile = <File>event.target.files[0]
                 console.log('type fichier page admin', this.SelectedFile)
-                this.validformatImage.onValidFormatImage(this.SelectedFile)
+                this.uploadImageService.onValidFormatImage(this.SelectedFile)
               }
 
               onUpload(id:any){

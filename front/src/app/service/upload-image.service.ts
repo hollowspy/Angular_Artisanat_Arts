@@ -1,9 +1,15 @@
 import {Injectable} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
-export class ValidUploadImageService {
+export class UploadImageService {
 
-    constructor() {}
+    constructor(private http:HttpClient) {}
+
+
+    onUploadImage(url, form){
+        return this.http.post(`http://localhost:4000/upload/${url}`, form)
+    }
 
     onValidFormatImage(file : File) {
         console.log('file dans service valid', file)

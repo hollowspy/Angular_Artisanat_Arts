@@ -5,7 +5,8 @@ import {NgForm} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../service/api-service';
 import { FileUploader } from 'ng2-file-upload';
-import { ValidUploadImageService } from '../../service/valid-upload-image.service';
+import { UploadImageService } from '../../service/upload-image.service';
+import { AdminService } from '../../service/admin-service.service';
 
 const URL = 'http://localhost:4000/upload/upload_bestiaire';
 
@@ -26,7 +27,8 @@ export class FormBestiaireComponent implements OnInit {
     constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, 
                 private http : HttpClient, 
                 private apiService : ApiService, 
-                private validFormatImage : ValidUploadImageService,
+                private adminService : AdminService,
+                private uploadImageService : UploadImageService,
                 @Inject(MAT_DIALOG_DATA)public data : any) {}
 
     ngOnInit() {
@@ -61,9 +63,8 @@ export class FormBestiaireComponent implements OnInit {
         console.log(id)
         newBestiaire.owner = parseInt(id);
         console.log(newBestiaire)
-        this
-            .http
-            .post('http://localhost:4000/admin/bestiaire/new', newBestiaire)
+        // this.http.post('http://localhost:4000/admin/bestiaire/new', newBestiaire)
+        this.adminService.postAdmin('/bestiaire/new', newBestiaire)
             .subscribe((res) => {
                 this.data = res
                 console.log('reponse new Bestiaire', this.data)
@@ -87,7 +88,8 @@ export class FormBestiaireComponent implements OnInit {
         editBestiaire.reproduction = form.value['reproduction']
         const idEditBestiaire = id;
         console.log(editBestiaire)
-        this.http.put(`http://localhost:4000/admin/bestiaire/edit/${id}`, editBestiaire)
+        this.adminService.putAdmin(`bestiaire/edit/${id}`, editBestiaire)
+        // this.http.put(`http://localhost:4000/admin/bestiaire/edit/${id}`, editBestiaire)
         .subscribe(
             (res) => {
                 this.data = res
@@ -107,14 +109,9 @@ export class FormBestiaireComponent implements OnInit {
         console.log('formulaire annulé')
     }
 
-    onTest(){
-        console.log('test second fonction')
-    }
-
-
     onPhotoPrincipale(event){
         this.PhotoPrincipale = <File>event.target.files[0]
-        this.validFormatImage.onValidFormatImage(this.PhotoPrincipale)
+        this.uploadImageService.onValidFormatImage(this.PhotoPrincipale)
         console.log('photo principale', this.PhotoPrincipale)
     }
     onFileChanged(event) {
@@ -124,7 +121,7 @@ export class FormBestiaireComponent implements OnInit {
         this.PhotoAnnexe4 = <File>event.target.files[2]
         this.PhotoAnnexe5 = <File>event.target.files[3]
         this.PhotoAnnexe6 = <File>event.target.files[4]
-        this.validFormatImage.onValidFormatImages(event.target.files)
+        this.uploadImageService.onValidFormatImages(event.target.files)
     }
 
     onUpload(){
@@ -142,7 +139,7 @@ export class FormBestiaireComponent implements OnInit {
           formData.append('file', this.PhotoAnnexe5, this.PhotoAnnexe5.name)
           formData.append('file', this.PhotoAnnexe6, this.PhotoAnnexe6.name)
           console.log('formdata',formData)
-          this.http.post('http://localhost:4000/upload/upload_bestiaire', formData)
+          this.uploadImageService.onUploadImage('upload_bestiaire', formData)
           .subscribe(
               (res) => {
                   console.log('reponse',res)

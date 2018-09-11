@@ -1,5 +1,6 @@
 export class FicheVegetal{ 
     constructor(
+        public id : number,
         public name : string,
         public materials : string,
         public width : number,
