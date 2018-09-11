@@ -37,9 +37,7 @@ export class formAdminComponent implements OnInit {
        
         
         console.log('je rentre dans onConnexnion avec ces identifiant', admin)
-        this
-            // .http.post('http://localhost:4000/admin', admin)
-            this.adminSerice.postAdmin(null, admin)
+             this.adminSerice.postAdmin(null, admin)
             .subscribe(resp => {
                 this.data = resp;
                 console.log('youpi ca marche', this.data);

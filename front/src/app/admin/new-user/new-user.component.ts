@@ -59,67 +59,51 @@ export class NewUserComponent implements OnInit {
    })
  }
 
- onAddUser(){ 
-  //  const email = this.newUserForm.get('email').value;
-  //  const password = this.newUserForm.get('password').value;
-  //  const passwordCheck = this.newUserForm.get('passwordCheck').value;
-  //  const firstName = this.newUserForm.get('firstName').value;
-  //  const lastName = this.newUserForm.get('lastName').value;
-  //  if (password !== passwordCheck){
-  //    return alert('les deux mots de passe ne sont pas identiques')
-  //  }
-  //  const newUser = new Admin(email,password,passwordCheck,firstName, lastName)
-  //  if (password.match(this.regexfaible)){
-  //   alert('mot de passe pas sécurisé. 6 caractères min')
-  //  }
- 
-  const formValue = this.newUserForm.value
-  const newUser = new Admin(
-    formValue['email'], 
-    formValue['password'], 
-    formValue['passwordCheck'],
-    formValue['firstName'],
-    formValue['lastName']
-  )
-  if (newUser.password != newUser.passwordCheck){
-    return alert('Mots de passes différents')
-  }
-  console.log('test password', newUser.password)
-   this.http.post('http://localhost:4000/admin/newuser',newUser)
-   .subscribe((res)=> {
-     this.response = res; 
-     switch (this.response.message) {
-       case 'mail trouvé pas de création':
-        this.isAlreadyLogded = true;
-        alert('Ce mail est déjà enregistré. Impossible de créer le compte')
-        break;
-        case 'password differents':
-        this.checkPassword = true;
-        alert('Les mots de passes ne correspondent pas. Merci de les retaper')
-        break;
-        default:
-        this.isSuccess = true;
-        break;
-     }
-     
-   }, (err)=> {
-     console.log('erreur ajout utilisateur')
-   })
+    onAddUser(){ 
+      const formValue = this.newUserForm.value
+      const newUser = new Admin(
+        formValue['email'], 
+        formValue['password'], 
+        formValue['passwordCheck'],
+        formValue['firstName'],
+        formValue['lastName']
+      )
+      if (newUser.password != newUser.passwordCheck){
+        return alert('Mots de passes différents')
+      }
+      console.log('test password', newUser.password)
+      this.http.post('http://localhost:4000/admin/newuser',newUser)
+      .subscribe((res)=> {
+        this.response = res; 
+        switch (this.response.message) {
+          case 'mail trouvé pas de création':
+            this.isAlreadyLogded = true;
+            alert('Ce mail est déjà enregistré. Impossible de créer le compte')
+            break;
+            case 'password differents':
+            this.checkPassword = true;
+            alert('Les mots de passes ne correspondent pas. Merci de les retaper')
+            break;
+            default:
+            this.isSuccess = true;
+            break;
+        }
+        
+      }, (err)=> {
+        console.log('erreur ajout utilisateur')
+      })
 
-   setTimeout(
-     () => {
-       if (this.isSuccess === true){
-         this.authService.onLogOut();
-         this.router.navigate(['/auth'])
-       }
-       else{
-         this.isAlreadyLogded = false;
-         this.checkPassword = false;
-       }
-     }, 2000
-   )
-
-
- }
-
+      setTimeout(
+        () => {
+          if (this.isSuccess === true){
+            this.authService.onLogOut();
+            this.router.navigate(['/auth'])
+          }
+          else{
+            this.isAlreadyLogded = false;
+            this.checkPassword = false;
+          }
+        }, 2000
+      )
+    }
 }

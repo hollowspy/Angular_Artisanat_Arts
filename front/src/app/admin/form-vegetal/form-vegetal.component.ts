@@ -107,11 +107,6 @@ export class FormVegetalComponent implements OnInit {
 
 onUpload(){
   console.log('je rentre dans onUpload')
-  const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'multipart/form-data'
-      })
-    };
     const formData = new FormData();
     formData.append('file', this.PhotoPrincipale, this.PhotoPrincipale.name)
     console.log('formdata',formData)
@@ -129,15 +124,6 @@ onUpload(){
         }
     )
 }
-
-
-
-
-
-
-
-
-
 
   onCloseCancel() {
     this

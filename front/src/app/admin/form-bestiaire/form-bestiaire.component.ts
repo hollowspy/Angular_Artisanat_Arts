@@ -4,13 +4,13 @@ import {FicheBestiaire} from '../../models/ficheBestiaire.models';
 import {NgForm} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../service/api-service';
-import { FileUploader } from 'ng2-file-upload';
 import { UploadImageService } from '../../service/upload-image.service';
 import { AdminService } from '../../service/admin-service.service';
 
-const URL = 'http://localhost:4000/upload/upload_bestiaire';
-
-@Component({selector: 'app-form-bestiaire', templateUrl: './form-bestiaire.component.html', styleUrls: ['./form-bestiaire.component.css']})
+@Component({selector: 'app-form-bestiaire', 
+            templateUrl: './form-bestiaire.component.html', 
+            styleUrls: ['./form-bestiaire.component.css']})
+            
 export class FormBestiaireComponent implements OnInit {
 
     
@@ -22,8 +22,7 @@ export class FormBestiaireComponent implements OnInit {
     PhotoAnnexe5 : File = null;
     PhotoAnnexe6 : File = null;
 
-    public uploader:FileUploader = new FileUploader({url: URL});
-    
+      
     constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, 
                 private http : HttpClient, 
                 private apiService : ApiService, 
@@ -41,14 +40,6 @@ export class FormBestiaireComponent implements OnInit {
              this.viewForm = new FicheBestiaire('', '',0,0, '', '', '', '', '', '', 0);
          }
 
-         this.uploader.onBeforeUploadItem = (item)=> {console.log("Item"); console.log(item)};
-
-         this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false;};
- 
-        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-              console.log("ImageUpload:uploaded:", item, status, response);
-         };
-        
     }
 
     OnAddBestiaire(form : NgForm) {
@@ -63,7 +54,6 @@ export class FormBestiaireComponent implements OnInit {
         console.log(id)
         newBestiaire.owner = parseInt(id);
         console.log(newBestiaire)
-        // this.http.post('http://localhost:4000/admin/bestiaire/new', newBestiaire)
         this.adminService.postAdmin('/bestiaire/new', newBestiaire)
             .subscribe((res) => {
                 this.data = res
@@ -86,10 +76,8 @@ export class FormBestiaireComponent implements OnInit {
         editBestiaire.width = form.value['width'];
         editBestiaire.height = form.value['height'];
         editBestiaire.reproduction = form.value['reproduction']
-        const idEditBestiaire = id;
         console.log(editBestiaire)
         this.adminService.putAdmin(`bestiaire/edit/${id}`, editBestiaire)
-        // this.http.put(`http://localhost:4000/admin/bestiaire/edit/${id}`, editBestiaire)
         .subscribe(
             (res) => {
                 this.data = res
@@ -126,11 +114,6 @@ export class FormBestiaireComponent implements OnInit {
 
     onUpload(){
         console.log('je rentre dans onUpload')
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'multipart/form-data'
-            })
-          };
           const formData = new FormData();
           formData.append('file', this.PhotoPrincipale, this.PhotoPrincipale.name)
           formData.append('file', this.PhotoAnnexe2, this.PhotoAnnexe2.name)

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap'
-import {map} from 'rxjs/operators';
 import { ApiService } from '../../service/api-service';
 
 @Component({selector: 'app-carousel', 
@@ -15,8 +14,7 @@ export class CarouselComponent implements OnInit {
   photo2 : string = ''
   photo3 : string = ''
 
-  constructor(private _http: HttpClient,
-              private apiService : ApiService,
+  constructor(private apiService : ApiService,
               config : NgbCarouselConfig) {
               config.interval = 4000
               }

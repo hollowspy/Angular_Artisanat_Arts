@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BestiaireComponent } from './api/bestiaire/bestiaire.component';
 import { VegetalComponent } from './api/vegetal/vegetal.component';
-import { DecoComponent } from './deco/deco.component';
+import { DecoComponent } from './api/deco/deco.component';
 import { FicheBestiaireComponent } from './fiche-bestiaire/fiche-bestiaire.component';
 import { formAdminComponent } from './admin/form-admin/formAdmin.component';
 import { PageAdminComponent } from './admin/page-admin/page-admin.component';

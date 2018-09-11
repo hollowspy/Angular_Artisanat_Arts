@@ -11,7 +11,6 @@ import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.compone
 import { FicheVegetal } from '../../models/ficheVegetal.model';
 import { FormVegetalComponent } from '../form-vegetal/form-vegetal.component';
 import { Carousel } from '../../models/carouse.model';
-import { FileUploader } from 'ng2-file-upload';
 import { UploadImageService } from '../../service/upload-image.service';
 
 
@@ -56,12 +55,6 @@ export class PageAdminComponent implements OnInit {
         this.getBestiaireData();
         this.getVegetalData();
         this.getCarouselData();
-      
-        
-     
-
-             
-        
     }
 
 
@@ -75,11 +68,9 @@ export class PageAdminComponent implements OnInit {
     
     getBestiaireData(){
         this.apiService.postApi('bestiaire', this.owner)
-        // this.http.post('http://localhost:4000/api/bestiaire', body.toString())
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data;
             this.emitBestiaire();
-           // console.log('Administration Bestiaire', this.bestiaire)
         })
     }
 
@@ -95,7 +86,6 @@ export class PageAdminComponent implements OnInit {
             (data : FicheVegetal[]) => { 
                 this.vegetal = data;
                 this.emitVegetal();
-               // console.log('Admin Vegetal', this.vegetal)
             }
         )
     }
@@ -127,9 +117,7 @@ export class PageAdminComponent implements OnInit {
     
 
     onDeconnexion() {
-        this
-            .authService
-            .onLogOut();
+        this.authService.onLogOut();
     }
 
   
@@ -198,9 +186,6 @@ export class PageAdminComponent implements OnInit {
                     console.log('error', err)
                 }
             )
-            // setTimeout(
-            //     ()=> {
-            // this.getBestiaireData() }, 1000);
         }
         else{
             console.log('vous ne voulez pas supprimer finalement ! ')
@@ -209,7 +194,6 @@ export class PageAdminComponent implements OnInit {
     }
 
     openDialogToAddBestiaire() {
-   // console.log('data', data)
     let dialogRef = this.dialog.open(FormBestiaireComponent, {
         width: '600px',
     });
@@ -224,7 +208,6 @@ export class PageAdminComponent implements OnInit {
     }
  
         openDialogToEditBestiaire(data) {
-        // console.log('data', data)
         let dialogRef = this.dialog.open(FormBestiaireComponent, {
               width: '600px',
               data
@@ -273,25 +256,7 @@ export class PageAdminComponent implements OnInit {
               }
 
 
-            //   onFileChanged(event) {
-            //     this.SelectedFile = <File>event.target.files[0]
-            //     console.log('type', this.SelectedFile.size)
-            //     if (this.SelectedFile.type !== 'image/jpg' && this.SelectedFile.type !== 'image/jpeg'){
-            //         alert('Format image accepte : jpg, jpeg ou png')
-            //         this.SelectedFile = null;
-            //     }
-            //     else {
-            //         if (this.SelectedFile.size > 300000){
-            //             alert('Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids')
-            //             this.SelectedFile = null;
-            //         }                  
-            //         else{
-            //             console.log('fichier choisit', this.SelectedFile)
-            //         }
-            //     }
-            //  }
-
-              onFileChanged(event){
+            onFileChanged(event){
                 this.SelectedFile = <File>event.target.files[0]
                 console.log('type fichier page admin', this.SelectedFile)
                 this.uploadImageService.onValidFormatImage(this.SelectedFile)
@@ -308,8 +273,7 @@ export class PageAdminComponent implements OnInit {
                 if (this.SelectedFile !== null){
                     formData.append('file', this.SelectedFile, this.SelectedFile.name)
                     formData.append('id', id)
-                                   
-                    this.http.post('http://localhost:4000/upload/upload_carousel', formData)
+                    this.uploadImageService.onUploadImage('upload_carousel', formData )
                     .subscribe(
                           (res) => {
                             let message:any = res

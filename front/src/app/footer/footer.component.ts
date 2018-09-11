@@ -15,14 +15,8 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
-  onConnection(){
-    console.log("coucou")
-  }
-
   onDeconnexion() {
-    this
-        .authService
-        .onLogOut();
+    this.authService.onLogOut();
 }
 
 
