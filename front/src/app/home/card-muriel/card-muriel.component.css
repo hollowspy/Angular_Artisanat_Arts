@@ -1,6 +1,20 @@
 .photoMuriel{
     margin-top:20px;
-    width: 300px;
-    height:300px;
+    max-width: 200px;
+    height:auto;
     
 }
+
+@media screen and (min-width: 960px) {
+    .photoMuriel {
+      width : 200px;
+      height : 200px;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    .photoMuriel {
+      width : 150px;
+      height : 150px;
+    }
+  }

@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BestiaireComponent } from './api/bestiaire/bestiaire.component';
 import { VegetalComponent } from './api/vegetal/vegetal.component';
-import { DecoComponent } from './deco/deco.component';
+import { DecoComponent } from './api/deco/deco.component';
 import { FicheBestiaireComponent } from './fiche-bestiaire/fiche-bestiaire.component';
 import { formAdminComponent } from './admin/form-admin/formAdmin.component';
 import { PageAdminComponent } from './admin/page-admin/page-admin.component';
@@ -33,6 +33,9 @@ import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password
 import { UpdatePasswordComponent } from './admin/update-password/update-password.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FooterComponent } from './footer/footer.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ResultSearchComponent } from './result-search/result-search.component';
+import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
 
 
 
@@ -45,7 +48,8 @@ const appRoutes : Routes = [ 
   {path : 'admin', component : PageAdminComponent },
   {path : 'admin/newuser', component : NewUserComponent},
   {path : 'auth/forgotPassword', component : ForgotPasswordComponent},
-  {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent}
+  {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent},
+  {path : 'search', component : ResultSearchComponent}
   
  
 ]
@@ -73,6 +77,9 @@ const appRoutes : Routes = [ 
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     FooterComponent,
+    SearchBarComponent,
+    ResultSearchComponent,
+    NavbarMobileComponent,
        
     ],
     

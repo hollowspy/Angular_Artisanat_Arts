@@ -4,13 +4,15 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import { Admin } from '../../models/admin'
 import { AuthService } from '../../service/auth-service.service';
+import { AdminService } from '../../service/admin-service.service';
 
 @Component({selector: 'app-admin', templateUrl: './formAdmin.component.html', styleUrls: ['./formAdmin.component.css']})
 export class formAdminComponent implements OnInit {
 
     constructor(private router : Router,
                 private http : HttpClient,
-                private authService : AuthService) {}
+                private authService : AuthService, 
+                private adminSerice : AdminService) {}
 
 
     data : any;
@@ -28,26 +30,30 @@ export class formAdminComponent implements OnInit {
      
 
     onConnexion(form:NgForm) {
-        const admin = new Admin('','', '','', '')
+        const admin = new Admin(null,'','', '','', '')
         admin.email = form.value['name'];
         admin.password = form.value['password']
-        let user = ''
+        
        
         
         console.log('je rentre dans onConnexnion avec ces identifiant', admin)
-        this
-            .http
-            .post('http://localhost:4000/admin', admin)
+             this.adminSerice.postAdmin(null, admin)
             .subscribe(resp => {
+                console.log('reponse', resp)
                 this.data = resp;
                 console.log('youpi ca marche', this.data);
-                user = this.data.user
+                let user = {
+                   id : this.data.user.id, 
+                   email : '',
+                   password : '', 
+                   passwordCheck : '', 
+                   firstName : this.data.user.firstName, 
+                   lastName : this.data.user.lastName,
+                }
+
                 this.authService.OnAuth(this.data.token)
                 this.authService.onLogInt(user)
                 this.isAuth = true; 
-                              
-                // this.router.navigate(['/admin'])
-                // this.authService.onAuth('true', user)
                 setTimeout(
                     ()=> { 
                     this.router.navigate(['/admin'])
@@ -56,7 +62,6 @@ export class formAdminComponent implements OnInit {
             }, err => {
                 
                 console.log('y\'a une couille dans le potage', err);
-                // this.authService.onAuth('false', user)
                 this.isAuth = false;
             });
         }

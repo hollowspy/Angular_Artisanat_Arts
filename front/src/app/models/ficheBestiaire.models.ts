@@ -10,6 +10,7 @@ export class FicheBestiaire{ 
         public photo_annexe3 : string,
         public photo_annexe4 : string,
         public photo_annexe5 : string,
+        public owner:number
 
     ){}
 }

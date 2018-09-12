@@ -4,15 +4,13 @@ import {AuthService} from '../../service/auth-service.service';
 import {ApiService} from '../../service/api-service';
 import {Bestiaire} from '../../models/bestiaire.model';
 import {Subject} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { FormBestiaireComponent } from '../form-bestiaire/form-bestiaire.component';
 import { FicheVegetal } from '../../models/ficheVegetal.model';
 import { FormVegetalComponent } from '../form-vegetal/form-vegetal.component';
 import { Carousel } from '../../models/carouse.model';
-import { FileUploader } from 'ng2-file-upload';
-import { ValidUploadImageService } from './../../service/valid-upload-image.service';
+import { UploadImageService } from '../../service/upload-image.service';
 
 
 @Component({selector: 'app-page-admin', 
@@ -38,6 +36,8 @@ export class PageAdminComponent implements OnInit {
     dialogResult = "";
     ficheToEdit = {}; 
     SelectedFile : File = null;
+    owner = localStorage.getItem('idConnected')
+    isSuperAdmin:boolean = false;   
    
 
     constructor(private router : Router, 
@@ -45,7 +45,7 @@ export class PageAdminComponent implements OnInit {
                 private apiService : ApiService, 
                 private http : HttpClient, 
                 public dialog : MatDialog, 
-                private validformatImage : ValidUploadImageService
+                private uploadImageService : UploadImageService
                 ) {}
 
     ngOnInit() {
@@ -53,12 +53,7 @@ export class PageAdminComponent implements OnInit {
         this.isAuthenticate();
         this.getBestiaireData();
         this.getVegetalData();
-        this.getCarouselData()   
-        
-     
-
-             
-        
+        this.getCarouselData();
     }
 
 
@@ -71,11 +66,10 @@ export class PageAdminComponent implements OnInit {
     
     
     getBestiaireData(){
-        this.apiService.getApi('bestiaire')
+        this.apiService.postApi('bestiaire', this.owner)
         .subscribe((data : Bestiaire[]) => {
             this.bestiaire = data;
             this.emitBestiaire();
-           // console.log('Administration Bestiaire', this.bestiaire)
         })
     }
 
@@ -86,12 +80,11 @@ export class PageAdminComponent implements OnInit {
     }
 
     getVegetalData(){
-        this.apiService.getApi('vegetal')
+        this.apiService.postApi('vegetal', this.owner)
         .subscribe(
             (data : FicheVegetal[]) => { 
                 this.vegetal = data;
                 this.emitVegetal();
-               // console.log('Admin Vegetal', this.vegetal)
             }
         )
     }
@@ -102,12 +95,19 @@ export class PageAdminComponent implements OnInit {
 
 
     getCarouselData(){
-        this.apiService.getApi('carousel')
-        .subscribe(
-            (data : Carousel[]) => {
-                this.carousel = data;
-                this.emitCarousel();
-            })
+             this.apiService.postApi('carousel', null)
+            .subscribe(
+                (data : Carousel[]) => {
+                    this.carousel = data;
+                    this.emitCarousel();
+                })
+            if (localStorage.getItem('idConnected') === '0'){
+                this.isSuperAdmin = true;
+            } else {
+                this.isSuperAdmin = false;
+            }
+        
+       
        }
 
        emitCarousel(){
@@ -116,9 +116,7 @@ export class PageAdminComponent implements OnInit {
     
 
     onDeconnexion() {
-        this
-            .authService
-            .onLogOut();
+        this.authService.onLogOut();
     }
 
   
@@ -187,9 +185,6 @@ export class PageAdminComponent implements OnInit {
                     console.log('error', err)
                 }
             )
-            // setTimeout(
-            //     ()=> {
-            // this.getBestiaireData() }, 1000);
         }
         else{
             console.log('vous ne voulez pas supprimer finalement ! ')
@@ -198,7 +193,6 @@ export class PageAdminComponent implements OnInit {
     }
 
     openDialogToAddBestiaire() {
-   // console.log('data', data)
     let dialogRef = this.dialog.open(FormBestiaireComponent, {
         width: '600px',
     });
@@ -213,7 +207,6 @@ export class PageAdminComponent implements OnInit {
     }
  
         openDialogToEditBestiaire(data) {
-        // console.log('data', data)
         let dialogRef = this.dialog.open(FormBestiaireComponent, {
               width: '600px',
               data
@@ -262,28 +255,10 @@ export class PageAdminComponent implements OnInit {
               }
 
 
-            //   onFileChanged(event) {
-            //     this.SelectedFile = <File>event.target.files[0]
-            //     console.log('type', this.SelectedFile.size)
-            //     if (this.SelectedFile.type !== 'image/jpg' && this.SelectedFile.type !== 'image/jpeg'){
-            //         alert('Format image accepte : jpg, jpeg ou png')
-            //         this.SelectedFile = null;
-            //     }
-            //     else {
-            //         if (this.SelectedFile.size > 300000){
-            //             alert('Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids')
-            //             this.SelectedFile = null;
-            //         }                  
-            //         else{
-            //             console.log('fichier choisit', this.SelectedFile)
-            //         }
-            //     }
-            //  }
-
-              onFileChanged(event){
+            onFileChanged(event){
                 this.SelectedFile = <File>event.target.files[0]
                 console.log('type fichier page admin', this.SelectedFile)
-                this.validformatImage.onValidFormatImage(this.SelectedFile)
+                this.uploadImageService.onValidFormatImage(this.SelectedFile)
               }
 
               onUpload(id:any){
@@ -297,8 +272,7 @@ export class PageAdminComponent implements OnInit {
                 if (this.SelectedFile !== null){
                     formData.append('file', this.SelectedFile, this.SelectedFile.name)
                     formData.append('id', id)
-                                   
-                    this.http.post('http://localhost:4000/upload/upload_carousel', formData)
+                    this.uploadImageService.onUploadImage('upload_carousel', formData )
                     .subscribe(
                           (res) => {
                             let message:any = res

@@ -1,53 +1,66 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="container-fluid">
+<div *ngIf="router.url === '/'" class="container-fluid">
     <div class="row">
         <div class="col-1 d-none d-sm-block leftColum">
             <app-column-artisanat></app-column-artisanat>
-            <app-navbar></app-navbar>
-        </div>
-        <div *ngIf="router.url === '/'" class="col-11 acceuil">
-            <div class="ecranHome">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1>
-                                La Mure Mosaïques
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-                <app-menu></app-menu>
-                <app-carousel></app-carousel>
-            </div>
-            <div class="container-fluid container-muriel">
-                <div class="row">
-                    <div class="col-4 offset-1 card cardMuriel">
-                        <app-card-muriel></app-card-muriel>
-                    </div>
-                    <div class="col-4 offset-2 card cardMuriel">
-                        <app-form-contact></app-form-contact>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="col-12 footer">
-                <app-footer></app-footer>
-            </div>
-         
-          
         </div>
         <div class="col-11 acceuil">
-            <router-outlet></router-outlet>
-        </div>
-        
-           <div *ngIf="router.url != '/'" class="col-12 footer">
-               <app-footer></app-footer>
-           </div>
-        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 titleAndSearch">
+                        <div class="title">
+                            <h1>La Mure Mosaique</h1>
+                        </div>
+                        <div class="iconSearch">
+                         <button  (click)="onShowSearchBar()" class="btn btn-outline-success">
+                             <i *ngIf="showSearchBar=== false" class="fa fa-search"></i>
+                             <i *ngIf="showSearchBar=== true" class="fa fa-times"></i>
+                        </button>
+                        </div>
+                    </div>
+                    <div *ngIf="showSearchBar=== true" class="col-12">
+                        <app-search-bar></app-search-bar>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 containerMenuCarousel">
+                        <app-menu></app-menu>
+                        <app-carousel></app-carousel>
+                    </div>
+                </div>
+                <div class="row container-muriel">
+                    <div class="col-xs-12 col-md-4 offset-md-1 card cardMuriel">
+                        <app-card-muriel></app-card-muriel>
+                    </div>
+                    <div class="col-xs-12 col-md-4 offset-md-1 card cardMuriel">
+                        <app-form-contact></app-form-contact>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 footer">
+                        <app-footer></app-footer>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-    
-
+</div>
+<div *ngIf="router.url !== '/'" class="container-fluid">
+    <div class="row">
+        <div class="col-12 navBarMobile">
+            <app-navbar-mobile></app-navbar-mobile>
+        </div>
+    </div>
+    <div class="row mainContent">
+        <div class="col-1 d-none d-sm-block leftColum">
+          <app-navbar></app-navbar>  
+        </div>
+        <div class="col-11 maintContentCol11">
+                <router-outlet></router-outlet> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 footer">
+                <app-footer></app-footer> 
+        </div>
+    </div>
+</div>

@@ -19,6 +19,7 @@ var vegetal = require('./routes/api/vegetal');
 var auth = require('./routes/auth');
 var admin = require('./routes/admin');
 var mail = require('./routes/mail');
+var search = require('./routes/search');
 var upload_carousel = require('./routes/upload/upload_carousel')
 var upload_bestiaire = require('./routes/upload/upload_bestiaire')
 var upload_vegetal = require('./routes/upload/upload_vegetal')
@@ -56,6 +57,7 @@ app.use('/api/vegetal', vegetal);
 app.use('/mail', mail)
 app.use('/auth', auth);
 app.use('/admin', admin)
+app.use('/search', search)
 app.use('/upload/upload_carousel', upload_carousel)
 app.use('/upload/upload_bestiaire', upload_bestiaire)
 app.use('/upload/upload_vegetal', upload_vegetal)
@@ -105,7 +107,9 @@ passport.use(
                 flash: 'No user found',
               });
             } else if (bcrypt.compareSync(password, rows[0].password)) {
+              console.log('user connected', rows[0])
               const user = {
+                id : rows[0].id,
                 firstName : rows[0].firstName, 
                 lastName : rows[0].lastName
               }

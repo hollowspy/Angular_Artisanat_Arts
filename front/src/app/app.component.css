@@ -5,7 +5,7 @@
 .acceuil{ 
     padding-left:0;
     padding-right:0;
-    
+    margin:auto;
 }
 
 .leftColum{
@@ -14,6 +14,25 @@
     background-color: rgb(148, 148, 143);
 }
 
+.maintContentCol11{
+    margin:auto;
+    min-height: 100vh;
+}
+
+.titleAndSearch{
+   
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.title{
+ flex:30;
+}
+
+.iconSearch{
+     flex:1;
+}
 
 
 h1 {
@@ -22,6 +41,11 @@ h1 {
 
 p{
     font-size: 14px; 
+}
+
+
+.containerMenuCarousel{
+   padding-bottom: 50px;
 }
 
 .container-muriel{
@@ -37,9 +61,28 @@ p{
     display: table-cell;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.navBarMobile{
+    background-color: rgb(241, 241, 231);
+    position: fixed;
+    z-index: 2;
 }
 
 .footer{
       text-align: center;
       background-color: rgb(241, 241, 231);
 }
+
+.mainContent{
+   z-index: 1;
+}
+
+@media screen and (max-width: 540px) {
+    .mainContent {
+    margin-top:56px;
+    }
+  }
+
+

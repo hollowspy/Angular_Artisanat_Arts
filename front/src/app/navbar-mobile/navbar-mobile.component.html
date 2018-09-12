@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-block d-sm-none">
+      <nav class="navbar navbar-expand-lg navbar-light bg">
+          <a class="nav-link" routerLink="/">La Mure Mosaique</a>
+      
+        <button class="navbar-toggler" type="button"
+                (click)="toggleNavbar()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+      
+        <div class="collapse navbar-collapse"
+             [ngClass]="{ 'show': navbarOpen }">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item" routerLinkActive="active">
+                  <a (click)="toggleNavbar()" class="nav-link" routerLink="/bestiaire">Bestiaire</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                  <a (click)="toggleNavbar()" class="nav-link" routerLink="/vegetal">Vegetal</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                  <a (click)="toggleNavbar()" class="nav-link" routerLink="deco">Deco</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

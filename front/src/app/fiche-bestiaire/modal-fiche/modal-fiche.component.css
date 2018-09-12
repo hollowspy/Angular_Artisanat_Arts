@@ -4,11 +4,23 @@
 }
 
 .containerModal{
-    text-align: center
+    text-align: center;
 }
+
 
 .close{
     position: absolute;
     top:0;
     right:0;
 }
+
+@media screen and (max-width: 540px) {
+    .photoModal{
+        width:180px;
+        height:250px;
+    }
+  }
+
+
+
+

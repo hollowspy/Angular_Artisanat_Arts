@@ -13,11 +13,6 @@ export class BestiaireComponent implements OnInit {
 
   private bestiaire : Bestiaire[];
   bestiaireSubject = new Subject < any[] > ();
-  // urlImageApi : string = 'http://localhost:4000/images/'
-  // urlImagePrincipale : string = ''
-  // image1 = 'http://localhost:4000/images/';
-  // image2 = '62975_104087909653262_1366761_n.jpg'
-  // image = this.image1 + this.image2
   urlImagePrincipale = ''
   srcImage = '';
   
@@ -27,19 +22,13 @@ export class BestiaireComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    let urlImageApi = 'http://localhost:4000/images/'
-    console.log(this.srcImage)
-    this.apiService.getApi('bestiaire')
+    this.apiService.postApi('bestiaire', null)
    .subscribe((data : Bestiaire[]) => {
         this.bestiaire = data
         this.emitBestiaire();
          console.log('Administration Bestiaire', this.bestiaire)
-  })
-
-
-
-    
-  }
+     })
+   }
 
   emitBestiaire(){
     this.bestiaireSubject.next(this.bestiaire.slice())

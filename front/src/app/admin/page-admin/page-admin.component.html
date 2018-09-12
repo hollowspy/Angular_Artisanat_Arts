@@ -4,22 +4,22 @@
             <h2>Bienvenue {{firstName}} {{lastName | uppercase }}</h2>
         </div>
         <div class="col-4">
-            <button class="btn btn-group-sm btn-deconnexion" (click)="onNavigateNewUser()">
+            <button *ngIf="isSuperAdmin === true" class="btn btn-group-sm btn-deconnexion" (click)="onNavigateNewUser()">
                 Ajout Administrateur
             </button>
         </div>
     </div>
     <div class="row adminButton">
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-bestiaire" (click)="onShowBestiaire()">Bestiaire</button>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-vegetal" (click)="onShowVegetal()">Vegetal</button>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-deco" (click)="onShowDeco()">Deco</button>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <button class="btn btn-default btn-carousel" (click)="onShowCarousel()">Carousel</button>
         </div>
     </div>
@@ -65,6 +65,10 @@
             </div>
             <div *ngIf="showDeco">Administration de la table Deco</div>
             <div *ngIf="showCarousel">
+                <div *ngIf="isSuperAdmin === false"> 
+                 Vous n'etes pas super administrateur et ne pouvait pas modifier le carousel
+                 </div>
+                 <div *ngIf="isSuperAdmin === true">
                 <div *ngFor="let photo of carousel" class="list-group-item blocCarousel">
                     <div class="namePhotoCarousel">
                         {{photo.name}}
@@ -73,7 +77,7 @@
                         <img src={{photo.Asource}} alt="photo_carousel" class="photo_carousel">
                         <form action="/file/upload" method="POST" enctype="multipart/form-data">
                             <div>
-                            <input type="file" name="file" (change)="onFileChanged($event)" accept="image/x-png,image/jpeg" />>
+                            <input type="file" name="file" (change)="onFileChanged($event)" accept="image/x-png,image/jpeg" />
                             </div>
                             <div>
                             <button (click)="onUpload(photo.id)">Envoyer</button>
@@ -82,8 +86,10 @@
                         </div>
 
                     </div>
+                 </div>
 
                 </div>
+               
                 
             </div>
 

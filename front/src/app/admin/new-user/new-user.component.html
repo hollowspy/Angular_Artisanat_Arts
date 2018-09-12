@@ -13,17 +13,18 @@
         </div>
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="text" id="password" class="form-control" formControlName="password">
+          <input type="password" id="password" class="form-control" [value]="password" (input)="updateValue($event)"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" formControlName="password">
+          <p *ngIf="!isPasswordValid">Le mot de passe doit avoir une lettre Majuscule, un chiffre et doit faire au minimum 8 caractères</p>
         </div>
         <div class="form-group">
           <label for="passwordCheck">Retappez votre mot de passe</label>
-          <input type="text" id="passwordCheck" class="form-control" formControlName="passwordCheck">
+          <input type="password" id="passwordCheck" class="form-control" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" formControlName="passwordCheck">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" class="form-control" formControlName="email">
         </div>
-        <button class="btn btn-default">Enregistrer</button>
+        <button class="btn btn-default" [disabled]="newUserForm.invalid">Enregistrer</button>
       </form>
       <!-- <div *ngIf="isAlreadyLogded === true"> Ce mail est déjà enregistré. Impossible de créer le compte</div>
       <div *ngIf="checkPassword === true"> Les mots de passes ne correspondent pas. Merci de les retaper</div> -->

@@ -10,10 +10,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
  
+  showSearchBar : boolean = false;
+
   constructor(private router : Router,
   ) { }
 
   ngOnInit() {
 
+  }
+
+  onShowSearchBar(){
+    this.showSearchBar = !this.showSearchBar
   }
 }

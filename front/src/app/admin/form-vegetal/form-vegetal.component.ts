@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiService } from '../../service/api-service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FicheVegetal } from '../../models/ficheVegetal.model';
-import { ValidUploadImageService } from './../../service/valid-upload-image.service';
+import { UploadImageService } from '../../service/upload-image.service';
+import { AdminService } from '../../service/admin-service.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class FormVegetalComponent implements OnInit {
               private http : HttpClient, 
               private apiService : ApiService,
               private formbuilder : FormBuilder,
-              private validFormatImage : ValidUploadImageService,
+              private uploadImageService : UploadImageService,
+              private adminService : AdminService,
               @Inject(MAT_DIALOG_DATA) public data : any
     ) { }
 
@@ -60,14 +62,15 @@ export class FormVegetalComponent implements OnInit {
 
   onAddVegetal(){
     console.log('view Form on add', this.viewForm)
+    const id = parseInt(localStorage.getItem('idConnected'))
     const name = this.vegetalForm.get('name').value;
     const materials = this.vegetalForm.get('materials').value;
     const width = this.vegetalForm.get('width').value;
     const height = this.vegetalForm.get('height').value;
     const reproduction = this.vegetalForm.get('reproduction').value;
-    const newVegetal = new FicheVegetal(name, materials,width, height, reproduction, 'noUlr','noURL')
+    const newVegetal = new FicheVegetal(id, name, materials,width, height, reproduction, 'noUlr','noURL')
     console.log('new Vegetal', newVegetal)
-    this.http.post('http://localhost:4000/admin/vegetal/new', newVegetal)
+    this.adminService.postAdmin('vegetal/new', newVegetal)
     .subscribe((res)=> { 
       this.data = res
       console.log('reponse new Vegetal', this.data)
@@ -84,9 +87,9 @@ export class FormVegetalComponent implements OnInit {
     const width = this.vegetalForm.get('width').value;
     const height = this.vegetalForm.get('height').value;
     const reproduction = this.vegetalForm.get('reproduction').value;
-    const editVegetal = new FicheVegetal(name, materials,width, height, reproduction, '','')
+    const editVegetal = new FicheVegetal(id,name, materials,width, height, reproduction, '','')
     console.log(editVegetal)
-    this.http.put(`http://localhost:4000/admin/vegetal/edit/${id}`, editVegetal)
+    this.adminService.putAdmin(`vegetal/edit/${id}`, editVegetal)
     .subscribe((res)=> { 
       this.data = res
       console.log('reponse modif Vegetal', this.data)
@@ -98,21 +101,16 @@ export class FormVegetalComponent implements OnInit {
 
   onPhotoPrincipale(event){
     this.PhotoPrincipale = <File>event.target.files[0]
-    this.validFormatImage.onValidFormatImage(this.PhotoPrincipale)
+    this.uploadImageService.onValidFormatImage(this.PhotoPrincipale)
     console.log('photo principale', this.PhotoPrincipale)
 }
 
 onUpload(){
   console.log('je rentre dans onUpload')
-  const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'multipart/form-data'
-      })
-    };
     const formData = new FormData();
     formData.append('file', this.PhotoPrincipale, this.PhotoPrincipale.name)
     console.log('formdata',formData)
-    this.http.post('http://localhost:4000/upload/upload_vegetal', formData)
+    this.uploadImageService.onUploadImage('upload_vegetal', formData)
     .subscribe(
         (res) => {
             console.log('reponse',res)
@@ -126,15 +124,6 @@ onUpload(){
         }
     )
 }
-
-
-
-
-
-
-
-
-
 
   onCloseCancel() {
     this

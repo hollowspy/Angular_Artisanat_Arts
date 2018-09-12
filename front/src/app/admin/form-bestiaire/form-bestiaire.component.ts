@@ -4,12 +4,13 @@ import {FicheBestiaire} from '../../models/ficheBestiaire.models';
 import {NgForm} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../service/api-service';
-import { FileUploader } from 'ng2-file-upload';
-import { ValidUploadImageService } from '../../service/valid-upload-image.service';
+import { UploadImageService } from '../../service/upload-image.service';
+import { AdminService } from '../../service/admin-service.service';
 
-const URL = 'http://localhost:4000/upload/upload_bestiaire';
-
-@Component({selector: 'app-form-bestiaire', templateUrl: './form-bestiaire.component.html', styleUrls: ['./form-bestiaire.component.css']})
+@Component({selector: 'app-form-bestiaire', 
+            templateUrl: './form-bestiaire.component.html', 
+            styleUrls: ['./form-bestiaire.component.css']})
+            
 export class FormBestiaireComponent implements OnInit {
 
     
@@ -21,12 +22,12 @@ export class FormBestiaireComponent implements OnInit {
     PhotoAnnexe5 : File = null;
     PhotoAnnexe6 : File = null;
 
-    public uploader:FileUploader = new FileUploader({url: URL});
-    
+      
     constructor(public thisDialogRef : MatDialogRef < FormBestiaireComponent >, 
                 private http : HttpClient, 
                 private apiService : ApiService, 
-                private validFormatImage : ValidUploadImageService,
+                private adminService : AdminService,
+                private uploadImageService : UploadImageService,
                 @Inject(MAT_DIALOG_DATA)public data : any) {}
 
     ngOnInit() {
@@ -36,31 +37,24 @@ export class FormBestiaireComponent implements OnInit {
          
          } 
          else {
-             this.viewForm = new FicheBestiaire('', '',0,0, '', '', '', '', '', '');
+             this.viewForm = new FicheBestiaire('', '',0,0, '', '', '', '', '', '', 0);
          }
 
-         this.uploader.onBeforeUploadItem = (item)=> {console.log("Item"); console.log(item)};
-
-         this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false;};
- 
-        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-              console.log("ImageUpload:uploaded:", item, status, response);
-         };
-        
     }
 
     OnAddBestiaire(form : NgForm) {
         console.log('je rentre dans add Bestiaire formulaire');
-        const newBestiaire = new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '');
+        const newBestiaire = new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '',0);
         newBestiaire.name = form.value['name'];
         newBestiaire.materials = form.value['materials'];
         newBestiaire.width = form.value['width'];
         newBestiaire.height = form.value['height'];
-        newBestiaire.reproduction = form.value['reproduction']
+        newBestiaire.reproduction = form.value['reproduction'];
+        const id = localStorage.getItem('idConnected'); 
+        console.log(id)
+        newBestiaire.owner = parseInt(id);
         console.log(newBestiaire)
-        this
-            .http
-            .post('http://localhost:4000/admin/bestiaire/new', newBestiaire)
+        this.adminService.postAdmin('/bestiaire/new', newBestiaire)
             .subscribe((res) => {
                 this.data = res
                 console.log('reponse new Bestiaire', this.data)
@@ -76,15 +70,14 @@ export class FormBestiaireComponent implements OnInit {
 
     onEditBestiaire(form : NgForm, id:number) {
         console.log('je vais modifier cette oeuvre', form)
-        const editBestiaire =  new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '');
+        const editBestiaire =  new FicheBestiaire('', '', 0, 0, '', '', '', '', '', '', 0);
         editBestiaire.name = form.value['name'];
         editBestiaire.materials = form.value['materials'];
         editBestiaire.width = form.value['width'];
         editBestiaire.height = form.value['height'];
         editBestiaire.reproduction = form.value['reproduction']
-        const idEditBestiaire = id;
         console.log(editBestiaire)
-        this.http.put(`http://localhost:4000/admin/bestiaire/edit/${id}`, editBestiaire)
+        this.adminService.putAdmin(`bestiaire/edit/${id}`, editBestiaire)
         .subscribe(
             (res) => {
                 this.data = res
@@ -104,14 +97,9 @@ export class FormBestiaireComponent implements OnInit {
         console.log('formulaire annulé')
     }
 
-    onTest(){
-        console.log('test second fonction')
-    }
-
-
     onPhotoPrincipale(event){
         this.PhotoPrincipale = <File>event.target.files[0]
-        this.validFormatImage.onValidFormatImage(this.PhotoPrincipale)
+        this.uploadImageService.onValidFormatImage(this.PhotoPrincipale)
         console.log('photo principale', this.PhotoPrincipale)
     }
     onFileChanged(event) {
@@ -121,16 +109,11 @@ export class FormBestiaireComponent implements OnInit {
         this.PhotoAnnexe4 = <File>event.target.files[2]
         this.PhotoAnnexe5 = <File>event.target.files[3]
         this.PhotoAnnexe6 = <File>event.target.files[4]
-        this.validFormatImage.onValidFormatImages(event.target.files)
+        this.uploadImageService.onValidFormatImages(event.target.files)
     }
 
     onUpload(){
         console.log('je rentre dans onUpload')
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'multipart/form-data'
-            })
-          };
           const formData = new FormData();
           formData.append('file', this.PhotoPrincipale, this.PhotoPrincipale.name)
           formData.append('file', this.PhotoAnnexe2, this.PhotoAnnexe2.name)
@@ -139,7 +122,7 @@ export class FormBestiaireComponent implements OnInit {
           formData.append('file', this.PhotoAnnexe5, this.PhotoAnnexe5.name)
           formData.append('file', this.PhotoAnnexe6, this.PhotoAnnexe6.name)
           console.log('formdata',formData)
-          this.http.post('http://localhost:4000/upload/upload_bestiaire', formData)
+          this.uploadImageService.onUploadImage('upload_bestiaire', formData)
           .subscribe(
               (res) => {
                   console.log('reponse',res)

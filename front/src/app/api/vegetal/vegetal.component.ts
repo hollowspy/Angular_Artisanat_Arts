@@ -19,10 +19,10 @@ export class VegetalComponent implements OnInit {
               public dialog:MatDialog            
   ) {}
 
-  dialogResult = "";
+  dialogResult:string= "";
 
   ngOnInit() {
-    this.apiService.getApi('vegetal')
+    this.apiService.postApi('vegetal', null)
     .subscribe(
       (data : FicheVegetal[]) => { 
         this.vegetal = data
