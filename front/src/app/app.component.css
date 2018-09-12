@@ -40,12 +40,13 @@ p{
     margin-bottom: 50px;
 }
 
+.navBarMobile{
+    background-color: rgb(241, 241, 231);
+}
+
 .footer{
       text-align: center;
       background-color: rgb(241, 241, 231);
 }
 
 
-test{
-    margin:auto;
-}

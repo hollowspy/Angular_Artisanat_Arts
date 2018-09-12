@@ -1,62 +1,58 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="container-fluid">
+<div *ngIf="router.url === '/'" class="container-fluid">
     <div class="row">
         <div class="col-1 d-none d-sm-block leftColum">
             <app-column-artisanat></app-column-artisanat>
-            <app-navbar></app-navbar>
         </div>
-        <div *ngIf="router.url === '/'" class="col-11 acceuil">
-            
-            <div class="ecranHome">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-9">
-                            <h1>
-                                La Mure Mosaïques
-                            </h1>
-                        </div>
-                        <div class="col-3">
-                            <app-search-bar></app-search-bar>
-                        </div>
+        <div class="col-11 acceuil">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9">
+                        <h1>La Mure Mosaique</h1>
+                    </div>
+                    <div class="col-3">
+                        <app-search-bar></app-search-bar>
                     </div>
                 </div>
-                <app-menu></app-menu>
-                <app-carousel></app-carousel>
-            </div>
-            <div class="container-fluid container-muriel">
+                <div class="row">
+                    <div class="col-12">
+                        <app-menu></app-menu>
+                        <app-carousel></app-carousel>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12 col-md-4 offset-md-1 card cardMuriel">
                         <app-card-muriel></app-card-muriel>
                     </div>
-                    <div class="col-xs-12 col-md-4 offset-md-2 card cardMuriel">
+                    <div class="col-xs-12 col-md-4 offset-md-1 card cardMuriel">
                         <app-form-contact></app-form-contact>
                     </div>
-                   
+                </div>
+                <div class="row">
+                    <div class="col-12 footer">
+                        <app-footer></app-footer>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 footer">
-                <app-footer></app-footer>
-            </div>
-         
-          
-        </div>
-        <div  *ngIf="router.url !== '/'" class="col-11">
-            <app-navbar-mobile></app-navbar-mobile>
-        <div class="col-11">
-          
-            <router-outlet></router-outlet>
-          
-        </div>
-        </div>
-        
-           <div *ngIf="router.url != '/'" class="col-12 footer">
-               <app-footer></app-footer>
-           </div>
-        
         </div>
     </div>
-
-
-
-    
-
+</div>
+<div *ngIf="router.url !== '/'" class="container-fluid">
+    <div class="row">
+        <div class="col-12 navBarMobile">
+            <app-navbar-mobile></app-navbar-mobile>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1 d-none d-sm-block leftColum">
+          <app-navbar></app-navbar>  
+        </div>
+        <div class="col-11">
+                <router-outlet></router-outlet> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 footer">
+                <app-footer></app-footer> 
+        </div>
+    </div>
+</div>

@@ -1,8 +1,6 @@
 a{
-   color:white;
+   color:black
 }
-
-.navbarMovile{
-    padding-left:0px;
-    padding-right:0px
+.bg{
+    background-color: rgb(241, 241, 231);
 }
