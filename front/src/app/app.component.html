@@ -6,10 +6,18 @@
         <div class="col-11 acceuil">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-9">
-                        <h1>La Mure Mosaique</h1>
+                    <div class="col-12 titleAndSearch">
+                        <div class="title">
+                            <h1>La Mure Mosaique</h1>
+                        </div>
+                        <div class="iconSearch">
+                         <button  (click)="onShowSearchBar()" class="btn btn-outline-success">
+                             <i *ngIf="showSearchBar=== false" class="fa fa-search"></i>
+                             <i *ngIf="showSearchBar=== true" class="fa fa-times"></i>
+                        </button>
+                        </div>
                     </div>
-                    <div class="col-3">
+                    <div *ngIf="showSearchBar=== true" class="col-12">
                         <app-search-bar></app-search-bar>
                     </div>
                 </div>

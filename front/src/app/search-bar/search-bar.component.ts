@@ -28,7 +28,10 @@ export class SearchBarComponent implements OnInit {
       })
     };
     const wordSearch = form.value['word']
-    const body = new HttpParams()
+    if (wordSearch === '' || wordSearch === undefined || wordSearch === null){
+      alert('Ca serait bien d\'écrire un mot clé pour faire une recherche')
+    } else {
+      const body = new HttpParams()
     .set(`wordSearch`, wordSearch)
     console.log('je rentre dans onSearchBar')
     this.http.post('http://localhost:4000/search', body.toString(), httpOptions )
@@ -40,6 +43,9 @@ export class SearchBarComponent implements OnInit {
     }, (err)=> { 
       console.log('erreur recherche', err)
     })
+
+    }
+    
 
   }
 

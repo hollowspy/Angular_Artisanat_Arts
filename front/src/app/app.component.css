@@ -15,9 +15,24 @@
 }
 
 .maintContentCol11{
-     margin:auto;
+    margin:auto;
+    min-height: 100vh;
 }
 
+.titleAndSearch{
+   
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.title{
+ flex:30;
+}
+
+.iconSearch{
+     flex:1;
+}
 
 
 h1 {
@@ -28,9 +43,9 @@ p{
     font-size: 14px; 
 }
 
+
 .containerMenuCarousel{
-    padding-top: 50px;
-    padding-bottom: 50px;
+   padding-bottom: 50px;
 }
 
 .container-muriel{
