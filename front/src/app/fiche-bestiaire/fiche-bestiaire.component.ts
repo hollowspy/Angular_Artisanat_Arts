@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../service/api-service';
 import {FicheBestiaire} from '../models/ficheBestiaire.models'
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import {ModalFicheComponent} from './modal-fiche/modal-fiche.component'
 
 
@@ -45,11 +45,15 @@ export class FicheBestiaireComponent implements OnInit {
     }
 
     openDialog(data){
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.panelClass = 'modalBestiaire', 
+        dialogConfig.backdropClass = 'bestiaireModal', 
+        dialogConfig.width = '100vw', 
+        dialogConfig.data = data
         console.log('je rentre dans openDialog')
-        let dialogRef = this.dialog.open(ModalFicheComponent, {
-            width : '100vw', 
-            data
-        }); 
+        let dialogRef = this.dialog.open(ModalFicheComponent, dialogConfig); 
+
+        
 
 
         dialogRef.afterClosed().subscribe(result => {
