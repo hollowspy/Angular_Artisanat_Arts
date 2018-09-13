@@ -1,5 +1,18 @@
 .formSearch{
-    display:flex;
-    justify-content: space-between;
-    align-items: center
+   border:2px red solid
+}
+.btnSearch{ 
+   border:none;
+}
+.prefix{
+    margin-right:20px;
+}
+
+.mat-form-field{
+    border:2px blue solid;
+    width: 100%;
+}
+
+.input{ 
+    padding-bottom: 2px;
 }
