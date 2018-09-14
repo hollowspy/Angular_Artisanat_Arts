@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import { Admin } from '../../models/admin'
@@ -8,6 +8,12 @@ import { AdminService } from '../../service/admin-service.service';
 
 @Component({selector: 'app-admin', templateUrl: './formAdmin.component.html', styleUrls: ['./formAdmin.component.css']})
 export class formAdminComponent implements OnInit {
+
+    email = new FormControl('', [Validators.required, Validators.email]);
+    getErrorMessage(){
+        return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email':'Test'
+    } 
 
     constructor(private router : Router,
                 private http : HttpClient,
@@ -28,16 +34,18 @@ export class formAdminComponent implements OnInit {
     }
 
      
-
+   
+    hide = true; 
+    admin = new Admin(null,'','', '','', '')
     onConnexion(form:NgForm) {
-        const admin = new Admin(null,'','', '','', '')
-        admin.email = form.value['name'];
-        admin.password = form.value['password']
+        // const admin = new Admin(null,'','', '','', '')
+        this.admin.email = form.value['email'];
+        this.admin.password = form.value['password']
         
        
         
-        console.log('je rentre dans onConnexnion avec ces identifiant', admin)
-             this.adminSerice.postAdmin(null, admin)
+        console.log('je rentre dans onConnexnion avec ces identifiant', this.admin)
+             this.adminSerice.postAdmin(null, this.admin)
             .subscribe(resp => {
                 console.log('reponse', resp)
                 this.data = resp;

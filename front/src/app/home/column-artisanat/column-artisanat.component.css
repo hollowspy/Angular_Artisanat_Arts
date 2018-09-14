@@ -1,7 +1,6 @@
 .nav{
     height:100%;
     background-color: rgb(148, 148, 143);
-   
 }
 
 .leftColumn{
@@ -9,15 +8,12 @@
    
   }
 
-ul{
-    text-align: center;
-    
-}
 
 li{ 
     list-style-type: none;
     font-size: 2em;
     font-weight: bold;
+    margin:auto;
 }
 
 .firstWord, .secondWord{
