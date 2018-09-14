@@ -1,16 +1,9 @@
-<!-- <form (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
-    <input class="form-control mr-sm-2 input" type="search" placeholder="Recherche par mot clé" aria-label="Search"  name="word" ngModel>
-    <button class="btn btn-outline-success btnSearch" type="submit"><i class="fa fa-search"></i></button>
-  </form> -->
-
-  
-  <div class="containtSearch">
+  <div class="d-none d-sm-block containtSearch">
     <button (click)="onShowSearchBar()" *ngIf="isOpen === false" class="btn btn-outline-success BtnLoupe">
         <i class="fa fa-search"></i>
     </button>
       <form *ngIf="isOpen === true" (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
-      
-          <mat-form-field appearance="legacy">
+            <mat-form-field appearance="legacy">
               <mat-label>Legacy form field</mat-label>
              <input class="input" type="search" matInput placeholder="Placeholder" name="word" ngModel>
               <span matPrefix class="prefix">
@@ -28,11 +21,22 @@
                   </button>
               </mat-icon>
             </mat-form-field>
-            
-     
-    
         </form>
-
+  </div>
+  <div class="d-block d-sm-none containtSearch">
+        <form (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Legacy form field</mat-label>
+                 <input class="input" type="search" matInput placeholder="Placeholder" name="word" ngModel>
+                  <span matPrefix class="prefix">
+                      <mat-icon matPrefix>
+                          <button class="btn btn-outline-success btnSearch">
+                            <i class="fa fa-search"></i> 
+                          </button>
+                      </mat-icon>
+                </span>
+                </mat-form-field>
+            </form>
   </div>
   
     

@@ -14,6 +14,14 @@
     background-color: rgb(148, 148, 143);
 }
 
+.title{
+    border:2px red solid;
+}
+
+.toto{
+    border:2px blue solid;
+}
+
 .maintContentCol11{
     margin:auto;
     min-height: 100vh;
