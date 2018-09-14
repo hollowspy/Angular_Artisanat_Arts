@@ -1,7 +1,3 @@
-.ecranHome{
-    padding-bottom: 50px;
-}
-
 .acceuil{ 
     padding-left:0;
     padding-right:0;
@@ -14,27 +10,10 @@
     background-color: rgb(148, 148, 143);
 }
 
-.title{
-    border:2px red solid;
-}
-
-.toto{
-    border:2px blue solid;
-}
-
 .maintContentCol11{
     margin:auto;
     min-height: 100vh;
 }
-
-h1 {
-    text-align: center
-}
-
-p{
-    font-size: 14px; 
-}
-
 
 .containerMenuCarousel{
    padding-bottom: 50px;
