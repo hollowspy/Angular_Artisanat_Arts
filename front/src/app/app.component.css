@@ -19,22 +19,6 @@
     min-height: 100vh;
 }
 
-.titleAndSearch{
-   
-   display:flex;
-   justify-content: space-between;
-   align-items: center;
-}
-
-.title{
- flex:30;
-}
-
-.iconSearch{
-     flex:1;
-}
-
-
 h1 {
     text-align: center
 }

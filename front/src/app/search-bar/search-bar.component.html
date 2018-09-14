@@ -4,29 +4,35 @@
   </form> -->
 
   
-  <form (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
-    
-      <mat-form-field appearance="legacy">
-          <mat-label>Legacy form field</mat-label>
-          <input class="input" type="search" matInput placeholder="Placeholder" name="word" ngModel>
-          <span matPrefix class="prefix">
+  <div class="containtSearch">
+    <button (click)="onShowSearchBar()" *ngIf="isOpen === false" class="btn btn-outline-success BtnLoupe">
+        <i class="fa fa-search"></i>
+    </button>
+      <form *ngIf="isOpen === true" (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
+      
+          <mat-form-field appearance="legacy">
+              <mat-label>Legacy form field</mat-label>
+             <input class="input" type="search" matInput placeholder="Placeholder" name="word" ngModel>
+              <span matPrefix class="prefix">
+                  <mat-icon matPrefix (click)="onHideSearchBar()">
+                      <button class="btn btn-outline-success btnSearch">
+                        <i class="fa fa-times"></i> 
+                      </button>
+                  </mat-icon>
+            </span>
+            <span>
+            </span>
               <mat-icon matSuffix>
                   <button type="submit" class="btn btn-outline-success btnSearch">
-                    <i class="fa fa-times"></i> 
+                    <i class="fa fa-search"></i> 
                   </button>
               </mat-icon>
+            </mat-form-field>
             
-          </span>
-          <mat-icon matSuffix>
-              <button type="submit" class="btn btn-outline-success btnSearch">
-                <i class="fa fa-search"></i> 
-              </button>
-          </mat-icon>
-         
-          
-        </mat-form-field>
-        
- 
+     
+    
+        </form>
 
-    </form>
+  </div>
+  
     
