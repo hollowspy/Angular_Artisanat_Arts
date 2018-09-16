@@ -5,9 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
-import {MatButtonModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule,  MatFormFieldControl } from '@angular/material';
+
 
 
 
@@ -31,7 +32,6 @@ import { FormVegetalComponent } from './admin/form-vegetal/form-vegetal.componen
 import { NewUserComponent } from './admin/new-user/new-user.component';
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './admin/update-password/update-password.component';
-import { FileUploadModule } from 'ng2-file-upload';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ResultSearchComponent } from './result-search/result-search.component';
@@ -80,7 +80,6 @@ const appRoutes : Routes = [ 
     SearchBarComponent,
     ResultSearchComponent,
     NavbarMobileComponent,
-       
     ],
     
   imports: [
@@ -90,17 +89,20 @@ const appRoutes : Routes = [ 
   MatDialogModule,
   MatCardModule,
   MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
   BrowserAnimationsModule,
   NgbModule,
   ReactiveFormsModule,
-  FileUploadModule,
+  MatIconModule,
   RouterModule.forRoot(appRoutes)
   ],
   entryComponents:[
     FormBestiaireComponent,
     ModalFicheComponent,
     ModalVegetalComponent,
-    FormVegetalComponent
+    FormVegetalComponent,
+    SearchBarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

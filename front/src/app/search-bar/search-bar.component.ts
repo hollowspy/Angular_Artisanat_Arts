@@ -13,12 +13,22 @@ import { Router } from '@angular/router';
 export class SearchBarComponent implements OnInit {
 
   data : any
+  isOpen:boolean = false;
 
   constructor(private http:HttpClient, 
               private searchData : SearchDataService, 
               private router:Router) { }
 
   ngOnInit() {
+  }
+
+  onShowSearchBar(){ 
+    this.isOpen = true;
+    console.log('je rentre dans show Search bar')
+  }
+
+  onHideSearchBar(){
+    this.isOpen = false;
   }
   
   onSearchBar(form:NgForm){

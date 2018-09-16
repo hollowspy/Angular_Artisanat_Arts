@@ -1,5 +1,34 @@
+.containtSearch{
+    height:70px;
+    line-height: 70px;
+    white-space: nowrap;
+    position: relative;
+}
+.btnSearch{ 
+   border:none;
+}
+.prefix{
+    margin-right:20px;
+}
+
+.mat-form-field{
+       width: 100%;
+}
+
+.input{ 
+    padding-bottom: 2px;
+}
+
+.BtnLoupe{
+    position: absolute;
+    top:50%;
+    right:1%;
+    transform: translateY(-50%);
+}
+
 .formSearch{
-    display:flex;
-    justify-content: space-between;
-    align-items: center
+    position: absolute;
+    top:50%;
+    width: 100%;
+    transform: translateY(-50%);
 }

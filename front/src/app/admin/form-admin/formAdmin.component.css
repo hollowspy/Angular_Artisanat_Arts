@@ -1,0 +1,28 @@
+.inputForm{
+    width: 100%;
+}
+
+.containtForm{
+    margin-top:80px;
+    padding-top : 20px; 
+    padding-bottom : 20px;
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxAMz72rVoGpKybjIINVM3qjOoJe8YM63_uX2zfiyMQLNaF9p0');
+    box-shadow: 0 0 0 200px rgba(231, 225, 225, 0.3) inset; */
+   background-color: ghostwhite
+    
+}
+
+.formAuth {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin:auto;
+    padding : 80px;
+    background-color: gainsboro;
+    border:2px black solid;
+    border-radius: 30px;
+  }
+
+  .btn{ 
+      margin-top: 10px;
+  }
