@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Admin } from './../../models/admin';
 import { HttpClient } from '@angular/common/http';
+import { SnackbarService } from './../../service/snackbar.service';
 
 @Component({
   selector: 'app-new-user',
@@ -27,7 +28,8 @@ export class NewUserComponent implements OnInit {
   constructor(private authService : AuthService, 
               private router : Router, 
               private formbuilder : FormBuilder, 
-              private http : HttpClient) { }
+              private http : HttpClient, 
+              private snackBar : SnackbarService) { }
 
   
 
@@ -100,6 +102,7 @@ export class NewUserComponent implements OnInit {
             break;
             default:
             this.isSuccess = true;
+            this.snackBar.openSnackBar('Nouvel utilisateur enregistré', '')
             break;
         }
         
