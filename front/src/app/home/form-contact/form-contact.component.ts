@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Mail } from './../../models/mail';
 import { HttpClient } from '@angular/common/http';
+import { SnackbarService } from '../../service/snackbar.service';
+// import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class FormContactComponent implements OnInit {
   isSend : boolean = false;
   data : any;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,
+              public snackBar : SnackbarService) { }
 
   ngOnInit() {
   }
@@ -33,14 +36,16 @@ export class FormContactComponent implements OnInit {
     .subscribe(res=> {
       this.data = res; 
       if (this.data.msg === 'error'){
-        alert('Merci de bien saisir votre message')
+        this.snackBar.openSnackBar('Merci de saisir votre message', '')
       } else {
-        alert('Votre mail a bien été envoyé')
+        this.snackBar.openSnackBar('Mail bien envoyé', '')
       }
     }, err => { 
       console.log('erreur', err)
     })
     form.reset();
   }
+
+
  
 }

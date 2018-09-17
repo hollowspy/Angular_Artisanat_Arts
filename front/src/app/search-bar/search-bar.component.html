@@ -4,8 +4,8 @@
     </button>
       <form *ngIf="isOpen === true" (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
             <mat-form-field appearance="legacy">
-              <mat-label>Legacy form field</mat-label>
-             <input class="input" type="search" matInput placeholder="Placeholder" name="word" ngModel>
+              <mat-label>Recherche par mots-clés</mat-label>
+             <input class="input" type="search" matInput placeholder="Recherche" name="word" ngModel>
               <span matPrefix class="prefix">
                   <mat-icon matPrefix (click)="onHideSearchBar()">
                       <button class="btn btn-outline-success btnSearch">
@@ -26,8 +26,8 @@
   <div class="d-block d-sm-none containtSearch">
         <form (ngSubmit)="onSearchBar(f)" #f="ngForm" class="formSearch">
                 <mat-form-field appearance="legacy">
-                  <mat-label>Legacy form field</mat-label>
-                 <input class="input" type="search" matInput placeholder="Placeholder" name="word" ngModel>
+                  <mat-label>Recherche par mots-clés</mat-label>
+                 <input class="input" type="search" matInput placeholder="Recherche" name="word" ngModel>
                   <span matPrefix class="prefix">
                       <mat-icon matPrefix>
                           <button class="btn btn-outline-success btnSearch">
