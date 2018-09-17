@@ -37,6 +37,7 @@ export class formAdminComponent implements OnInit {
    
     admin = new Admin(null,'','', '','', '')
     email = this.admin.email;
+    hide=true;
     onConnexion(form:NgForm) {
         // const admin = new Admin(null,'','', '','', '')
         this.admin.email = form.value['email'];
