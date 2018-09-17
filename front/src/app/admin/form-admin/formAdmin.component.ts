@@ -13,13 +13,7 @@ import { SnackbarService } from '../../service/snackbar.service';
 
 export class formAdminComponent implements OnInit {
 
-    email = new FormControl('', [Validators.required, Validators.email]);
-    getErrorMessage(){
-        return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email':'Test'
-    } 
-
-    constructor(private router : Router,
+   constructor(private router : Router,
                 private http : HttpClient,
                 private authService : AuthService, 
                 private adminSerice : AdminService, 
@@ -40,8 +34,9 @@ export class formAdminComponent implements OnInit {
 
      
    
-    hide = true; 
+   
     admin = new Admin(null,'','', '','', '')
+    email = this.admin.email;
     onConnexion(form:NgForm) {
         // const admin = new Admin(null,'','', '','', '')
         this.admin.email = form.value['email'];
