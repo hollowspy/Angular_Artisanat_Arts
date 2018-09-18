@@ -19,9 +19,12 @@ export class NewUserComponent implements OnInit {
   checkPassword : boolean = false;
   isAlreadyLogded : boolean = false;
   isSuccess : boolean = false;
-  isPasswordValid : boolean = false;
+  showProgressBar : boolean = false;
   password:string = ''
   hide:boolean = true;
+  typeProgressbar : string = ''; 
+  valueProgressBar : number = 0;
+  difficultyPassword : string = ''
   
  
 
@@ -50,10 +53,26 @@ export class NewUserComponent implements OnInit {
 
  updateValue(e){
    this.password = e.target.value
-    if (this.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')){
-     this.isPasswordValid = true;
-    } else {
-     this.isPasswordValid = false;
+  if (this.password.length >= 1){
+    this.showProgressBar = true;
+  }
+  else {
+    this.showProgressBar = false;
+  }
+  if (this.password.length <= 5){
+    this.typeProgressbar = 'success'; 
+    this.valueProgressBar = 33;
+    this.difficultyPassword = 'facile'
+  }
+  if (this.password.match(/\w{6,}/g)){
+    this.typeProgressbar = 'warning'; 
+    this.valueProgressBar = 66;
+    this.difficultyPassword = 'moyenne'
+  }
+  if (this.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')) {
+    this.typeProgressbar = 'danger'; 
+    this.valueProgressBar = 100;
+    this.difficultyPassword = 'élevée'
   }
   
  }

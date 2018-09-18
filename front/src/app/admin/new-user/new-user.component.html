@@ -26,6 +26,11 @@
           <mat-icon matSuffix *ngIf="!hide" (click)="hide = !hide"> <i class="fa fa-eye-slash"></i></mat-icon>
           <mat-error *ngIf="!valid">Mot de passe avec au minumum une majuscule, un chiffre et 8 caractères</mat-error>
         </mat-form-field> 
+        <div *ngIf="showProgressBar === true">
+          <p><ngb-progressbar [type]="typeProgressbar" [value]="valueProgressBar"></ngb-progressbar></p>
+          <p>Difficulté du mot passe : {{difficultyPassword}}</p>
+        </div>
+       
         </div>
         <div>
             <mat-form-field class="inputForm">
