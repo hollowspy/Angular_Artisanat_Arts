@@ -30,13 +30,23 @@
 }
 
 .cardMuriel{
-   
     text-align: center;
     vertical-align: middle; 
     display: table-cell;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin:30px 0px 50px 50px
+}
+
+
+.photoAcceuil{ 
+    width:300px;
+    height : 300px;
+    margin : 20px 0px 20px 0px;
+}
+
+.colPhotoAcceuilSection{
+    text-align: center
 }
 
 .navBarMobile{
