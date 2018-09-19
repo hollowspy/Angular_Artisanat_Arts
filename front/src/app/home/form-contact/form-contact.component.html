@@ -1,24 +1,51 @@
-<h2> Contact </h2>
-<form (ngSubmit)="onSendMessage(f)" #f="ngForm">
-<div class="form-group">
-  <label for="lastName">Nom</label>
-  <input type="text" id="lastName" class="form-control" name="lastName" required ngModel>
+<div class="formContact">
+    <h2> Contact </h2>
+    <div>Une question, une suggestion, une demande ?? N'hésitez pas à me contacter en remplissant le formulaire. Je vous répondrais dès que possible. A bientôt ! </div>
+    <form (ngSubmit)="onSendMessage(f)" #f="ngForm">
+    <div>
+      <mat-form-field class="inputForm">
+          <mat-label class="labelForm" for="lastName">Nom</mat-label>
+          <input matInput type="text" id="lastName" name="lastName" required ngModel>
+          <mat-error class="matError" *ngIf="!valid"> Ce champs est requis </mat-error>
+      </mat-form-field>
+     
+    </div>
+    <div>
+      <mat-form-field class="inputForm">
+      <mat-label class="labelForm" for="firstName">Prénom</mat-label>
+      <input matInput type="text" id="firstName" name="firstName" required ngModel>
+      <mat-error class="matError" *ngIf="!valid"> Ce champs est requis </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="inputForm">
+      <mat-label class="labelForm" for="email">Email</mat-label>
+      <input matInput type="email" id="email" name="email" required ngModel email>
+      <mat-error class="matError" *ngIf="!valid"> Mauvais format de mail</mat-error>
+    </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="inputForm">
+      <mat-label class="labelForm" for="object">Objet du mail</mat-label>
+      <input matInput type="test" id="object" name="object" required ngModel>
+      <mat-error class="matError" *ngIf="!valid"> Ce champs est requis</mat-error>
+    </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="inputForm">
+      <mat-label class="labelForm" for="message">Votre message</mat-label>
+      <textarea matInput name="message" id="message" rows="5"  placeholder="Rédigez votre message" required ngModel></textarea>
+      <mat-error class="matError" *ngIf="!valid"> Ce champs est requis</mat-error>
+      </mat-form-field>
+    </div>
+    <button class="btn btn-primary" type="sumbit" [disabled]="f.invalid">Envoyez</button>
+   
+    </form>
+
+
 </div>
-<div class="form-group">
-  <label for="firstName">Prénom</label>
-  <input type="text" id="firstName" class="form-control" name="firstName" required ngModel>
-</div>
-<div class="form-group">
-  <label for="email">Email</label>
-  <input type="email" id="email" class="form-control" name="email" required ngModel>
-</div>
-<div class="form-group">
-  <label for="object">Objet du mail</label>
-  <input type="test" id="object" class="form-control" name="object" required ngModel>
-</div>
-<textarea class="form-control" name="message" id="message" rows="5"  placeholder="Rédigez votre message" required ngModel></textarea>
-<button class="btn btn-primary" type="sumbit" [disabled]="f.invalid">Envoyez</button>
-</form>
+
+
 
 
 

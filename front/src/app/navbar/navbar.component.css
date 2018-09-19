@@ -1,15 +1,17 @@
-.nav{
-    height:100vh;
-    
+.leftColumn{
+  height:100%; 
 }
 
 a{
     text-decoration: none;
-    color:black;
+    font-weight: bold;
+    color:rgb(219,215,186)
 }
 
 .containerMenu{
     margin-top : 50px;
+    position: fixed;
+    top:50px;
 }
 
 .nav-item{ 
@@ -17,14 +19,15 @@ a{
 }
 
 .logoNavBar{
-    width : 100px;
-    height: 100px;
+  width : 100px;
+  height: 100px;
+  position: fixed;
+  left:5px;
 }
 
 .menuNav{
     width:100%;
-    background-color: rgb(148, 148, 143);
-    
+    background-color:  rgb(57, 86, 90);
 }
 
 
@@ -42,7 +45,7 @@ a{
     position: relative;
   }
   .menuNav li a {
-    color : black;
+    color : rgb(219,215,186);
     text-decoration: none;
     font-weight: bold;
   }
@@ -52,7 +55,7 @@ a{
     transition: all 0.35s ease;
     height: 2px;
     width: 35%;
-    background-color: black;
+    background-color:rgb(219,215,186);
     position: absolute;
     content: '';
     opacity: 0;
@@ -79,9 +82,4 @@ a{
   .menuNav li.hover:after {
     right: 65%;
   }
-  /* Demo purposes only */
-  body {
-    background-color: #212121;
-    padding: 50px 0;
-    text-align: center;
-  }
+ 
