@@ -4,13 +4,15 @@ h4,{
 
 .containerCard{
     text-align: center;
-    margin : 30px 0px 30px 0px
+    margin : 30px 0px 30px 0px;
+   
 
 }
 
 .card{
     text-align: center;
-    margin:auto;    
+    margin:auto;  
+    background-color:rgba(47,46,47,0.5)
 }
 
 li{
@@ -33,5 +35,11 @@ li{
     display:flex;
     justify-content: space-around;
     
+}
+
+.btn{
+    background-color:rgba(47,46,47,0.5);
+    color:rgb(219,215,186);
+    border:none;
 }
 

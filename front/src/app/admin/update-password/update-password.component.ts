@@ -19,7 +19,13 @@ export class UpdatePasswordComponent implements OnInit {
   mailForPassword : string = ''    
   data : any;
   isDifferentsPassword : boolean = false;  
-  isPasswordUpdated : boolean = false; 
+  isPasswordUpdated : boolean = false;
+  hide: boolean = true; 
+  showProgressBar : boolean = false;
+  // password:string = '';
+  typeProgressbar : string = ''; 
+  valueProgressBar : number = 0;
+  difficultyPassword : string = ''
 
   ngOnInit() {
     if(!localStorage.getItem("forgotPassword")){
@@ -34,6 +40,36 @@ export class UpdatePasswordComponent implements OnInit {
 
   }
 
+  updateValue(e){
+    this.password = e.target.value
+   if (this.password.length >= 1){
+     this.showProgressBar = true;
+   }
+   else {
+     this.showProgressBar = false;
+   }
+   if (this.password.length <= 5){
+     this.typeProgressbar = 'success'; 
+     this.valueProgressBar = 33;
+     this.difficultyPassword = 'facile'
+   }
+   if (this.password.match(/\w{6,}/g)){
+     this.typeProgressbar = 'warning'; 
+     this.valueProgressBar = 66;
+     this.difficultyPassword = 'moyenne'
+   }
+   if (this.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')) {
+     this.typeProgressbar = 'danger'; 
+     this.valueProgressBar = 100;
+     this.difficultyPassword = 'élevée'
+   }
+   
+  }
+
+
+  updateAdmin = new Admin(0,this.mailForPassword,'','','', '');
+  password = this.updateAdmin.password
+  passwordCheck = this.updateAdmin.passwordCheck
 
   onUpdatePassword(form:NgForm){
     const updateAdmin = new Admin(0,this.mailForPassword,'','','', '');

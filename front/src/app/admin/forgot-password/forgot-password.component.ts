@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Admin} from './../../models/admin';
 import { AuthService } from './../../service/auth-service.service';
@@ -9,15 +9,22 @@ export class ForgotPasswordComponent implements OnInit {
 
     isSend : boolean = false;
     isNotFound : boolean = false;
-    token : any
+    token : any;
+    
+    
+    
     constructor(private http : HttpClient,
                 private authService : AuthService) {}
 
     ngOnInit() {}
 
+    newUser = new Admin(null,'', '', '', '', '')
+    email = this.newUser.email;
     onForgotPassword(form : NgForm) {
+        this.isSend = false;
+        this.isNotFound = false;
         const email = form.value['email']
-        const newUser = new Admin(0,email, '', '', '', '')
+        const newUser = new Admin(null,email, '', '', '', '')
         this.authService.postPassword('forgotPassword', newUser)
             .subscribe((res) => {
                 this.token = res
@@ -37,5 +44,11 @@ export class ForgotPasswordComponent implements OnInit {
             })
         
     }
+
+   
+   
+   
+    
+ 
 
 }

@@ -5,6 +5,18 @@
     
 }
 
+.card-text{
+  margin-top:50px;
+  color:rgb(219,215,186);
+  font-size: 1.2em;
+  
+}
+
+.card-title{
+  font-weight: bold;
+  color:rgb(219,215,186);
+}
+
 @media screen and (min-width: 960px) {
     .photoMuriel {
       width : 200px;

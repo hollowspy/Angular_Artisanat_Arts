@@ -1,12 +1,6 @@
-.nav{
-    height:100%;
-    background-color: rgb(148, 148, 143);
-}
-
 .leftColumn{
     height:100%; 
-   
-  }
+}
 
 
 li{ 
@@ -14,15 +8,27 @@ li{
     font-size: 2em;
     font-weight: bold;
     margin:auto;
+    color:rgb(219,215,186)
+}
+
+.logoNavBar{
+    width : 100px;
+    height: 100px;
+    position: fixed;
+    left:5px;
 }
 
 .firstWord, .secondWord{
-    margin-top : 5px; 
+    margin-top : 35px; 
     margin-bottom: 25px;
     position:fixed;
     left:45px
 }
 
+.firstWord{
+    top:105px;
+}
+
 .secondWord{
-   top:450px;
+   top:550px;
 }

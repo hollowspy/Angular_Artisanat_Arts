@@ -1,8 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+/* josefin-sans-regular - latin */
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/josefin/josefin-sans-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Josefin Sans Regular'), local('JosefinSans-Regular'),
+       url('./assets/fonts/josefin/josefin-sans-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/josefin/josefin-sans-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/josefin/josefin-sans-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('./assets/fonts/josefin/josefin-sans-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/josefin/josefin-sans-v12-latin-regular.svg#JosefinSans') format('svg'); /* Legacy iOS */
+}
+
+
+/* asul-regular - latin */
+/* @font-face {
+  font-family: 'Asul';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/asul/asul-v7-latin-regular.eot'); 
+  src: local('Asul Regular'), local('Asul-Regular'),
+       url('./assets/fonts/asul/asul-v7-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/asul/asul-v7-latin-regular.woff2') format('woff2'), 
+       url('./assets/fonts/asul/asul-v7-latin-regular.woff') format('woff'), 
+       url('./assets/fonts/asul/asul-v7-latin-regular.ttf') format('truetype'), 
+       url('./assets/fonts/asul/asul-v7-latin-regular.svg#Asul') format('svg');
+} */
+
+/* asul-700 - latin */
+@font-face {
+  font-family: 'Asul';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/fonts/asul/asul-v7-latin-700.eot'); 
+  src: local('Asul Bold'), local('Asul-Bold'),
+       url('./assets/fonts/asul/asul-v7-latin-700.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/asul/asul-v7-latin-700.woff2') format('woff2'), 
+       url('./assets/fonts/asul/asul-v7-latin-700.woff') format('woff'), 
+       url('./assets/fonts/asul/asul-v7-latin-700.ttf') format('truetype'),
+       url('./assets/fonts/asul/asul-v7-latin-700.svg#Asul') format('svg');
+}
+
+
+
+
 body{
   color:black;
-  font-size: 15px
+  font-size: 15px;
+  background-color: rgb(219,215,186);
+  font-family: "Josefin Sans";
+  text-align: center
+
  }
+
+ .nav-link{
+  font-family: "Josefin Sans";
+  font-size: 1.3em;
+}
 
 
 .containerData{

@@ -7,7 +7,103 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-10 col-md-8 offset-md-2">
-                            <h1>La Mure Mosaique</h1>
+                            <h1>Muriel Niedzwiecki</h1>
+                            <h1 class="titreMosaique">Mosaïques</h1>
+                    </div>
+                    <div class="col-md-2 d-none d-sm-block">
+                            <app-search-bar></app-search-bar>
+                    </div>
+                    <div class="col-2 d-block d-sm-none">
+                            <button *ngIf="showSearchBar=== false" (click)="onShowSearchBar()" class="btn btn-outline-success BtnLoupe">
+                                    <i class="fa fa-search"></i>
+                            </button>
+                            <button *ngIf="showSearchBar=== true" (click)="onShowSearchBar()" class="btn btn-outline-success BtnLoupe">
+                                    <i class="fa fa-times"></i>
+                            </button>
+                    </div>
+                    <div *ngIf="showSearchBar=== true" class="col-12 d-block d-sm-none">
+                        <app-search-bar></app-search-bar>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 containerMenuCarousel">
+                        <app-menu></app-menu>
+                        <app-carousel></app-carousel>
+                    </div>
+                </div>
+                <div class="row container-muriel">
+                    <div class="col-xs-12 col-md-7">
+                        <div class="container-fluid photoAcceuilSection">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <img src="http://localhost:4000/images/phot_acceuil.jpg" class="photoAcceuil" alt="photo acceuil">
+                                </div>
+                                <div class="col-xs-12 col-md-6 ">
+                                        <img src="http://localhost:4000/images/phot_acceuil2.jpg" class="photoAcceuil" alt="photo acceuil">
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                        <img src="http://localhost:4000/images/phot_acceuil3.jpg" class="photoAcceuil" alt="photo acceuil">
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                            <img src="http://localhost:4000/images/phot_acceuil4.jpg" class="photoAcceuil" alt="photo acceuil">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4 cardMuriel">
+                      
+                          <app-card-muriel></app-card-muriel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                         <app-form-contact></app-form-contact>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 footer">
+                        <app-footer></app-footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="router.url !== '/'" class="container-fluid">
+    <div class="row">
+        <div class="col-12 navBarMobile">
+            <app-navbar-mobile></app-navbar-mobile>
+        </div>
+    </div>
+    <div class="row mainContent">
+        <div class="col-1 d-none d-sm-block leftColum">
+          <app-navbar></app-navbar>  
+        </div>
+        <div class="col-11 maintContentCol11">
+                <router-outlet></router-outlet> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 footer">
+                <app-footer></app-footer> 
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div *ngIf="router.url === '/'" class="container-fluid">
+    <div class="row">
+        <div class="col-1 d-none d-sm-block leftColum">
+            <app-column-artisanat></app-column-artisanat>
+        </div>
+        <div class="col-11 acceuil">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-10 col-md-8 offset-md-2">
+                            <h1>Muriel Niedzwiecki</h1>
+                            <h1 class="titreMosaique">Mosaïques</h1>
                     </div>
                     <div class="col-md-2 d-none d-sm-block">
                             <app-search-bar></app-search-bar>
@@ -66,4 +162,5 @@
                 <app-footer></app-footer> 
         </div>
     </div>
-</div>
+</div> -->
+

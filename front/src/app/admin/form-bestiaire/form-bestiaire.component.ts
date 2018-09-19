@@ -6,6 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../service/api-service';
 import { UploadImageService } from '../../service/upload-image.service';
 import { AdminService } from '../../service/admin-service.service';
+import { SnackbarService } from './../../service/snackbar.service';
 
 @Component({selector: 'app-form-bestiaire', 
             templateUrl: './form-bestiaire.component.html', 
@@ -28,6 +29,7 @@ export class FormBestiaireComponent implements OnInit {
                 private apiService : ApiService, 
                 private adminService : AdminService,
                 private uploadImageService : UploadImageService,
+                private snackBar : SnackbarService,
                 @Inject(MAT_DIALOG_DATA)public data : any) {}
 
     ngOnInit() {
@@ -59,9 +61,8 @@ export class FormBestiaireComponent implements OnInit {
                 this.data = res
                 console.log('reponse new Bestiaire', this.data)
                 this.onUpload();
-                this
-                    .thisDialogRef
-                    .close('Oeuvre Ajoutee')
+                this.thisDialogRef.close('Oeuvre Ajoutee')
+                this.snackBar.openSnackBar('Oeuvre Ajoutee', '');
             }, (err) => {
                 console.log('erreur dans le formulaire', err)
             })
@@ -83,6 +84,7 @@ export class FormBestiaireComponent implements OnInit {
                 this.data = res
                 console.log('reponse modif bestiaire', this.data)
                 this.thisDialogRef.close('oeuvre modifié')
+                this.snackBar.openSnackBar('Oeuvre modifié', '');
             }, (err) => {
                 console.log('erreur dans la modif', err)
             }

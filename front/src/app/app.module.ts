@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatDialogModule} from '@angular/material';
+import { MatDialogModule, MatSnackBar, MatSnackBarModule, MatProgressBarModule } from '@angular/material';
 import {MatCardModule} from '@angular/material';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule,  MatFormFieldControl } from '@angular/material';
 
@@ -36,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ResultSearchComponent } from './result-search/result-search.component';
 import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
+
 
 
 
@@ -95,6 +96,9 @@ const appRoutes : Routes = [ 
   NgbModule,
   ReactiveFormsModule,
   MatIconModule,
+  MatSnackBarModule,
+  MatProgressBarModule,
+  NgbProgressbarModule,
   RouterModule.forRoot(appRoutes)
   ],
   entryComponents:[

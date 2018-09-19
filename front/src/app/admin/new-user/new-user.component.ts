@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from './../../service/auth-service.service';
 import { Router } from '@angular/router';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Admin } from './../../models/admin';
 import { HttpClient } from '@angular/common/http';
+import { SnackbarService } from './../../service/snackbar.service';
 
 @Component({
   selector: 'app-new-user',
@@ -18,13 +19,20 @@ export class NewUserComponent implements OnInit {
   checkPassword : boolean = false;
   isAlreadyLogded : boolean = false;
   isSuccess : boolean = false;
-  isPasswordValid : boolean = false;
+  showProgressBar : boolean = false;
   password:string = ''
+  hide:boolean = true;
+  typeProgressbar : string = ''; 
+  valueProgressBar : number = 0;
+  difficultyPassword : string = ''
+  
+ 
 
   constructor(private authService : AuthService, 
               private router : Router, 
               private formbuilder : FormBuilder, 
-              private http : HttpClient) { }
+              private http : HttpClient, 
+              private snackBar : SnackbarService) { }
 
   
 
@@ -37,8 +45,6 @@ export class NewUserComponent implements OnInit {
       alert('Seul le super admin peut rajouter d\'autres administrateurs')
       this.router.navigate(['/admin'])
     }
-   
-    
   }
 
   isAuthenticate(){
@@ -47,13 +53,32 @@ export class NewUserComponent implements OnInit {
 
  updateValue(e){
    this.password = e.target.value
-   if (this.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')){
-     this.isPasswordValid = true;
-  } else {
-     this.isPasswordValid = false;
+  if (this.password.length >= 1){
+    this.showProgressBar = true;
+  }
+  else {
+    this.showProgressBar = false;
+  }
+  if (this.password.length <= 5){
+    this.typeProgressbar = 'success'; 
+    this.valueProgressBar = 33;
+    this.difficultyPassword = 'facile'
+  }
+  if (this.password.match(/\w{6,}/g)){
+    this.typeProgressbar = 'warning'; 
+    this.valueProgressBar = 66;
+    this.difficultyPassword = 'moyenne'
+  }
+  if (this.password.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')) {
+    this.typeProgressbar = 'danger'; 
+    this.valueProgressBar = 100;
+    this.difficultyPassword = 'élevée'
   }
   
  }
+
+
+
  initForm(){
   
   this.newUserForm = this.formbuilder.group({
@@ -63,18 +88,21 @@ export class NewUserComponent implements OnInit {
   firstName : ['', Validators.required],
   lastName : ['', Validators.required]
    })
+  console.log('log email initForm', this.newUserForm.value.email)
  }
 
+ 
     onAddUser(){ 
       const formValue = this.newUserForm.value
       const newUser = new Admin(
-        0,
+        null,
         formValue['email'], 
         formValue['password'], 
         formValue['passwordCheck'],
         formValue['firstName'],
         formValue['lastName']
       )
+      console.log('nouvel admin', newUser)
       if (newUser.password != newUser.passwordCheck){
         return alert('Mots de passes différents')
       }
@@ -93,6 +121,7 @@ export class NewUserComponent implements OnInit {
             break;
             default:
             this.isSuccess = true;
+            this.snackBar.openSnackBar('Nouvel utilisateur enregistré', '')
             break;
         }
         

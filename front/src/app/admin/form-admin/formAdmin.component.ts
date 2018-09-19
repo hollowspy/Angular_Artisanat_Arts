@@ -5,20 +5,19 @@ import {HttpClient} from '@angular/common/http';
 import { Admin } from '../../models/admin'
 import { AuthService } from '../../service/auth-service.service';
 import { AdminService } from '../../service/admin-service.service';
+import { SnackbarService } from '../../service/snackbar.service';
 
-@Component({selector: 'app-admin', templateUrl: './formAdmin.component.html', styleUrls: ['./formAdmin.component.css']})
+@Component({selector: 'app-admin', 
+            templateUrl: './formAdmin.component.html', 
+            styleUrls: ['./formAdmin.component.css']})
+
 export class formAdminComponent implements OnInit {
 
-    email = new FormControl('', [Validators.required, Validators.email]);
-    getErrorMessage(){
-        return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email':'Test'
-    } 
-
-    constructor(private router : Router,
+   constructor(private router : Router,
                 private http : HttpClient,
                 private authService : AuthService, 
-                private adminSerice : AdminService) {}
+                private adminSerice : AdminService, 
+                private snackBar : SnackbarService) {}
 
 
     data : any;
@@ -35,8 +34,10 @@ export class formAdminComponent implements OnInit {
 
      
    
-    hide = true; 
+   
     admin = new Admin(null,'','', '','', '')
+    email = this.admin.email;
+    hide=true;
     onConnexion(form:NgForm) {
         // const admin = new Admin(null,'','', '','', '')
         this.admin.email = form.value['email'];
@@ -61,15 +62,16 @@ export class formAdminComponent implements OnInit {
 
                 this.authService.OnAuth(this.data.token)
                 this.authService.onLogInt(user)
-                this.isAuth = true; 
+                this.isAuth = true;
+                this.snackBar.openSnackBar('Connexion réussie', '') 
                 setTimeout(
                     ()=> { 
                     this.router.navigate(['/admin'])
-                    }, 1000
+                    }, 2000
                 )
             }, err => {
-                
-                console.log('y\'a une couille dans le potage', err);
+                this.snackBar.openSnackBar('Identifiants et/ou mot de passe incorrects', '')
+                console.log('erreur', err);
                 this.isAuth = false;
             });
         }
