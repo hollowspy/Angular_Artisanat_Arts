@@ -1,26 +1,30 @@
-<div class="container containerData">
-    <div>
-        <h4>
-            Le coin du bestiaire
-        </h4>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-md-6 containerCard" *ngFor="let oeuvre of bestiaire">
-            <div class="card" style="width: 16rem;">
-                <h5 class="card-title">{{oeuvre.name}}</h5>
-                <img
-                    class="card-img-top"
-                    src="{{oeuvre.Aphoto_principale}}"
-                    alt="photo oeuvre"
-                    class="photoPrincipale">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <button class="btn btn-default" (click)="onFicheDetail(oeuvre.id)">Plus de détail</button>
-                    </div>
-                </div>
-
-            </div>
-
+   <div class="container containerData">
+        <div>
+            <h4>
+                Le coin du bestiaire
+            </h4>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 containerCard" *ngFor="let oeuvre of bestiaire">
+                    <figure class="snip1165">
+                            <img src={{oeuvre.Aphoto_principale}} alt="sample62" class="photoPrincipale"/>
+                            <figcaption>
+                              <h4>{{oeuvre.name}}</h4>
+                              <!-- <p>
+                                Sometimes I think the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.
+                              </p> -->
+                              <button class="btn btn-default" (click)="onFicheDetail(oeuvre.id)">Plus de détail</button>
+                             </figcaption>
+                              
+                             </figure>
+    
+                </div>
+            </div>
+    
+       </div>
+
+   
+   
+
+      
+      
