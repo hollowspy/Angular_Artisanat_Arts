@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container-fluid resultSearch">
   <div class="row">
     <div class="col-12">
       Resultat de votre recherche
@@ -7,15 +7,17 @@
       <div *ngIf="bestiaire.length == 0">
         Aucun résultat dans la catégorie Bestiaire
       </div>
-      <div *ngIf="bestiaire && bestiaire.length > 0">Pour la catégorie Bestiaire</div>
-      <div *ngFor="let oeuvre of bestiaire">
-        <ul>
+      <div *ngIf="bestiaire && bestiaire.length > 0">
+        Pour la catégorie Bestiaire
+      </div>
+    </div>
+         <ul class="col-4 listBestiaire"*ngFor="let oeuvre of bestiaire">
           <li>{{oeuvre.name}}</li>
           <li>{{oeuvre.reproduction}}</li>
           <img src={{oeuvre.Aphoto_principale}} alt="photo oeuvre" class="photoOeuvre">
           <button class="btn btn-default" (click)="onDetailBestiaire(oeuvre.id)">Plus de détail</button>
         </ul>
-      </div>
+     <div class="col-12">  
       <div *ngIf="vegetal.length == 0">
           Aucun résultat dans la catégorie Vegetal
         </div>
@@ -29,4 +31,52 @@
         </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<div class="container-fluid resultSearch">
+    <div class="row">
+      <div class="col-12">
+        Resultat de votre recherche
+      </div>
+      <div class="col-12">
+        <div *ngIf="bestiaire.length == 0">
+          Aucun résultat dans la catégorie Bestiaire
+        </div>
+        <div *ngIf="bestiaire && bestiaire.length > 0">
+          Pour la catégorie Bestiaire
+        </div>
+      </div>
+          <div class="col-4 listBestiaire" *ngFor="let oeuvre of bestiaire">
+              <figure class="snip1165">
+                  <img src={{oeuvre.Aphoto_principale}} alt="sample62" class="photoPrincipale"/>
+                  <figcaption>
+                    <h4>{{oeuvre.name}}</h4>
+                    <!-- <p>
+                      Sometimes I think the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.
+                    </p> -->
+                    <button class="btn btn-default"(click)="onDetailBestiaire(oeuvre.id)">Plus de détail</button>
+                   </figcaption>
+                    
+                   </figure>
+          </div>
+         
+       <div class="col-12">  
+        <div *ngIf="vegetal.length == 0">
+            Aucun résultat dans la catégorie Vegetal
+          </div>
+          <div *ngIf="vegetal.length > 0">Pour la catégorie Vegetal</div>
+       </div>
+       <div class="col-4"*ngFor="let oeuvre of vegetal">
+          <figure (click)="openDialog(oeuvre)" class="photoPrincipale">
+              <img src={{oeuvre.Aphoto_principale}} alt="photo principale"/>
+              <figcaption>
+                <h3>{{oeuvre.name}}</h3>
+              </figcaption>
+              </figure>
+          </div>
+      </div>
+  </div>
+  
+
+
+

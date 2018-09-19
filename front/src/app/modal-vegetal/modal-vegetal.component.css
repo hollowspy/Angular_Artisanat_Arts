@@ -8,9 +8,15 @@
     text-align: center
 }
 
-.list-group-item{
+.list{
     margin-top:20px;
+    text-align: left;
 }
+
+span{
+    font-weight: bold;
+    text-decoration: underline;
+  }
 
 .photoOeuvre{
     height:70vh;

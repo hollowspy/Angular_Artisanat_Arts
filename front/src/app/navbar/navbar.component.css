@@ -16,6 +16,7 @@ a{
 
 .nav-item{ 
     margin-top:50px;
+    /* border:2px blue solid; */
 }
 
 .logoNavBar{
@@ -25,23 +26,21 @@ a{
   left:5px;
 }
 
-.menuNav{
-    width:100%;
-    background-color:  rgb(57, 86, 90);
-}
-
-.menuNav {
+/* .menuNav {
     font-family: 'Muli', Arial, sans-serif;
     letter-spacing: 1.5px;
     line-height: 1em;
-    
     text-transform: uppercase;
-  }
+    width:100%;
+    background-color:  rgb(57, 86, 90);
+    border:2px green solid;
+  } */
   .menuNav li {
     display: inline-block;
     list-style: outside none none;
     margin-top:  50px;
     position: relative;
+    /* border:2px green solid; */
   }
   .menuNav li a {
     color : rgb(219,215,186);
