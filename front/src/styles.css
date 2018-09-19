@@ -54,6 +54,11 @@ body{
 
  }
 
+ .nav-link{
+  font-family: "Josefin Sans";
+  font-size: 1.3em;
+}
+
 
 .containerData{
   height: 100%;
