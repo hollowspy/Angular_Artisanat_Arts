@@ -30,7 +30,6 @@ a{
     background-color:  rgb(57, 86, 90);
 }
 
-
 .menuNav {
     font-family: 'Muli', Arial, sans-serif;
     letter-spacing: 1.5px;
@@ -46,9 +45,8 @@ a{
   }
   .menuNav li a {
     color : rgb(219,215,186);
-    text-decoration: none;
     font-weight: bold;
-  }
+    }
   .menuNav li:before,
   .menuNav li:after {
     -webkit-transition: all 0.35s ease;
