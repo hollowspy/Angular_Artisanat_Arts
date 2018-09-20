@@ -37,7 +37,7 @@
     <div class="col-12">
         Resultat de votre recherche
       </div>
-    <div class="row firstRow">
+    <div class="row">
      
       <div class="col-12">
         <div *ngIf="bestiaire.length == 0">
@@ -61,12 +61,12 @@
                    </figure>
           </div>
     </div>
-    <div class="row secondRow">
+    <div class="row">
         <div class="col-12">  
             <div *ngIf="vegetal.length == 0">
                 Aucun résultat dans la catégorie Vegetal
               </div>
-              <div  class="nbResult" *ngIf="vegetal.length > 0"> {{vegetal.length}} résultat(s) pour la catégorie Vegetal</div>
+              <div class="nbResult" *ngIf="vegetal.length > 0"> {{vegetal.length}} résultat(s) pour la catégorie Vegetal</div>
            </div>
            <div class="col-4"*ngFor="let oeuvre of vegetal">
               <figure (click)="openDialog(oeuvre)" class="photoPrincipale">
