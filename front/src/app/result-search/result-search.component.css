@@ -4,6 +4,8 @@
 
 .nbResult{
   margin-bottom: 20px;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 

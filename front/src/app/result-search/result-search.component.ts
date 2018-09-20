@@ -15,7 +15,8 @@ export class ResultSearchComponent implements OnInit {
 
   bestiaire : Array<Object>
   vegetal : Array<Object>
-  dialogResult:string= "";
+  dialogResult:string= '';
+  wordSearch:string = ''
 
   constructor(private searchData : SearchDataService, 
               private router : Router, 
@@ -34,6 +35,8 @@ export class ResultSearchComponent implements OnInit {
         console.log('bestiaire', this.bestiaire)
         console.log('vegetal', this.vegetal)
       }
+      this.wordSearch = this.searchData.wordSearch
+      console.log('result search WordSearch', this.wordSearch)
      
        
   }

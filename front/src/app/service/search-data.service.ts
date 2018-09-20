@@ -12,6 +12,7 @@ export class SearchDataService {
   bestiaire : Array<Object>; 
   vegetal : any; 
   deco : any
+  wordSearch : string = '';
 
   dataBestiaire(data:FicheBestiaire[]){
     this.bestiaire = data;
@@ -21,5 +22,10 @@ export class SearchDataService {
     this.vegetal = data;
   }
 
+  WordSearch(word:string){
+    this.wordSearch = word;
+  }
+
+  
 
 }

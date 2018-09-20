@@ -20,8 +20,7 @@
         display: inline-block;
         font-size: 24px;
         margin: 8px;
-        max-width: 300px;
-        min-width: 300px;
+        max-width: 250px;
         overflow: hidden;
         position: relative;
         text-align: center;
@@ -38,8 +37,8 @@
       .photoPrincipale:before,
       .photoPrincipale:after {
         background-color: rgba(0, 0, 0, 0.5);
-        border-top: 50px solid rgba(0, 0, 0, 0.5);
-        border-bottom: 50px solid rgba(0, 0, 0, 0.5);
+        border-top: 40px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 40px solid rgba(0, 0, 0, 0.5);
         position: absolute;
         top: 0;
         bottom: 0;
@@ -63,8 +62,8 @@
       }
       
       .photoPrincipale img {
-        height: 300px;
-        width: 300px;
+        height: 250px;
+        width: 250px;
         vertical-align: top;
         backface-visibility: hidden;
       }
