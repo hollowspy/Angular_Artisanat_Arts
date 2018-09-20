@@ -34,21 +34,22 @@
 </div> -->
 
 <div class="container-fluid resultSearch">
-    <div class="row">
-      <div class="col-12">
+    <div class="col-12">
         Resultat de votre recherche
       </div>
+    <div class="row firstRow">
+     
       <div class="col-12">
         <div *ngIf="bestiaire.length == 0">
           Aucun résultat dans la catégorie Bestiaire
         </div>
-        <div *ngIf="bestiaire && bestiaire.length > 0">
-          Pour la catégorie Bestiaire
+        <div class="nbResult" *ngIf="bestiaire && bestiaire.length > 0">
+          {{bestiaire.length}} résultat(s) pour la catégorie Bestiaire
         </div>
       </div>
           <div class="col-4 listBestiaire" *ngFor="let oeuvre of bestiaire">
               <figure class="snip1165">
-                  <img src={{oeuvre.Aphoto_principale}} alt="sample62" class="photoPrincipale"/>
+                  <img src={{oeuvre.Aphoto_principale}} alt="sample62"/>
                   <figcaption>
                     <h4>{{oeuvre.name}}</h4>
                     <!-- <p>
@@ -59,22 +60,27 @@
                     
                    </figure>
           </div>
+    </div>
+    <div class="row secondRow">
+        <div class="col-12">  
+            <div *ngIf="vegetal.length == 0">
+                Aucun résultat dans la catégorie Vegetal
+              </div>
+              <div  class="nbResult" *ngIf="vegetal.length > 0"> {{vegetal.length}} résultat(s) pour la catégorie Vegetal</div>
+           </div>
+           <div class="col-4"*ngFor="let oeuvre of vegetal">
+              <figure (click)="openDialog(oeuvre)" class="photoPrincipale">
+                  <img src={{oeuvre.Aphoto_principale}} alt="photo principale"/>
+                  <figcaption>
+                    <h3>{{oeuvre.name}}</h3>
+                  </figcaption>
+                  </figure>
+              </div>
+
+    </div>
          
-       <div class="col-12">  
-        <div *ngIf="vegetal.length == 0">
-            Aucun résultat dans la catégorie Vegetal
-          </div>
-          <div *ngIf="vegetal.length > 0">Pour la catégorie Vegetal</div>
-       </div>
-       <div class="col-4"*ngFor="let oeuvre of vegetal">
-          <figure (click)="openDialog(oeuvre)" class="photoPrincipale">
-              <img src={{oeuvre.Aphoto_principale}} alt="photo principale"/>
-              <figcaption>
-                <h3>{{oeuvre.name}}</h3>
-              </figcaption>
-              </figure>
-          </div>
-      </div>
+  
+
   </div>
   
 
