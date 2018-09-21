@@ -41,6 +41,11 @@
     padding : 30px 30px 30px 30px;
 }
 
+.clickImage{
+    font-size: 10px;
+    font-style: italic;
+}
+
 li{
     list-style-type: none;
     margin : 20px 0px 20px 0px;
