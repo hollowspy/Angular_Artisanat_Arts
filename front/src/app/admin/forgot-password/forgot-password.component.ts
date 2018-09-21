@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NgForm, FormControl, Validators } from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 import {Admin} from './../../models/admin';
 import { AuthService } from './../../service/auth-service.service';
 
@@ -13,8 +12,7 @@ export class ForgotPasswordComponent implements OnInit {
     
     
     
-    constructor(private http : HttpClient,
-                private authService : AuthService) {}
+    constructor(private authService : AuthService) {}
 
     ngOnInit() {}
 

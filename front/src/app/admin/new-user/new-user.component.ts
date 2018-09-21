@@ -91,6 +91,17 @@ export class NewUserComponent implements OnInit {
   console.log('log email initForm', this.newUserForm.value.email)
  }
 
+    // initForm(){
+    //   this.newUserForm = new FormGroup({
+    //     email : new FormControl(), 
+    //     password : new FormControl(),
+    //     passwordcheck : new FormControl(),
+    //     firstName : new FormControl(),
+    //     lastName : new FormControl(),
+
+    //   })
+    // }
+
  
     onAddUser(){ 
       const formValue = this.newUserForm.value

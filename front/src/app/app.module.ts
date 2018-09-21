@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule, MatSnackBar, MatSnackBarModule, MatProgressBarModule } from '@angular/material';
+import { MatDialogModule, MatSnackBarModule, MatProgressBarModule } from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import {NgbModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
