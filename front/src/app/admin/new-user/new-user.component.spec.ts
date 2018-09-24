@@ -8,6 +8,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatIconModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 describe('NewUserComponent', () => {
@@ -19,7 +21,7 @@ describe('NewUserComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ NewUserComponent ],
       imports : [
-        ReactiveFormsModule,
+  ReactiveFormsModule,
         FormsModule,
         MatSnackBarModule,
         MatFormFieldModule, 
@@ -27,6 +29,7 @@ describe('NewUserComponent', () => {
         MatIconModule,
         NgbProgressbarModule,
         RouterTestingModule, 
+        BrowserAnimationsModule,
         HttpClientTestingModule
       ], 
       // providers: [

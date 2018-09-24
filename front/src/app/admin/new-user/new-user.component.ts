@@ -42,6 +42,7 @@ export class NewUserComponent implements OnInit {
       this.initForm();
       console.log('nouvel utilisateur', this.newUserForm) 
     } else {
+      this.initForm();
       alert('Seul le super admin peut rajouter d\'autres administrateurs')
       this.router.navigate(['/admin'])
     }
