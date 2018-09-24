@@ -37,7 +37,10 @@ export class SearchBarComponent implements OnInit {
         'Content-Type':  'application/x-www-form-urlencoded'
       })
     };
-    const wordSearch = form.value['word']
+    
+    const wordSearch = form.value['word'];
+    console.log('wordSearch search bar',  wordSearch)
+    this.searchData.WordSearch(wordSearch)
     if (wordSearch === '' || wordSearch === undefined || wordSearch === null){
       alert('Ca serait bien d\'écrire un mot clé pour faire une recherche')
     } else {

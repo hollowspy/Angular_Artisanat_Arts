@@ -1,30 +1,32 @@
 <div *ngIf="router.url != '/'" class="leftColumn">
-    <ul @color
-        class="nav flex-column navbar-light menuNav">
-        <img src="http://localhost:4000/images/logoNavBar.jpg" alt="Logo" class="logoNavBar">
-        <div class="containerMenu">
-            <div>
+    <ul @color class="nav flex-column navbar-light menuNav">
+        <img
+            src="http://localhost:4000/images/logoNavBar.jpg"
+            alt="Logo"
+            class="logoNavBar">
+            <div class="containerMenu">
+                <div>
                     <li class="nav-item" routerLinkActive="active">
-                            <a class="nav-link active" routerLink="/">Accueil</a>
-                        </li>
-            </div>
-            <div>
+                        <a class="nav-link active" routerLink="/">Accueil</a>
+                    </li>
+                </div>
+                <div>
                     <li class="nav-item" routerLinkActive="active">
-                            <a class="nav-link" routerLink="/bestiaire">Bestiaire</a>
-                        </li>
+                        <a class="nav-link" routerLink="/bestiaire">Bestiaire</a>
+                    </li>
+                </div>
+
+                <div>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" routerLink="/vegetal">Végétal</a>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" routerLink="deco">Déco</a>
+                    </li>
+                </div>
+
             </div>
-      
-      <div>
-            <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="/vegetal">Vegetal</a>
-                </li>
-      </div>
-      <div>
-            <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="deco">Deco</a>
-                </li>
-      </div>
-       
-        </div>
-    </ul>
-</div>
+        </ul>
+    </div>

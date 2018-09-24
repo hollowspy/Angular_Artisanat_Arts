@@ -11,7 +11,11 @@
           <li><span>Hauteur (cm) : </span>{{ficheBestiaire[0].height}}</li>
           <li><span>Description : </span>{{ficheBestiaire[0].reproduction}}</li>
             </div>
-          <img src={{photoPrincipale}} alt="photo principale" class="photoPrincipale" (click)="openDialog(photoPrincipale)">
+          <div>
+            <img src={{photoPrincipale}} alt="photo principale" class="photoPrincipale" (click)="openDialog(photoPrincipale)">
+            <div class="clickImage">Cliquez sur l'image pour agrandir</div>
+          </div>
+        
           </div>
         </ul>
     </div>

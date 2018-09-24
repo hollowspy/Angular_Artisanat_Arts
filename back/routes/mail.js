@@ -11,7 +11,7 @@ router.post('/', function(req, res){
     const lastName = req.body.lastName;
     const email = req.body.email;
     const message = req.body.message;
-    const objectMessage = req.body.objectMessage
+    const objectMessage = req.body.object
     console.log(req.body)
     smtpTransport.sendMail({
         to : "hollowspy@free.fr", 

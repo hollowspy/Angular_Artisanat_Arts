@@ -29,7 +29,7 @@ CREATE TABLE `admin` (
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (0,'muriel@muriel.fr','$2b$10$TN85ea940.mRRmMa4gcHUuwkcpIs7vSh5H6r6bAEh3oLlQ14xUd0a','muriel','NIEDZWIECKI'),(1,'julien.niedzwiecki@neuf.fr','$2b$10$HYN74Wt0XeOgPhRFobfcE.WUTa27ETxYBBmxcXRk6F1Z7dgmY3gRi','julien','Niedzwiecki'),(3,'hollowspy@free.fr','$2b$10$JQVTS5w8PbwMgIiwocdIj.FJP0BXsZK.tP1tEAjxnNeVXmWxOMF/G','Julien','nied'),(4,'marjorie.th@live.fr','$2b$10$aawzhf5bpH7KTMGjmt28leOb0.d.ACuTfbLvYxeSvPTDkFcfysAQO','Marjorie','Thominot'),(5,'julien.niedzwiecki@acensi.fr','$2b$10$9Oc4ncA7gEiXMaxwH8eV7u4voQ8qgp29JAU4CX0r1kWyF0PUsBYx2','julien','acensi');
+INSERT INTO `admin` VALUES (0,'muriel@muriel.fr','$2b$10$TN85ea940.mRRmMa4gcHUuwkcpIs7vSh5H6r6bAEh3oLlQ14xUd0a','muriel','NIEDZWIECKI'),(1,'julien.niedzwiecki@neuf.fr','$2b$10$HYN74Wt0XeOgPhRFobfcE.WUTa27ETxYBBmxcXRk6F1Z7dgmY3gRi','julien','Niedzwiecki'),(4,'marjorie.th@live.fr','$2b$10$aawzhf5bpH7KTMGjmt28leOb0.d.ACuTfbLvYxeSvPTDkFcfysAQO','Marjorie','Thominot'),(11,'hollowspy@free.fr','$2b$10$RTHt31qMjAajpKEgEOMyieaD/bkQd.jXzeXrDiXUETDo7Ydq47W6W','julien','nied'),(12,'julien.niedzwiecki@acensi.fr','$2b$10$qsKMWj3sorj1EAFuilLSs.X6cta7UqxlD3OMzYw4Zk3XUib1ML/OC','julien','acensi');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `bestiaire` (
   PRIMARY KEY (`id`),
   KEY `owner_idx` (`owner`),
   CONSTRAINT `owner` FOREIGN KEY (`owner`) REFERENCES `admin` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `bestiaire` (
 
 LOCK TABLES `bestiaire` WRITE;
 /*!40000 ALTER TABLE `bestiaire` DISABLE KEYS */;
-INSERT INTO `bestiaire` VALUES (1,'le chien','mosaique petit carré en grain de mouton',50,20,'Reproduction d\'un chien, nommé Hâidi. Belle Golden retriever ! ','../images/photo_principale.jpg','../images/photo_annexe2.jpg','../images/photo_annexe3.jpg','../images/photo_annexe3.jpg','../images/photo_annexe3.jpg','../images/photo_annexe2.jpg','http://localhost:4000/images/bestiaire/1/62975_104087909653262_1366761_n.jpg','http://localhost:4000/images/bestiaire/1/31225140_576900222688589_484867654138462208_o.jpg','http://localhost:4000/images/bestiaire/1/60639_104088006319919_6562897_n.jpg','http://localhost:4000/images/bestiaire/1/47940_100961766632543_4927418_n.jpg','','',0),(2,'Manon','Mosaiqué gros grain soufflé par verre',10,90,'Portrait de Manon NIEDZWIECKI, faite au préalable par son super père ! ','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbEJFZVF4ghztl0SqFHbRmv51-9ePPhfu0OoCRnEuk-1LGQXcUCQ','','','','','','http://localhost:4000/images/bestiaire/2/61491_104087862986600_1004280_n.jpg','http://localhost:4000/images/bestiaire/2/60132_104087832986603_1331941_n.jpg','http://localhost:4000/images/bestiaire/2/63802_104087776319942_5361531_n.jpg','','','',0),(83,'Remake medieval','Petite mosaique',57,89,'Reproduction oeuvre medieval inspiré de Manon',NULL,NULL,NULL,NULL,NULL,NULL,'http://localhost:4000/images/bestiaire/83/1535960483423_a2a24-mosaique_5.jpg','http://localhost:4000/images/bestiaire/83/1535960483426_images.jpg','http://localhost:4000/images/bestiaire/83/1535960483426_index1.jpg','http://localhost:4000/images/bestiaire/83/1535960483430_Montréal-Séviac-mosaïque.jpg','http://localhost:4000/images/bestiaire/83/1535960483432_photo_annexe2.jpg','http://localhost:4000/images/bestiaire/83/1535960483433_plancher-de-mosaïque-médiéval-53902619.jpg',1),(86,'Manon','Ma fille',98,788,'Belle description !!!',NULL,NULL,NULL,NULL,NULL,NULL,'http://localhost:4000/images/bestiaire/86/1536154863272_a2a24-mosaique_5.jpg','http://localhost:4000/images/bestiaire/86/1536154863276_dev03.jpg','http://localhost:4000/images/bestiaire/86/1536154863278_images.jpg','http://localhost:4000/images/bestiaire/86/1536154863278_index.jpg','http://localhost:4000/images/bestiaire/86/1536154863278_index1.jpg','http://localhost:4000/images/bestiaire/86/1536154863279_jordan.jpg',1),(92,'Michael','Jordan',56,123,'Belle description !!!',NULL,NULL,NULL,NULL,NULL,NULL,'http://localhost:4000/images/bestiaire/92/1536659661246_index.jpg','http://localhost:4000/images/bestiaire/92/1536659661247_a2a24-mosaique_5.jpg','http://localhost:4000/images/bestiaire/92/1536659661250_carousel1.jpg','http://localhost:4000/images/bestiaire/92/1536659661251_carousel2.jpg','http://localhost:4000/images/bestiaire/92/1536659661255_carousel3.jpg','http://localhost:4000/images/bestiaire/92/1536659661257_dev03.jpg',1);
+INSERT INTO `bestiaire` VALUES (1,'le chien','mosaique petit carré en grain de mouton',50,20,'Reproduction d\'un chien, nommé Hâidi. Belle Golden retriever ! ','../images/photo_principale.jpg','../images/photo_annexe2.jpg','../images/photo_annexe3.jpg','../images/photo_annexe3.jpg','../images/photo_annexe3.jpg','../images/photo_annexe2.jpg','http://localhost:4000/images/bestiaire/1/62975_104087909653262_1366761_n.jpg','http://localhost:4000/images/bestiaire/1/31225140_576900222688589_484867654138462208_o.jpg','http://localhost:4000/images/bestiaire/1/60639_104088006319919_6562897_n.jpg','http://localhost:4000/images/bestiaire/1/47940_100961766632543_4927418_n.jpg','','',0),(2,'Manon','Mosaiqué gros grain soufflé par verre',10,90,'Portrait de Manon NIEDZWIECKI, faite au préalable par son super père ! ','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbEJFZVF4ghztl0SqFHbRmv51-9ePPhfu0OoCRnEuk-1LGQXcUCQ','','','','','','http://localhost:4000/images/bestiaire/2/61491_104087862986600_1004280_n.jpg','http://localhost:4000/images/bestiaire/2/60132_104087832986603_1331941_n.jpg','http://localhost:4000/images/bestiaire/2/63802_104087776319942_5361531_n.jpg','','','',0),(83,'Remake medieval','Petite mosaique',57,89,'Reproduction oeuvre medieval inspiré de Manon',NULL,NULL,NULL,NULL,NULL,NULL,'http://localhost:4000/images/bestiaire/83/1535960483423_a2a24-mosaique_5.jpg','http://localhost:4000/images/bestiaire/83/1535960483426_images.jpg','http://localhost:4000/images/bestiaire/83/1535960483426_index1.jpg','http://localhost:4000/images/bestiaire/83/1535960483430_Montréal-Séviac-mosaïque.jpg','http://localhost:4000/images/bestiaire/83/1535960483432_photo_annexe2.jpg','http://localhost:4000/images/bestiaire/83/1535960483433_plancher-de-mosaïque-médiéval-53902619.jpg',1),(86,'Charlie','Ma fille',98,788,'Belle description !!!',NULL,NULL,NULL,NULL,NULL,NULL,'http://localhost:4000/images/bestiaire/86/1536154863272_a2a24-mosaique_5.jpg','http://localhost:4000/images/bestiaire/86/1536154863276_dev03.jpg','http://localhost:4000/images/bestiaire/86/1536154863278_images.jpg','http://localhost:4000/images/bestiaire/86/1536154863278_index.jpg','http://localhost:4000/images/bestiaire/86/1536154863278_index1.jpg','http://localhost:4000/images/bestiaire/86/1536154863279_jordan.jpg',1),(93,'The best player ! ','MJ23',48,198,'The best player of all the time ! ',NULL,NULL,NULL,NULL,NULL,NULL,'http://localhost:4000/images/bestiaire/93/1537171836713_index.jpg','http://localhost:4000/images/bestiaire/93/1537171836716_a2a24-mosaique_5.jpg','http://localhost:4000/images/bestiaire/93/1537171836721_carousel1.jpg','http://localhost:4000/images/bestiaire/93/1537171836722_carousel2.jpg','http://localhost:4000/images/bestiaire/93/1537171836722_carousel3.jpg','http://localhost:4000/images/bestiaire/93/1537171836724_dev03.jpg',1);
 /*!40000 ALTER TABLE `bestiaire` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +107,7 @@ CREATE TABLE `photo_carousel` (
 
 LOCK TABLES `photo_carousel` WRITE;
 /*!40000 ALTER TABLE `photo_carousel` DISABLE KEYS */;
-INSERT INTO `photo_carousel` VALUES (1,'carousel1.jpg','../images/mosaique_carousel1.jpeg','http://localhost:4000/images/carousel/1536224799064_carousel1.jpg'),(2,'carousel2.jpg','../images/mosaique_carousel2.jpeg','http://localhost:4000/images/carousel/1536659557899_carousel2.jpg'),(3,'carousel3.jpg','..','http://localhost:4000/images/carousel/1535633209935_carousel3.jpg');
+INSERT INTO `photo_carousel` VALUES (1,'carousel1.jpg','../images/mosaique_carousel1.jpeg','http://localhost:4000/images/carousel/1536224799064_carousel1.jpg'),(2,'carousel2.jpg','../images/mosaique_carousel2.jpeg','http://localhost:4000/images/carousel/1537253823310_carousel2.jpg'),(3,'carousel3.jpg','..','http://localhost:4000/images/carousel/1535633209935_carousel3.jpg');
 /*!40000 ALTER TABLE `photo_carousel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,4 +153,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-16 19:38:55
+-- Dump completed on 2018-09-19  9:23:46

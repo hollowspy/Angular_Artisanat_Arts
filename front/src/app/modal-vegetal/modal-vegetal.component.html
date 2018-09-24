@@ -5,12 +5,12 @@
       <i class="fa fa-times-circle fa-3x close" (click)="onCloseCancel()"></i>
     </div>
     <div class="col-12">
-      <ul class="list-group-item">
-        <li>{{oeuvre.name}}</li>
-        <li>{{oeuvre.materials}}</li>
-        <li> largeur : {{oeuvre.width}} cm</li>
-        <li> hauteur : {{oeuvre.height}} cm</li>
-        <li>{{oeuvre.reproduction}}</li>
+      <ul class="list">
+        <li><span>Nom de l'oeuvre : </span> {{oeuvre.name}}</li>
+        <li><span>Materiaux utilisé :</span>{{oeuvre.materials}}</li>
+        <li><span>Largeur (cm) : </span> largeur : {{oeuvre.width}}</li>
+        <li><span>Hauteur (cm) : </span> hauteur : {{oeuvre.height}}</li>
+        <li><span>Description : </span>{{oeuvre.reproduction}}</li>
       </ul>
     </div>
   </div>

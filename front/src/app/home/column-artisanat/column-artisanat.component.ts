@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, transition, style, animate } from '../../../../node_modules/@angular/animations';
 import { Router } from '@angular/router';
-import { trigger, state, transition, style, animate, keyframes } from '../../../../node_modules/@angular/animations';
 
 @Component({
   selector: 'app-column-artisanat',
@@ -24,7 +24,7 @@ export class ColumnArtisanatComponent implements OnInit {
   art = ['D\'', 'A', 'R', 'T']
   
   
-  constructor(private router : Router) { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
    
