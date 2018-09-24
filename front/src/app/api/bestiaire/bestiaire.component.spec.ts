@@ -13,7 +13,7 @@ describe('BestiaireComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ BestiaireComponent ], 
       imports : [
-        HttpClientTestingModule, 
+       HttpClientTestingModule, 
         RouterTestingModule
       ]
     })
