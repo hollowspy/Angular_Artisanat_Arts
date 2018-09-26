@@ -50,7 +50,8 @@ const appRoutes : Routes = [ 
   {path : 'admin/newuser', component : NewUserComponent},
   {path : 'auth/forgotPassword', component : ForgotPasswordComponent},
   {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent},
-  {path : 'search', component : ResultSearchComponent}
+  {path : 'search', component : ResultSearchComponent}, 
+  // {    path: '', redirectTo: '', pathMatch: 'full' },
   
  
 ]

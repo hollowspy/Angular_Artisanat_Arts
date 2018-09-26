@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { UpdatePasswordComponent } from './update-password.component';
-
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatIconModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
+import {Router} from "@angular/router";
+import {Location} from "@angular/common";
+import { formAdminComponent } from './../form-admin/formAdmin.component';
 
 describe('UpdatePasswordComponent', () => {
   let component: UpdatePasswordComponent;
@@ -18,7 +18,7 @@ describe('UpdatePasswordComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UpdatePasswordComponent ],
       imports:[
-        FormsModule,
+  FormsModule,
         MatSnackBarModule,
         MatFormFieldModule, 
         MatInputModule,
@@ -26,11 +26,15 @@ describe('UpdatePasswordComponent', () => {
         NgbProgressbarModule,
         BrowserAnimationsModule,
         RouterTestingModule, 
-        HttpClientTestingModule
+        HttpClientTestingModule, 
+        RouterTestingModule.withRoutes(
+          [{path: '/auth', component: formAdminComponent }]
+        )
       ]
-    })
+    }) 
     .compileComponents();
   }));
+  
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UpdatePasswordComponent);
@@ -41,4 +45,6 @@ describe('UpdatePasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
