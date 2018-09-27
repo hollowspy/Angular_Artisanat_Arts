@@ -13,10 +13,12 @@ export class CarouselComponent implements OnInit {
   photo1 : string = ''
   photo2 : string = ''
   photo3 : string = ''
+  photo4 : string = ''
+  photo5 : string = ''
 
   constructor(private apiService : ApiService,
               config : NgbCarouselConfig) {
-              config.interval = 4000
+              config.interval = 2000
               }
 
   ngOnInit() {
@@ -34,6 +36,8 @@ export class CarouselComponent implements OnInit {
         this.photo1 = this.images[0].Asource
         this.photo2 = this.images[1].Asource
         this.photo3 = this.images[2].Asource
+        this.photo4 = this.images[3].Asource
+        this.photo5 = this.images[4].Asource
       }, (err) => {
         console.log('erreur', err)
       }
