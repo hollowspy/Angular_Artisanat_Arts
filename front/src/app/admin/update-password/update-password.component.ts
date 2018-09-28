@@ -22,7 +22,6 @@ export class UpdatePasswordComponent implements OnInit {
   isPasswordUpdated : boolean = false;
   hide: boolean = true; 
   showProgressBar : boolean = false;
-  // password:string = '';
   typeProgressbar : string = ''; 
   valueProgressBar : number = 0;
   difficultyPassword : string = ''

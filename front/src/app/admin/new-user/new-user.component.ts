@@ -37,20 +37,8 @@ export class NewUserComponent implements OnInit {
   
 
   ngOnInit() {
-    if (localStorage.getItem('idConnected') === '0'){
-      this.isAuthenticate();
-      this.initForm();
-      console.log('nouvel utilisateur', this.newUserForm) 
-    } else {
-      this.initForm();
-      alert('Seul le super admin peut rajouter d\'autres administrateurs')
-      this.router.navigate(['/admin'])
-    }
+    this.initForm();
   }
-
-  isAuthenticate(){
-    this.authService.isToken();
- }
 
  updateValue(e){
    this.password = e.target.value

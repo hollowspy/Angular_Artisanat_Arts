@@ -9,6 +9,12 @@ import {NgbModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule,  MatFormFieldControl } from '@angular/material';
 
+import { AuthGardService } from './service/auth-gard.service';
+import { AuthGardServiceNewUser } from './service/auth-gard-newuser.service';
+import { AdminService } from './service/admin-service.service';
+import { ApiService } from './service/api-service';
+import { SnackbarService } from './service/snackbar.service';
+import { UploadImageService } from './service/upload-image.service';
 
 
 
@@ -46,8 +52,8 @@ const appRoutes : Routes = [ 
   {path : 'vegetal', component : VegetalComponent},
   {path : 'deco', component : DecoComponent},
   {path : 'auth', component : formAdminComponent},
-  {path : 'admin', component : PageAdminComponent },
-  {path : 'admin/newuser', component : NewUserComponent},
+  {path : 'admin', canActivate:[AuthGardService], component : PageAdminComponent },
+  {path : 'admin/newuser', canActivate:[AuthGardServiceNewUser], component : NewUserComponent},
   {path : 'auth/forgotPassword', component : ForgotPasswordComponent},
   {path : 'auth/:token/updatePassword', component : UpdatePasswordComponent},
   {path : 'search', component : ResultSearchComponent}, 
@@ -86,7 +92,7 @@ const appRoutes : Routes = [ 
     ],
     
   imports: [
-  BrowserModule,
+BrowserModule,
   HttpClientModule,
   FormsModule,
   MatDialogModule,
@@ -110,7 +116,13 @@ const appRoutes : Routes = [ 
     FormVegetalComponent,
     SearchBarComponent
   ],
-  providers: [],
+  providers: [AuthGardService, 
+    AdminService, 
+    ApiService, 
+    SnackbarService, 
+    UploadImageService, 
+    AuthGardServiceNewUser
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

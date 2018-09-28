@@ -17,7 +17,7 @@ export class UploadImageService {
             alert('Format image accepte : jpg, jpeg ou png')
             file = null;
         } else {
-            if (file.size > 300000) {
+            if (file.size > 3000000) {
                 alert('Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids')
                 file = null;
             } else {
@@ -32,7 +32,7 @@ export class UploadImageService {
                 alert('Format image accepte : jpg, jpeg ou png')
                 file = null;
             } else {
-                if (file[i].size > 300000) {
+                if (file[i].size > 3000000) {
                     alert(`Photo concernée ${file[i].name}: Photo supérieur à 3Mo. Merci de choisir une photo inferieur à ce poids`)
                     file[i] = null;
                 } else {

@@ -27,7 +27,7 @@ var upload = multer({
         cb(null, true)
     },
     limits: {
-        fileSize: 300000
+        fileSize: 3000000
     }
     })
     .single('file');

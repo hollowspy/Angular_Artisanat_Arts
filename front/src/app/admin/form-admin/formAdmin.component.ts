@@ -30,9 +30,7 @@ export class formAdminComponent implements OnInit {
       
     }
 
-     
-   
-   
+       
     admin = new Admin(null,'','', '','', '')
     email = this.admin.email;
     hide=true;

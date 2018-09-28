@@ -25,16 +25,16 @@ export class AuthService {
     localStorage.setItem('token', token)
   }
 
-  isToken(){
-    if (localStorage.getItem("token") === null) {
-      alert('Vous devez vous administrer')
-     this.router.navigate(['/auth'])
-    }
-    else{
+  // isToken(){
+  //   if (localStorage.getItem("token") === null) {
+  //     alert('Vous devez vous administrer')
+  //    this.router.navigate(['/auth'])
+  //   }
+  //   else{
 
-      console.log('token en place')
-    }
-  }
+  //     console.log('token en place')
+  //   }
+  // }
 
   onLogInt(user:Admin){
     console.log('je rentre dans Log IN', user)

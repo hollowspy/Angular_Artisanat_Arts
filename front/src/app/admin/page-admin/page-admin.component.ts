@@ -58,7 +58,6 @@ export class PageAdminComponent implements OnInit {
 
 
     isAuthenticate(){
-       this.authService.isToken();
        this.firstName = this.authService.firstName;
        this.lastName = this.authService.lastName;
        console.log('page admin auth', this.firstName, this.lastName)
