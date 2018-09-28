@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
  
   showSearchBar : boolean = false;
+  title = "Muriel Niedzwiecki"
 
   constructor(private router : Router,
   ) { }

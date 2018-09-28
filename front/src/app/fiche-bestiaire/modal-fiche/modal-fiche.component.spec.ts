@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalFicheComponent } from './modal-fiche.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 describe('ModalFicheComponent', () => {
   let component: ModalFicheComponent;
@@ -8,7 +9,15 @@ describe('ModalFicheComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalFicheComponent ]
+      declarations: [ ModalFicheComponent ], 
+      imports : [ 
+        MatDialogModule
+      ],
+      providers : [
+        { provide: MatDialogRef, useValue:{} },
+        { provide: MAT_DIALOG_DATA, useValue: {} }
+       
+      ]
     })
     .compileComponents();
   }));

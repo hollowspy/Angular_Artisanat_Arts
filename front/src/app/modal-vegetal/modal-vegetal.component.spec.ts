@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalVegetalComponent } from './modal-vegetal.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 describe('ModalVegetalComponent', () => {
   let component: ModalVegetalComponent;
@@ -8,7 +9,14 @@ describe('ModalVegetalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalVegetalComponent ]
+      declarations: [ ModalVegetalComponent ], 
+      imports : [
+        MatDialogModule
+      ], 
+      providers : [ 
+        { provide: MatDialogRef, useValue: {} }, 
+        { provide: MAT_DIALOG_DATA, useValue: {} }
+      ]
     })
     .compileComponents();
   }));

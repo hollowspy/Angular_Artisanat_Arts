@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { NgForm, FormControl, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
 import { Admin } from '../../models/admin'
 import { AuthService } from '../../service/auth-service.service';
 import { AdminService } from '../../service/admin-service.service';
@@ -14,8 +13,7 @@ import { SnackbarService } from '../../service/snackbar.service';
 export class formAdminComponent implements OnInit {
 
    constructor(private router : Router,
-                private http : HttpClient,
-                private authService : AuthService, 
+               private authService : AuthService, 
                 private adminSerice : AdminService, 
                 private snackBar : SnackbarService) {}
 
@@ -32,9 +30,7 @@ export class formAdminComponent implements OnInit {
       
     }
 
-     
-   
-   
+       
     admin = new Admin(null,'','', '','', '')
     email = this.admin.email;
     hide=true;

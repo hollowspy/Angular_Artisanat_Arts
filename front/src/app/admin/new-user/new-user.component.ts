@@ -37,19 +37,8 @@ export class NewUserComponent implements OnInit {
   
 
   ngOnInit() {
-    if (localStorage.getItem('idConnected') === '0'){
-      this.isAuthenticate();
-      this.initForm();
-      console.log('nouvel utilisateur', this.newUserForm) 
-    } else {
-      alert('Seul le super admin peut rajouter d\'autres administrateurs')
-      this.router.navigate(['/admin'])
-    }
+    this.initForm();
   }
-
-  isAuthenticate(){
-    this.authService.isToken();
- }
 
  updateValue(e){
    this.password = e.target.value
@@ -90,6 +79,17 @@ export class NewUserComponent implements OnInit {
    })
   console.log('log email initForm', this.newUserForm.value.email)
  }
+
+    // initForm(){
+    //   this.newUserForm = new FormGroup({
+    //     email : new FormControl(), 
+    //     password : new FormControl(),
+    //     passwordcheck : new FormControl(),
+    //     firstName : new FormControl(),
+    //     lastName : new FormControl(),
+
+    //   })
+    // }
 
  
     onAddUser(){ 
