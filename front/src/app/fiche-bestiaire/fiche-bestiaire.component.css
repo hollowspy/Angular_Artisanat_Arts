@@ -49,15 +49,19 @@
 li{
     list-style-type: none;
     margin : 20px 0px 20px 0px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-span{
-  font-weight: bold;
-  text-decoration: underline;
+.titleOeuvre{
+    margin-top:20px;
 }
+
+
 
 ul{
-    padding:0
+    padding:0;
+    text-align: left;
 }
 
 @media screen and (max-width: 640px) {

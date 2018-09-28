@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12 containerCard" *ngIf="ficheBestiaire && ficheBestiaire.length > 0">
-        <h3>Detail de l'oeuvre !!</h3>
+        <h3 class="titleOeuvre">{{ficheBestiaire[0].name}}</h3>
         <ul>
           <div class="cardOeuvre">
             <div>
-          <li><span>Nom de l'oeuvre : </span> {{ficheBestiaire[0].name}}</li>
-          <li><span>Materiaux utilisé :</span> {{ficheBestiaire[0].materials}}</li>
-          <li><span>Largeur (cm) : </span>{{ficheBestiaire[0].width}}</li>
-          <li><span>Hauteur (cm) : </span>{{ficheBestiaire[0].height}}</li>
-          <li><span>Description : </span>{{ficheBestiaire[0].reproduction}}</li>
+          <li>{{ficheBestiaire[0].materials}}</li>
+          <li>{{ficheBestiaire[0].width}} cm de large</li>
+          <li>{{ficheBestiaire[0].height}} cm de haut</li>
+          <li>{{ficheBestiaire[0].reproduction}}</li>
             </div>
           <div>
             <img src={{photoPrincipale}} alt="photo principale" class="photoPrincipale" (click)="openDialog(photoPrincipale)">

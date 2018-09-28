@@ -13,7 +13,8 @@
     text-align: left;
 }
 
-span{
+li{
+    list-style-type: none;
     font-weight: bold;
     text-decoration: underline;
   }
