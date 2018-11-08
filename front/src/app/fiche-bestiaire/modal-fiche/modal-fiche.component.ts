@@ -21,7 +21,5 @@ export class ModalFicheComponent implements OnInit {
     this
         .thisDialogRef
         .close('Modal Fermée');
-   
-}
-
+  }
 }

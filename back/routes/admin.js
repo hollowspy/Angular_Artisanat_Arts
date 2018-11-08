@@ -168,14 +168,12 @@ router.put('/vegetal/edit/:id', (req, res) => {
 router.post('/newuser', (req, res) => {
     isAlreadySign = false;
     res.setHeader('Content-Type', 'application/json');
-    console.log('je rentre dans newUser')
     const hash = bcrypt.hashSync(req.body.password, 10)
     const email = req.body.email;
     const password = req.body.password;
     const passwordCheck = req.body.passwordCheck;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName
-    console.log(req.body)
     let reqSQLcheck = `SELECT firstName, lastName FROM admin where mail = '${email}'`;
     console.log(reqSQLcheck)
     connection.query(reqSQLcheck, (err, result) => {
@@ -220,7 +218,6 @@ router.post('/newuser', (req, res) => {
                                         </div>
                                         `
                             })
-                            console.log('ca marcheeee ! ')
                             res.send(JSON.stringify({
                                 message : "le compte vient d\'etre ajouté"
                             }))  

@@ -26,19 +26,26 @@ export class NewUserComponent implements OnInit {
   valueProgressBar : number = 0;
   difficultyPassword : string = ''
   
- 
-
-  constructor(private authService : AuthService, 
+   constructor(private authService : AuthService, 
               private router : Router, 
               private formbuilder : FormBuilder, 
               private http : HttpClient, 
               private snackBar : SnackbarService) { }
 
-  
-
   ngOnInit() {
     this.initForm();
   }
+
+ initForm(){
+  this.newUserForm = this.formbuilder.group({
+  email : ['', [Validators.required, Validators.email]], 
+  password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')]],
+  passwordCheck :['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')]], 
+  firstName : ['', Validators.required],
+  lastName : ['', Validators.required]
+  })
+  console.log('log email initForm', this.newUserForm.value.email)
+}
 
  updateValue(e){
    this.password = e.target.value
@@ -67,32 +74,7 @@ export class NewUserComponent implements OnInit {
  }
 
 
-
- initForm(){
-  
-  this.newUserForm = this.formbuilder.group({
-  email : ['', [Validators.required, Validators.email]], 
-  password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')]],
-  passwordCheck :['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')]], 
-  firstName : ['', Validators.required],
-  lastName : ['', Validators.required]
-   })
-  console.log('log email initForm', this.newUserForm.value.email)
- }
-
-    // initForm(){
-    //   this.newUserForm = new FormGroup({
-    //     email : new FormControl(), 
-    //     password : new FormControl(),
-    //     passwordcheck : new FormControl(),
-    //     firstName : new FormControl(),
-    //     lastName : new FormControl(),
-
-    //   })
-    // }
-
- 
-    onAddUser(){ 
+     onAddUser(){ 
       const formValue = this.newUserForm.value
       const newUser = new Admin(
         null,
@@ -124,11 +106,9 @@ export class NewUserComponent implements OnInit {
             this.snackBar.openSnackBar('Nouvel utilisateur enregistré', '')
             break;
         }
-        
       }, (err)=> {
         console.log('erreur ajout utilisateur')
       })
-
       setTimeout(
         () => {
           if (this.isSuccess === true){

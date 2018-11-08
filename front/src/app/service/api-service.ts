@@ -30,7 +30,4 @@ export class ApiService {
   getFicheApi(url:string, id:number):Observable<any>{ 
     return this.http.get(`/api/${url}/${id}`)
   }
-
-
-
 }

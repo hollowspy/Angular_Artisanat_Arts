@@ -7,10 +7,10 @@ router.post('/', function(req, res, next) {
   console.log('body bestiaire', req.body)
   const owner = req.body.owner
   console.log('owner', owner)
-  if (owner === 'null' || owner === 'undefined' || owner === '0'){
-    requeteSQL = `SELECT * from bestiaire`;
+  if (owner === 'null' || owner === undefined || owner === '0'){
+    requeteSQL = `SELECT * from bestiaire order by id DESC`;
   } else {
-    requeteSQL = `SELECT * FROM bestiaire WHERE owner = ${owner}`; 
+    requeteSQL = `SELECT * FROM bestiaire WHERE owner = ${owner} order by id DESC`; 
   }
  
   console.log('requeteSQL', requeteSQL)

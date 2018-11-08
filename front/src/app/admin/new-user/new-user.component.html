@@ -21,7 +21,6 @@
           <mat-form-field class="inputForm">
           <mat-label>Mot de passe</mat-label>  
           <input matInput  [type]="hide ? 'password' : 'text'" id="password" id="password" placeholder="Rentrez votre mot de passe"  [value]="password" (input)="updateValue($event)"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" formControlName="password">
-          <!-- <p *ngIf="!isPasswordValid">Le mot de passe doit avoir une lettre Majuscule, un chiffre et doit faire au minimum 8 caractères</p> -->
           <mat-icon matSuffix *ngIf="hide" (click)="hide = !hide"> <i class="fa fa-eye"></i></mat-icon>
           <mat-icon matSuffix *ngIf="!hide" (click)="hide = !hide"> <i class="fa fa-eye-slash"></i></mat-icon>
           <mat-error *ngIf="!valid">Mot de passe avec au minumum une majuscule, un chiffre et 8 caractères</mat-error>
@@ -45,8 +44,7 @@
           <mat-form-field class="inputForm">
           <mat-label>Email</mat-label>  
            <input matInput name="email" type="email" id="email" placeholder="Rentrez votre email"  formControlName="email" >
-           <!-- <mat-error *ngIf="newUserForm.get(email).hasError(validation.email)">erreur</mat-error> -->
-          <mat-error *ngIf="!valid">Mail au mauvais format</mat-error>
+           <mat-error *ngIf="!valid">Mail au mauvais format</mat-error>
           </mat-form-field> 
         </div>
         <button class="btn btn-default" [disabled]="newUserForm.invalid">Enregistrer</button>

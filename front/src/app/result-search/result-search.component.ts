@@ -23,17 +23,16 @@ export class ResultSearchComponent implements OnInit {
               public dialog:MatDialog) { }
 
   ngOnInit() {
-      console.log('result dans service', this.searchData.bestiaire)
+     // console.log('result dans service', this.searchData.bestiaire)
       if (this.searchData.bestiaire == undefined){
         this.bestiaire = []; 
         this.vegetal = [];
         return this.router.navigate(['/'])
       } else {
-        console.log('on avance ')
         this.bestiaire = this.searchData.bestiaire
         this.vegetal = this.searchData.vegetal
-        console.log('bestiaire', this.bestiaire)
-        console.log('vegetal', this.vegetal)
+        // console.log('bestiaire', this.bestiaire)
+        // console.log('vegetal', this.vegetal)
       }
       this.wordSearch = this.searchData.wordSearch
       console.log('result search WordSearch', this.wordSearch)

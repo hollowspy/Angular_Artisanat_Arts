@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit {
 
   onShowSearchBar(){ 
     this.isOpen = true;
-    console.log('je rentre dans show Search bar')
+   
   }
 
   onHideSearchBar(){
@@ -39,7 +39,7 @@ export class SearchBarComponent implements OnInit {
     };
     
     const wordSearch = form.value['word'];
-    console.log('wordSearch search bar',  wordSearch)
+    // console.log('wordSearch search bar',  wordSearch)
     this.searchData.WordSearch(wordSearch)
     if (wordSearch === '' || wordSearch === undefined || wordSearch === null){
       alert('Ca serait bien d\'écrire un mot clé pour faire une recherche')

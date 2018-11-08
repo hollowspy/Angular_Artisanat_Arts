@@ -26,8 +26,6 @@ export class FormContactComponent implements OnInit {
   ngOnInit() {
     }
 
-  
- 
   onSendMessage(form:NgForm){ 
     const newMail = new Mail('','','','','');
     newMail.lastName = form.value['lastName']; 
@@ -52,7 +50,4 @@ export class FormContactComponent implements OnInit {
     this.form.resetForm(); 
     this.form.markAsUntouched();
   }
-
-
- 
 }

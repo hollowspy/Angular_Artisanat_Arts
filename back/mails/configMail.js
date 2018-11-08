@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
 
-var smtpTransport = nodemailer.createTransport({
+const smtpTransport = nodemailer.createTransport({
     service: "gmail",
     port: 587,
     host: 'smtp-relay.gmail.com',
     auth: {
-        user: "wild.not.you@gmail.com",
+        user: "muriel.niedzwiecki.mosaique@gmail.com",
         pass: "wow&wow12"
     }
 });

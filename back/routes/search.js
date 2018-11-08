@@ -3,11 +3,6 @@ var router = express.Router();
 const connection = require('../bdd/bdd.js')
 
 
-router.get('/', (req, res)=> {
-    res.send({ 
-        "message"  : 'route fonctionne'
-    })
-})
 
 
 router.post('/',(req, res)=> {
@@ -16,7 +11,7 @@ router.post('/',(req, res)=> {
                                 WHERE name LIKE '%${wordSearch}%'
                                 OR materials LIKE '%${wordSearch}%' 
                                 OR reproduction LIKE '%${wordSearch}%';
-                                SELECT * FROM vegetal 
+                            SELECT * FROM vegetal 
                                 WHERE name LIKE '%${wordSearch}%'
                                 OR materials LIKE '%${wordSearch}%'
                                 OR reproduction LIKE '%${wordSearch}%'; `

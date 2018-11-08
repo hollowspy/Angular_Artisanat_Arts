@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, state, transition, style, animate } from '../../../../node_modules/@angular/animations';
 import { Router } from '@angular/router';
+import { Bestiaire } from './../../models/bestiaire.model';
 
 @Component({
   selector: 'app-column-artisanat',
@@ -18,18 +19,12 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class ColumnArtisanatComponent implements OnInit {
-
-  artisanat = ['A','R','T','I','S','A','N','A','T'];
-  art = ['D\'', 'A', 'R', 'T']
-  
+export class ColumnArtisanatComponent  {
+  artisanat : Array <string> = ['A','R','T','I','S','A','N','A','T'];
+  art : Array <string> = ['D\'', 'A', 'R', 'T']
+ 
   
   constructor(private router:Router) { }
-
-  ngOnInit() {
-   
-    
-  }
   
 
 }

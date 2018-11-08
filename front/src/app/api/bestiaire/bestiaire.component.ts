@@ -16,10 +16,8 @@ export class BestiaireComponent implements OnInit {
   urlImagePrincipale = ''
   srcImage = '';
   
-  
-  constructor(private apiService : ApiService, 
-              private router : Router, 
-              ) { }
+    constructor(private apiService : ApiService, 
+              private router : Router,               ) { }
 
   ngOnInit() {
     this.apiService.postApi('bestiaire', null)
@@ -37,5 +35,4 @@ export class BestiaireComponent implements OnInit {
   onFicheDetail(id:number){
      this.router.navigate(['/bestiaire', id])
   }
-
 }

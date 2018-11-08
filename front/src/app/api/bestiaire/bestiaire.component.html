@@ -1,30 +1,24 @@
-   <div class="container containerData">
-        <div>
-            <h4>
-                Le Bestiaire
-            </h4>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6 containerCard" *ngFor="let oeuvre of bestiaire">
-                    <figure class="snip1165">
-                            <img src={{oeuvre.Aphoto_principale}} alt="sample62" class="photoPrincipale"/>
-                            <figcaption>
-                              <!-- <h4>{{oeuvre.name}}</h4> -->
-                              <!-- <p>
+<div class="container containerData">
+    <div>
+        <h4>
+            Le Bestiaire
+        </h4>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 containerCard" *ngFor="let oeuvre of bestiaire">
+            <figure class="snip1165">
+                <img src={{oeuvre.Aphoto_principale}} alt="sample62" class="photoPrincipale"/>
+                <figcaption>
+                    <!-- <h4>{{oeuvre.name}}</h4> -->
+                    <!-- <p>
                                 Sometimes I think the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.
                               </p> -->
-                              <button class="btn btn-default" (click)="onFicheDetail(oeuvre.id)">Plus de détails</button>
-                             </figcaption>
-                              
-                             </figure>
-    
-                </div>
-            </div>
-    
-       </div>
+                    <button class="btn btn-default" (click)="onFicheDetail(oeuvre.id)">Plus de détails</button>
+                </figcaption>
 
-   
-   
+            </figure>
 
-      
-      
+        </div>
+    </div>
+
+</div>

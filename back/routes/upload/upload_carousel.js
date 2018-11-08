@@ -7,6 +7,7 @@ var path = require('path');
 
 var store = multer.diskStorage({
     destination:function(req, file, cb){
+        console.log('test file', req.file)
         cb(null, './public/images/carousel')
     }, 
     filename:function(req, file,cb){
@@ -18,6 +19,7 @@ let pbFormatImage = false;
 var upload = multer({
     storage:store, 
     fileFilter:function(req,file,cb){
+        console.log('test file1', req.file)
         const ext = path.extname(file.originalname); 
         if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg'){
             console.log('erreur file type image')
@@ -31,6 +33,11 @@ var upload = multer({
     }
     })
     .single('file');
+
+
+router.get('/', function(err, res){
+    res.send('ok ca marche')
+})
 
 router.post('/', function(req, res, next){
     upload(req, res, function(err){

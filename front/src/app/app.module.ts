@@ -59,8 +59,6 @@ const appRoutes : Routes = [ 
   {path : 'search', component : ResultSearchComponent}, 
   {path : '', redirectTo:'/', pathMatch:'full'}, 
   {path : '**', redirectTo:'/'}
-  
- 
 ]
 
 @NgModule({

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap'
 import { ApiService } from '../../service/api-service';
 
@@ -26,13 +25,12 @@ export class CarouselComponent implements OnInit {
         this.getCarouselData()        
        }
 
-
    getCarouselData(){
     this.apiService.postApi('carousel', null)
     .subscribe(
       (res) => {
         this.images = res
-        console.log('fetch ok', this.images)
+        // console.log('fetch ok', this.images)
         this.photo1 = this.images[0].Asource
         this.photo2 = this.images[1].Asource
         this.photo3 = this.images[2].Asource
@@ -43,9 +41,4 @@ export class CarouselComponent implements OnInit {
       }
     )
    }
-
- 
-
-
-
 }
