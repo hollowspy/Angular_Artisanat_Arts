@@ -49,6 +49,7 @@
     background-color: rgb(241, 241, 231);
     position: fixed;
     z-index: 2;
+    
 }
 
 
@@ -126,6 +127,21 @@
     .mainContent {
     margin-top:56px;
     }
+    .cardMuriel{
+        margin : 0;
+    }
+    .photoAcceuilSection{
+        /* border:5px red solid; */
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .containerCard{
+        padding-left: 0px;
+    }
+    .snip1539{
+        padding : 0px;
+    }
   }
+
 
 

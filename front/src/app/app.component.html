@@ -1,5 +1,10 @@
 <div *ngIf="router.url === '/'" class="container-fluid">
-    <div class="row">
+    <div class="row ">
+        <div class="col-12 navBarMobile">
+            <app-navbar-mobile></app-navbar-mobile>
+        </div>
+    </div>
+    <div class="row mainContent">
         <div class="col-1 d-none d-sm-block leftColum">
             <app-column-artisanat></app-column-artisanat>
         </div>
@@ -35,16 +40,16 @@
                     <div class="col-xs-12 col-md-7">
                         <div class="container-fluid photoAcceuilSection">
                             <div class="row">
-                                <div class="col-xs-12 col-md-6">
+                                <div class="col-xs-12 col-md-6 containerCard">
                                         <figure class="snip1539"><img src="http://localhost:4000/images/accueil/7215.jpg" alt="sample73"/></figure>
                                     </div>
-                                <div class="col-xs-12 col-md-6 ">
+                                <div class="col-xs-12 col-md-6 containerCard">
                                         <figure class="snip1539"><img src="http://localhost:4000/images/accueil/7227.jpg" alt="sample73"/></figure>
                                 </div>
-                                <div class="col-xs-12 col-md-6">
+                                <div class="col-xs-12 col-md-6 containerCard">
                                         <figure class="snip1539"><img src="http://localhost:4000/images/accueil/7114.jpg" alt="sample73"/></figure>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-12 col-md-6 containerCard">
                                             <figure class="snip1539"><img src="http://localhost:4000/images/accueil/7153.jpg" alt="sample73"/></figure>
                                     </div>
                             </div>
