@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Admin } from './../models/admin';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -10,12 +11,14 @@ import { Admin } from './../models/admin';
 export class AuthService {
 
     constructor(private router : Router, 
-              private http: HttpClient) { }
+              private http: HttpClient, 
+              private cookieService: CookieService) { }
 
    isAuth = false;
    firstName:string = '';
    lastName:string = '';
    id:number = null;
+   cookieValue = 'UNKNOWN';
    
 
   OnAuth(token:string){
@@ -27,7 +30,9 @@ export class AuthService {
     this.firstName = user.firstName;
     this.lastName = user.lastName;
     const id = user.id.toString();
-    localStorage.setItem('idConnected',id)
+    this.cookieService.set('firstName', this.firstName)
+    this.cookieService.set('lastName', this.lastName)
+    this.cookieService.set( 'idconnected', id );
     console.log('servvice auth', this.firstName, this.lastName )
   }
 
@@ -39,7 +44,9 @@ export class AuthService {
 
    onLogOut(){
       localStorage.removeItem('token');
-      localStorage.removeItem('idConnected')
+      this.cookieService.delete('idconnected')
+      this.cookieService.delete('firstName')
+      this.cookieService.delete('lastName')
       this.router.navigate(['/auth'])
    }
 

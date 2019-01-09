@@ -11,7 +11,7 @@ import { FicheVegetal } from '../../models/ficheVegetal.model';
 import { FormVegetalComponent } from '../form-vegetal/form-vegetal.component';
 import { Carousel } from '../../models/carouse.model';
 import { UploadImageService } from '../../service/upload-image.service';
-
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({selector: 'app-page-admin', 
             templateUrl: './page-admin.component.html', 
@@ -21,8 +21,8 @@ export class PageAdminComponent implements OnInit {
   
   
     
-    firstName:string;
-    lastName:string;
+    firstName:string = this.cookieService.get('firstName');
+    lastName:string = this.cookieService.get('lastName');
     private bestiaire : Bestiaire[];
     bestiaireSubject = new Subject < any[] > ();
     private vegetal : FicheVegetal[];
@@ -36,8 +36,7 @@ export class PageAdminComponent implements OnInit {
     dialogResult = "";
     ficheToEdit = {}; 
     SelectedFile : File = null;
-    owner:string = '0'
-    idConnected = localStorage.getItem('idConnected')
+    owner:string = this.cookieService.get('idconnected');
    
     
     isSuperAdmin:boolean = false;   
@@ -48,33 +47,24 @@ export class PageAdminComponent implements OnInit {
                 private apiService : ApiService, 
                 private http : HttpClient, 
                 public dialog : MatDialog, 
-                private uploadImageService : UploadImageService
+                private uploadImageService : UploadImageService,
+                private cookieService: CookieService
                 ) {}
 
     ngOnInit() {
-            if (this.authService.id === null){
-                console.log('je dois renavgier')
-                localStorage.removeItem('token')
-                this.router.navigate(['/auth'])
-            } else {
-                this.owner = this.idConnected
-                console.log('tout est ok ', this.owner)
-                this.isAuthenticate();
-                this.getBestiaireData();
-                this.getVegetalData();
-                this.getCarouselData();
-            }
+        console.log(this.firstName, this.lastName)
+        this.isAuthenticate();
+        this.getBestiaireData();
+        this.getVegetalData();
+        this.getCarouselData();
            
-                     
         
     }
 
 
     isAuthenticate(){
-       this.firstName = this.authService.firstName;
-       this.lastName = this.authService.lastName;
-       console.log('page admin auth', this.firstName, this.lastName);
-       this.owner === '0' ? this.isSuperAdmin = true : this.isSuperAdmin = false;
+        console.log('page admin auth', this.firstName, this.lastName);
+        this.owner === '0' ? this.isSuperAdmin = true : this.isSuperAdmin = false;
        
     }
     

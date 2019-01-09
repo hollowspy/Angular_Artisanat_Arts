@@ -8,6 +8,8 @@ import {MatCardModule} from '@angular/material';
 import {NgbModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule,  MatFormFieldControl } from '@angular/material';
+import { CookieService } from 'ngx-cookie-service';
+
 
 import { AuthGardService } from './service/auth-gard.service';
 import { AuthGardServiceNewUser } from './service/auth-gard-newuser.service';
@@ -120,7 +122,8 @@ BrowserModule,
     ApiService, 
     SnackbarService, 
     UploadImageService, 
-    AuthGardServiceNewUser, 
+    AuthGardServiceNewUser,
+    CookieService 
   ],
   bootstrap: [AppComponent]
 })
