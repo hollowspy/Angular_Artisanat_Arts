@@ -15,7 +15,6 @@ import { AdminService } from './service/admin-service.service';
 import { ApiService } from './service/api-service';
 import { SnackbarService } from './service/snackbar.service';
 import { UploadImageService } from './service/upload-image.service';
-import { TokenInterceptorService } from './service/token-interceptor.service';
 
 
 
@@ -122,11 +121,7 @@ BrowserModule,
     SnackbarService, 
     UploadImageService, 
     AuthGardServiceNewUser, 
-    {
-      provide : HTTP_INTERCEPTORS, 
-      useClass : TokenInterceptorService, 
-      multi : true
-    }],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

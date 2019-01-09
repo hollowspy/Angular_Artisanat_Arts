@@ -16,6 +16,7 @@ export class AuthService {
    firstName:string = '';
    lastName:string = '';
    id:number = null;
+   
 
   OnAuth(token:string){
     localStorage.setItem('token', token)
@@ -25,16 +26,16 @@ export class AuthService {
     console.log('je rentre dans Log IN', user)
     this.firstName = user.firstName;
     this.lastName = user.lastName;
-    // const id = user.id.toString();
-    // localStorage.setItem('idConnected',id)
+    const id = user.id.toString();
+    localStorage.setItem('idConnected',id)
     console.log('servvice auth', this.firstName, this.lastName )
   }
 
   onOwner(user:Admin){
+    console.log('on Onwner', user)
     this.id = user.id;
-    console.log('id on Onwer', this.id)
-    return this.id
-  }
+    console.log('id on Onwer',this.id)
+    }
 
    onLogOut(){
       localStorage.removeItem('token');
