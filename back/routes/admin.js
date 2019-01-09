@@ -22,8 +22,9 @@ router.post('/', (req, res) => {
                 .status(400)
                 .json({flash: 'Not a yet a Success'});
         }
+        console.log('user connecté admin')
         const token = jwt.sign(user, 'mon_token_jwt')
-        return res.json({user, token, flash: 'ok'});
+        res.json({user, token, flash: 'ok'});
     })(req, res);
 });
 

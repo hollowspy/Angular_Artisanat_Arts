@@ -36,7 +36,7 @@ export class PageAdminComponent implements OnInit {
     dialogResult = "";
     ficheToEdit = {}; 
     SelectedFile : File = null;
-    owner = localStorage.getItem('idConnected')
+    owner= this.authService.id.toString()
     isSuperAdmin:boolean = false;   
    
 
@@ -49,7 +49,7 @@ export class PageAdminComponent implements OnInit {
                 ) {}
 
     ngOnInit() {
-         
+               
         this.isAuthenticate();
         this.getBestiaireData();
         this.getVegetalData();
@@ -61,6 +61,7 @@ export class PageAdminComponent implements OnInit {
        this.firstName = this.authService.firstName;
        this.lastName = this.authService.lastName;
        console.log('page admin auth', this.firstName, this.lastName)
+       
     }
     
     
@@ -100,7 +101,7 @@ export class PageAdminComponent implements OnInit {
                     this.carousel = data;
                     this.emitCarousel();
                 })
-            if (localStorage.getItem('idConnected') === '0'){
+            if (this.owner === '0'){
                 this.isSuperAdmin = true;
             } else {
                 this.isSuperAdmin = false;

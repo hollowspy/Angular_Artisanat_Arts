@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule, MatSnackBarModule, MatProgressBarModule } from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import {NgbModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
@@ -15,6 +15,7 @@ import { AdminService } from './service/admin-service.service';
 import { ApiService } from './service/api-service';
 import { SnackbarService } from './service/snackbar.service';
 import { UploadImageService } from './service/upload-image.service';
+import { TokenInterceptorService } from './service/token-interceptor.service';
 
 
 
@@ -42,6 +43,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ResultSearchComponent } from './result-search/result-search.component';
 import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
+
 
 
 
@@ -119,8 +121,12 @@ BrowserModule,
     ApiService, 
     SnackbarService, 
     UploadImageService, 
-    AuthGardServiceNewUser
-    ],
+    AuthGardServiceNewUser, 
+    {
+      provide : HTTP_INTERCEPTORS, 
+      useClass : TokenInterceptorService, 
+      multi : true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

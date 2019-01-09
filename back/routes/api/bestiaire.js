@@ -4,6 +4,7 @@ const connection = require('../../bdd/bdd.js')
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
+  // console.log('token', req.headers.authorization)
   console.log('body bestiaire', req.body)
   const owner = req.body.owner
   console.log('owner', owner)
@@ -22,6 +23,7 @@ router.post('/', function(req, res, next) {
       })
     }
     else{
+      res.setHeader('SuperAdmin', 'SuperAdmin')
       res.send(JSON.stringify(result));
      // console.log(result)
     }

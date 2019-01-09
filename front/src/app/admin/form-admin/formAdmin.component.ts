@@ -58,6 +58,7 @@ export class formAdminComponent implements OnInit {
 
                 this.authService.OnAuth(this.data.token)
                 this.authService.onLogInt(user)
+                this.authService.onOwner(user)
                 this.isAuth = true;
                 this.snackBar.openSnackBar('Connexion réussie', '') 
                 setTimeout(
