@@ -52,7 +52,6 @@ export class PageAdminComponent implements OnInit {
                 ) {}
 
     ngOnInit() {
-        console.log(this.firstName, this.lastName)
         this.isAuthenticate();
         this.getBestiaireData();
         this.getVegetalData();
@@ -126,131 +125,186 @@ export class PageAdminComponent implements OnInit {
   
 
     onShowBestiaire() {
-        (this.showBestiaire === false)
+        if (this.onSessionActive()){
+            (this.showBestiaire === false)
             ? this.showBestiaire = true
             : this.showBestiaire = false;
         this.showDeco = false;
         this.showVegetal = false;
         this.showCarousel = false;
+        }
+        else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()
+        }
+      
       
     }
 
     onShowVegetal() {
-        this.showBestiaire = false;
-        this.showDeco = false;
-        (this.showVegetal === false)
-            ? this.showVegetal = true
-            : this.showVegetal = false;
-            this.showCarousel = false;
-    }
-
-    onShowDeco() {
-        this.showBestiaire = false;
-        (this.showDeco === false)
-            ? this.showDeco = true
-            : this.showDeco = false;
-        this.showVegetal = false;
-        this.showCarousel = false;
-    }
-
-    onShowCarousel(){
-        this.showBestiaire = false;
-        this.showDeco = false;
-        (this.showCarousel === false)
-            ? this.showCarousel = true
-            : this.showCarousel = false;
-        this.showVegetal = false;
-
-    }
-
-    onDeleteOeuvre(categorie:string, id:number, name:string){
-        const idDelete =  id;
-        if(confirm(`Etes vous sûr de vouloir supprimer l'oeuvre suivante :  ${name}`)){
-            console.log('id a supprimer', idDelete)
-            console.log('categorie a supprimer', categorie)
-            const url = `http://localhost:4000/admin/${categorie}/delete/${idDelete}`
-            console.log('url à delete', url)
-            this.http.delete(url).subscribe(
-                succes => {
-                    console.log('success', succes)
-                    switch (categorie) {
-                        case 'bestiaire':
-                        this.getBestiaireData();
-                            break;
-                        case 'vegetal':
-                        this.getVegetalData();
-                            break
-                        default:
-                        alert('data non reactualisée')
-                            break;
-                    }
-                   
-                },err => {
-                    console.log('error', err)
-                }
-            )
-        }
-        else{
-            console.log('vous ne voulez pas supprimer finalement ! ')
+        if (this.onSessionActive()){
+            this.showBestiaire = false;
+            this.showDeco = false;
+            (this.showVegetal === false)
+                ? this.showVegetal = true
+                : this.showVegetal = false;
+                this.showCarousel = false;
+        } else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut() 
         }
        
     }
 
-    openDialogToAddBestiaire() {
-    let dialogRef = this.dialog.open(FormBestiaireComponent, {
-        width: '600px',
-    });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog closed: ${result}`);
-        this.dialogResult = result;
-        this.getBestiaireData();
-      });
+    onShowDeco() {
+        if (this.onSessionActive()){
+            this.showBestiaire = false;
+            (this.showDeco === false)
+                ? this.showDeco = true
+                : this.showDeco = false;
+            this.showVegetal = false;
+            this.showCarousel = false;
+        } else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()   
+        }
+      
+    }
 
-    
+    onShowCarousel(){
+        if (this.onSessionActive()){
+            this.showBestiaire = false;
+            this.showDeco = false;
+            (this.showCarousel === false)
+                ? this.showCarousel = true
+                : this.showCarousel = false;
+            this.showVegetal = false;
+        } else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()   
+        }
+    }
+
+    onDeleteOeuvre(categorie:string, id:number, name:string){
+        if (this.onSessionActive()){
+            const idDelete =  id;
+            if(confirm(`Etes vous sûr de vouloir supprimer l'oeuvre suivante :  ${name}`)){
+                console.log('id a supprimer', idDelete)
+                console.log('categorie a supprimer', categorie)
+                const url = `http://localhost:4000/admin/${categorie}/delete/${idDelete}`
+                console.log('url à delete', url)
+                this.http.delete(url).subscribe(
+                    succes => {
+                        console.log('success', succes)
+                        switch (categorie) {
+                            case 'bestiaire':
+                            this.getBestiaireData();
+                                break;
+                            case 'vegetal':
+                            this.getVegetalData();
+                                break
+                            default:
+                            alert('data non reactualisée')
+                                break;
+                        }
+                       
+                    },err => {
+                        console.log('error', err)
+                    }
+                )
+            }
+            else{
+                console.log('vous ne voulez pas supprimer finalement ! ')
+            }
+        } else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()   
+        }
+        
+       
+    }
+
+    openDialogToAddBestiaire(){
+    if (this.onSessionActive()){
+        let dialogRef = this.dialog.open(FormBestiaireComponent, {
+            width: '600px',
+        });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog closed: ${result}`);
+            this.dialogResult = result;
+            this.getBestiaireData();
+          });
+
+        } else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()   
+        }
+   
     }
  
         openDialogToEditBestiaire(data) {
-        let dialogRef = this.dialog.open(FormBestiaireComponent, {
-              width: '600px',
-              data
-              
-        });
-        
-            dialogRef.afterClosed().subscribe(result => {
-              console.log(`Dialog closed: ${result}`);
-              this.dialogResult = result;
-              this.getBestiaireData();
-            });
-          }
-
-
-          openDialogToAddVegetal(){
-            let dialogRef = this.dialog.open(FormVegetalComponent, {
+        if (this.onSessionActive()){ 
+            let dialogRef = this.dialog.open(FormBestiaireComponent, {
                 width: '600px',
-            });
+                data
+                
+          });
           
               dialogRef.afterClosed().subscribe(result => {
                 console.log(`Dialog closed: ${result}`);
                 this.dialogResult = result;
-                this.getVegetalData();
-              });
+                this.getBestiaireData();
+              });   
+            } 
+        else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()   
+            }
+      
+        }
+
+
+          openDialogToAddVegetal(){
+            if (this.onSessionActive()){
+                let dialogRef = this.dialog.open(FormVegetalComponent, {
+                    width: '600px',
+                });
+              
+                  dialogRef.afterClosed().subscribe(result => {
+                    console.log(`Dialog closed: ${result}`);
+                    this.dialogResult = result;
+                    this.getVegetalData();
+                  });
+            } else { 
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()     
+            }
+        
 
           }
 
           openDialogToEditVegetal(data) {
-            // console.log('data', data)
-            let dialogRef = this.dialog.open(FormVegetalComponent, {
-                  width: '600px',
-                  data
-                  
-            });
-            
-                dialogRef.afterClosed().subscribe(result => {
-                  console.log(`Dialog closed: ${result}`);
-                  this.dialogResult = result;
-                  this.getVegetalData();
-                });
+            if (this.onSessionActive()){
+                  // console.log('data', data)
+                let dialogRef = this.dialog.open(FormVegetalComponent, {
+                    width: '600px',
+                    data
+                    
+              });
+              
+                  dialogRef.afterClosed().subscribe(result => {
+                    console.log(`Dialog closed: ${result}`);
+                    this.dialogResult = result;
+                    this.getVegetalData();
+                  });  
+            }
+            else {
+            alert ('Vous devez vous reconnecter ! ')
+            this.authService.onLogOut()    
+            }
+          
+         
               }
 
 
@@ -260,60 +314,79 @@ export class PageAdminComponent implements OnInit {
 
 
             onFileChanged(event){
-                this.SelectedFile = <File>event.target.files[0]
-                console.log('type fichier page admin', this.SelectedFile)
-                this.uploadImageService.onValidFormatImage(this.SelectedFile)
+                if (this.onSessionActive()){
+                    this.SelectedFile = <File>event.target.files[0]
+                    console.log('type fichier page admin', this.SelectedFile)
+                    this.uploadImageService.onValidFormatImage(this.SelectedFile)
+                } else {
+                    alert ('Vous devez vous reconnecter ! ')
+                    this.authService.onLogOut()     
+                }
+               
               }
 
               onUpload(id:any){
-                const httpOptions = {
-                    headers: new HttpHeaders({
-                      'Content-Type':  'multipart/form-data'
-                    })
-                  };
-                console.log('test id upload', id)
-                const formData = new FormData(); // Currently empty
-                if (this.SelectedFile !== null){
-                    formData.append('file', this.SelectedFile, this.SelectedFile.name)
-                    formData.append('id', id)
-                    this.uploadImageService.onUploadImage('upload_carousel', formData )
-                    .subscribe(
-                          (res) => {
-                            let message:any = res
-                            console.log(message.message)
-                            if (message.message === 'source photo MAJ'){
-                                alert('Photo mise à jour ')
-                                this.getCarouselData()  
-                                this.SelectedFile = null;
-    
-                            }
-                            else {
+                if (this.onSessionActive()){
+                    const httpOptions = {
+                        headers: new HttpHeaders({
+                          'Content-Type':  'multipart/form-data'
+                        })
+                      };
+                    console.log('test id upload', id)
+                    const formData = new FormData(); // Currently empty
+                    if (this.SelectedFile !== null){
+                        formData.append('file', this.SelectedFile, this.SelectedFile.name)
+                        formData.append('id', id)
+                        this.uploadImageService.onUploadImage('upload_carousel', formData )
+                        .subscribe(
+                              (res) => {
+                                let message:any = res
                                 console.log(message.message)
-                                alert('Pas de mise à jour')
-                                 
-                            }
-                          }, (err) => {
-                            let message:any = err
-                            console.log('message erreur', message)
-                            if(message.error.formatImage === true){
-                                alert('pb de format d\'image')
-                            }
+                                if (message.message === 'source photo MAJ'){
+                                    alert('Photo mise à jour ')
+                                    this.getCarouselData()  
+                                    this.SelectedFile = null;
+        
+                                }
+                                else {
+                                    console.log(message.message)
+                                    alert('Pas de mise à jour')
+                                     
+                                }
+                              }, (err) => {
+                                let message:any = err
+                                console.log('message erreur', message)
+                                if(message.error.formatImage === true){
+                                    alert('pb de format d\'image')
+                                }
+                                
+                                if ( message.error.error.code === 'LIMIT_FILE_SIZE'){
+                                    alert('Taille de fichier supérieur à 3Mo. ')
+                                }
+                                                           
+                              }
                             
-                            if ( message.error.error.code === 'LIMIT_FILE_SIZE'){
-                                alert('Taille de fichier supérieur à 3Mo. ')
-                            }
-                                                       
-                          }
-                        
-                        )
-                    this.getCarouselData()  
-                 }
-                 else{
-                     alert('merci de bien vouloir selectionner un fichier au préalable')
-                 }
+                            )
+                        this.getCarouselData()  
+                     }
+                     else{
+                         alert('merci de bien vouloir selectionner un fichier au préalable')
+                     }
+                } else {
+                    alert ('Vous devez vous reconnecter ! ')
+                    this.authService.onLogOut()     
                 }
-             
                 
-            
-   
+                }
+
+
+                    
+            onSessionActive(){
+                // console.log('ca fonctionne ! ')
+                if (this.cookieService.check('idconnected')){
+                    console.log('true')
+                    return true
+                    } 
+                return false
+                }
 }

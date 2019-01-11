@@ -30,9 +30,9 @@ export class AuthService {
     this.firstName = user.firstName;
     this.lastName = user.lastName;
     const id = user.id.toString();
-    this.cookieService.set('firstName', this.firstName)
-    this.cookieService.set('lastName', this.lastName)
-    this.cookieService.set( 'idconnected', id );
+    this.cookieService.set('firstName', this.firstName, 0.001)
+    this.cookieService.set('lastName', this.lastName, 0.001)
+    this.cookieService.set( 'idconnected', id, 0.001 );
     console.log('servvice auth', this.firstName, this.lastName )
   }
 
