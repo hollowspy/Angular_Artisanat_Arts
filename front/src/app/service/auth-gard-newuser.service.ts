@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from "@angular/router";
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -8,14 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class AuthGardServiceNewUser implements CanActivate{
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, 
+            private cookieService: CookieService) { }
 
   canActivate(route : ActivatedRouteSnapshot, 
               state : RouterStateSnapshot) : 
             Observable<boolean> | Promise<boolean> | boolean { 
     return new Promise(
       (resolve, reject)=> {
-        if (localStorage.getItem('idConnected') === '0'){
+        if (this.cookieService.get('idconnected') === '0'){
           resolve(true)
         } else {
           alert('vous devez etre super admin')

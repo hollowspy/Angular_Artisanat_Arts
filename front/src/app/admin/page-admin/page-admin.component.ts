@@ -64,6 +64,8 @@ export class PageAdminComponent implements OnInit {
     isAuthenticate(){
         console.log('page admin auth', this.firstName, this.lastName);
         this.owner === '0' ? this.isSuperAdmin = true : this.isSuperAdmin = false;
+        console.log('super Admin', this.isSuperAdmin)
+        
        
     }
     
@@ -309,7 +311,12 @@ export class PageAdminComponent implements OnInit {
 
 
               onNavigateNewUser(){
-                  this.router.navigate(['/admin', 'newuser'])
+                  console.log('owner', this.owner, typeof this.owner)
+                  if (this.owner === '0'){ 
+                      this.isSuperAdmin = true
+                      this.router.navigate(['/admin', 'newuser'])
+                  }
+                  
               }
 
 
