@@ -4,6 +4,7 @@ import { FicheBestiaireComponent } from './fiche-bestiaire.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material';
+import {CookieService } from 'ngx-cookie-service';
 
 
 describe('FicheBestiaireComponent', () => {
@@ -18,7 +19,8 @@ describe('FicheBestiaireComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule, 
         RouterTestingModule
-      ]
+      ],
+      providers: [CookieService]
     })
     .compileComponents();
   }));

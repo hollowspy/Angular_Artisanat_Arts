@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
+import {CookieService } from 'ngx-cookie-service';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
@@ -21,7 +21,8 @@ describe('ForgotPasswordComponent', () => {
           RouterModule,
           RouterTestingModule, 
           HttpClientTestingModule, 
-          BrowserAnimationsModule] 
+          BrowserAnimationsModule], 
+      providers: [CookieService]
     })
 
     .compileComponents();

@@ -5,6 +5,9 @@ import { Admin } from '../../models/admin'
 import { AuthService } from '../../service/auth-service.service';
 import { AdminService } from '../../service/admin-service.service';
 import { SnackbarService } from '../../service/snackbar.service';
+import { CookieService } from 'ngx-cookie-service';
+
+
 
 @Component({selector: 'app-admin', 
             templateUrl: './formAdmin.component.html', 
@@ -14,8 +17,9 @@ export class formAdminComponent implements OnInit {
 
    constructor(private router : Router,
                private authService : AuthService, 
-                private adminSerice : AdminService, 
-                private snackBar : SnackbarService) {}
+               private adminSerice : AdminService, 
+               private snackBar : SnackbarService, 
+               private cookieService: CookieService) {}
 
 
     data : any;
@@ -23,11 +27,14 @@ export class formAdminComponent implements OnInit {
   
 
     ngOnInit() {
-       if (localStorage.getItem('token')){
-           this.router.navigate(['/admin'])
-           console.log('je peux continuer')
-       } 
-      
+        const token = localStorage.getItem('token'); 
+        const idConnected = this.cookieService.check('idconnected');
+     if (token && idConnected){
+          console.log('je peux continuer')
+          this.router.navigate(['admin'])
+      } else {
+          console.log('pas possible de continuer')
+      }
     }
 
        

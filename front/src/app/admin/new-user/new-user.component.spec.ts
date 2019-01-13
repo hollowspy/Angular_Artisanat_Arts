@@ -9,6 +9,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatIconModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CookieService } from 'ngx-cookie-service';
 
 
 
@@ -36,6 +37,7 @@ describe('NewUserComponent', () => {
       //   // reference the new instance of formBuilder from above
       //   { provide: FormBuilder, useValue: formBuilder }
       // ]
+      providers : [CookieService]
     })
     .compileComponents();
   }));

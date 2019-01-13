@@ -6,24 +6,25 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
-
+import {CookieService } from 'ngx-cookie-service';
 
 describe('FormBestiaireComponent', () => {
   let component: FormBestiaireComponent;
   let fixture: ComponentFixture<FormBestiaireComponent>;
-  // let MdDialogRef = new MatDialogModule;
+  let MdDialogRef = new MatDialogModule;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FormBestiaireComponent ], 
       imports : [
-        FormsModule, 
-         MatDialogModule,
+        FormsModule,
+        MatDialogModule,
         RouterTestingModule, 
         HttpClientTestingModule
 
       ],
       providers: [
+        CookieService,
         { provide: MatDialogRef, useValue:{} },
         { provide: MatSnackBar, useValue:{} },
         { provide: MAT_DIALOG_DATA, useValue: {} }

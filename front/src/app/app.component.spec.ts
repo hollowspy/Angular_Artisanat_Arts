@@ -16,6 +16,7 @@ import { MatIconModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } 
 import { FormsModule } from '@angular/forms';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CookieService } from 'ngx-cookie-service';
 
 
 
@@ -45,7 +46,8 @@ describe('AppComponent', () => {
             BrowserAnimationsModule,
             HttpClientTestingModule
       
-        ] 
+        ], 
+        providers: [CookieService] 
     }).compileComponents();
   }));
   it('should create the app', async(() => {

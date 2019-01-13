@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule } from '@angular/material';
+import {CookieService } from 'ngx-cookie-service';
 
 
 describe('PageAdminComponent', () => {
@@ -19,8 +20,8 @@ describe('PageAdminComponent', () => {
         RouterModule, 
         MatDialogModule,
         RouterTestingModule,
-        HttpClientTestingModule,
-      ]
+        HttpClientTestingModule],
+      providers: [CookieService]
     })
     .compileComponents();
   }));

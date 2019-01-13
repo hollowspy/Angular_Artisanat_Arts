@@ -6,6 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatIconModule, MatSnackBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {CookieService } from 'ngx-cookie-service';
 
 
 describe('UpdatePasswordComponent', () => {
@@ -24,9 +25,8 @@ describe('UpdatePasswordComponent', () => {
         NgbProgressbarModule,
         BrowserAnimationsModule,
         RouterTestingModule, 
-        HttpClientTestingModule, 
-       
-      ]
+        HttpClientTestingModule], 
+      providers: [CookieService] 
     }) 
     .compileComponents();
   }));

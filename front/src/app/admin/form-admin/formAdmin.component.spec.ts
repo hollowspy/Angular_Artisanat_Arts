@@ -6,7 +6,7 @@ import { MatSnackBarModule, MatIconModule, MatFormFieldModule, MatInputModule } 
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
+import {CookieService } from 'ngx-cookie-service';
 
 describe('formAdminComponent', () => {
   let component: formAdminComponent;
@@ -24,7 +24,8 @@ describe('formAdminComponent', () => {
         BrowserAnimationsModule,
         RouterTestingModule, 
         HttpClientTestingModule
-      ]
+      ], 
+      providers: [CookieService]
     })
     .compileComponents();
   }));

@@ -3,7 +3,11 @@ import { NgForm } from '@angular/forms';
 import {Admin} from './../../models/admin';
 import { AuthService } from './../../service/auth-service.service';
 
-@Component({selector: 'app-forgot-password', templateUrl: './forgot-password.component.html', styleUrls: ['./forgot-password.component.css']})
+@Component({
+    selector: 'app-forgot-password', 
+    templateUrl: './forgot-password.component.html', 
+    styleUrls: ['./forgot-password.component.css']})
+    
 export class ForgotPasswordComponent implements OnInit {
 
     isSend : boolean = false;

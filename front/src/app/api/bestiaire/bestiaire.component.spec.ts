@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BestiaireComponent } from './bestiaire.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import {CookieService } from 'ngx-cookie-service';
 
 
 describe('BestiaireComponent', () => {
@@ -15,7 +16,8 @@ describe('BestiaireComponent', () => {
       imports : [
        HttpClientTestingModule, 
         RouterTestingModule
-      ]
+      ], 
+      providers: [CookieService]
     })
     .compileComponents();
   }));

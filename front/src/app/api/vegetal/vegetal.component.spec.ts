@@ -4,6 +4,7 @@ import { VegetalComponent } from './vegetal.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material';
+import {CookieService } from 'ngx-cookie-service';
 
 
 describe('VegetalComponent', () => {
@@ -16,8 +17,8 @@ describe('VegetalComponent', () => {
       imports : [
         HttpClientTestingModule, 
         RouterTestingModule, 
-        MatDialogModule
-      ]
+        MatDialogModule], 
+        providers: [CookieService]
     })
     .compileComponents();
   }));

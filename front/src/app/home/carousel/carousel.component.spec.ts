@@ -4,6 +4,7 @@ import { CarouselComponent } from './carousel.component';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {CookieService } from 'ngx-cookie-service';
 
 
 describe('CarouselComponent', () => {
@@ -17,7 +18,8 @@ describe('CarouselComponent', () => {
         NgbCarouselModule, 
         RouterTestingModule,
         HttpClientTestingModule
-      ]
+      ], 
+      providers: [CookieService]
     })
     .compileComponents();
   }));
