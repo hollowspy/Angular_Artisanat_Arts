@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap'
 import { ApiService } from '../../service/api-service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({selector: 'app-carousel', 
             templateUrl: './carousel.component.html',
@@ -8,12 +9,15 @@ import { ApiService } from '../../service/api-service';
             providers : [NgbCarouselConfig]
           })
 export class CarouselComponent implements OnInit {
+  public monResultat = new BehaviorSubject('');
+
   images: any;
   photo1 : string = ''
   photo2 : string = ''
   photo3 : string = ''
   photo4 : string = ''
   photo5 : string = ''
+  toto:string = 'test';
 
   constructor(private apiService : ApiService,
               config : NgbCarouselConfig) {

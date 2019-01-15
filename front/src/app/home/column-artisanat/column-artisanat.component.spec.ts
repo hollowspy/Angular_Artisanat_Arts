@@ -31,4 +31,26 @@ describe('ColumnArtisanatComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it ('should have an A in first Letter Artisanat', () => {
+   const letterA = component.artisanat[0]
+    expect(letterA).toBe('A')
+  })
+
+  it ('should have a T in last letter of Artisanat', () => {
+    const lenghtofArtisanat = component.artisanat.length - 1; 
+    const lastLetter = component.artisanat[lenghtofArtisanat]; 
+    expect(lastLetter).toBe('T')
+  })
+
+  it ('should have an A in first Letter Art', () => {
+    const letterA = component.art[0]
+     expect(letterA).toBe('D\'')
+   })
+ 
+   it ('should have a T in last letter of Art', () => {
+     const lengthofArt = component.art.length - 1; 
+     const lastLetter = component.art[lengthofArt]; 
+     expect(lastLetter).toBe('T')
+   })
 });
