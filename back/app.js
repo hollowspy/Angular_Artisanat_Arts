@@ -16,6 +16,7 @@ var index = require('./routes/index');
 var carousel = require('./routes/api/carousel');
 var bestiaire = require('./routes/api/bestiaire');
 var vegetal = require('./routes/api/vegetal');
+var deco = require('./routes/api/deco');
 var auth = require('./routes/auth');
 var admin = require('./routes/admin');
 var mail = require('./routes/mail');
@@ -54,6 +55,7 @@ app.use('/', index);
 app.use('/api/carousel/', carousel)
 app.use('/api/bestiaire', bestiaire);
 app.use('/api/vegetal', vegetal);
+app.use('/api/deco', deco);
 app.use('/mail', mail)
 app.use('/auth', auth);
 app.use('/admin', admin)
