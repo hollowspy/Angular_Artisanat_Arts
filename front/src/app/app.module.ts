@@ -47,8 +47,6 @@ import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
 
 
 
-
-
 const appRoutes : Routes = [ 
   {path : 'bestiaire', component : BestiaireComponent}, 
   {path : 'bestiaire/:id', component : FicheBestiaireComponent},

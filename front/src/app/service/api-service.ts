@@ -29,6 +29,7 @@ export class ApiService {
   postApi(url:string, owner:string):Observable<any>{
     const body = new HttpParams()
     .set('owner', owner)
+    console.log('url', `/api/${url}`)
      return this.http.post(`/api/${url}`, body, this.httpOptions)
   }
 
