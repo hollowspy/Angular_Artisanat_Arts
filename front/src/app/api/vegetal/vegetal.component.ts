@@ -39,6 +39,8 @@ export class VegetalComponent implements OnInit {
     console.log('je rentre dans openDialog Vegetal')
     let dialogRef = this.dialog.open(ModalVegetalComponent, {
       width : '100vw', 
+      minHeight : '100vh',
+      
       data
     });
 

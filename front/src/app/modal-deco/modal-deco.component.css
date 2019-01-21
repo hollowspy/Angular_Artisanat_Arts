@@ -6,9 +6,7 @@
 
 .containerModal{
     text-align: center; 
-   
-    
-}
+    }
 
 .list{
     margin-top:20px;
@@ -20,10 +18,6 @@ li{
     font-weight: bold;
     text-decoration: underline;
   }
-
-.photoOeuvre{
-    height:70vh;
-}
 
 @media screen and (max-width: 540px) {
     .photoOeuvre{

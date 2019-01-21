@@ -44,6 +44,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ResultSearchComponent } from './result-search/result-search.component';
 import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
+import { ModalDecoComponent } from './modal-deco/modal-deco.component';
 
 
 
@@ -88,6 +89,7 @@ const appRoutes : Routes = [ 
     SearchBarComponent,
     ResultSearchComponent,
     NavbarMobileComponent,
+    ModalDecoComponent,
     ],
     
   imports: [
@@ -113,7 +115,8 @@ BrowserModule,
     ModalFicheComponent,
     ModalVegetalComponent,
     FormVegetalComponent,
-    SearchBarComponent
+    SearchBarComponent, 
+    ModalDecoComponent
   ],
   providers: [AuthGardService, 
     AdminService, 

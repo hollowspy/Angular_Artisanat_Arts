@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService} from '../../service/api-service'; 
-import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { MatDialog } from '@angular/material';
+import { ModalDecoComponent } from '../../modal-deco/modal-deco.component';
 
 
 
@@ -13,10 +13,11 @@ import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/comm
 export class DecoComponent implements OnInit {
 
   results:any = []
-  photo = []; 
+  deco = []; 
+  dialogResult:string= "";
 
   constructor(private ApiService : ApiService,
-              private http : HttpClient) { }
+              public dialog:MatDialog) { }
 
   imgColA1:string = ''; 
   imgColA2:string = ''; 
@@ -47,31 +48,54 @@ export class DecoComponent implements OnInit {
   getDecoData(){
     this.ApiService.postApi('deco', null)
     .subscribe((res) => {
-      this.results = res; 
-      this.imgColA1 = this.results[0].Aphoto_principale
-      this.imgColA2 = this.results[7].Aphoto_annexe2
-      this.imgColA3 = this.results[4].Aphoto_annexe2
-      this.imgColA4 = this.results[5].Aphoto_principale
-      this.imgColA5 = this.results[11].Aphoto_principale
-      this.imgColB1 = this.results[1].Aphoto_annexe2
-      this.imgColB2 = this.results[2].Aphoto_principale
-      this.imgColB3 = this.results[3].Aphoto_annexe2
-      this.imgColB4 = this.results[6].Aphoto_principale
-      this.imgColB5 = this.results[8].Aphoto_principale
-      this.imgColC1 = this.results[3].Aphoto_principale
-      this.imgColC2 = this.results[7].Aphoto_principale
-      this.imgColC3 = this.results[9].Aphoto_principale
-      this.imgColC4 = this.results[1].Aphoto_annexe2
-      this.imgColC5 = this.results[2].Aphoto_annexe2
-      this.imgColD1 = this.results[6].Aphoto_principale
-      this.imgColD2 = this.results[4].Aphoto_principale
-      this.imgColD3 = this.results[0].Aphoto_annexe2
-      this.imgColD4 = this.results[8].Aphoto_annexe2
-      this.imgColD5 =  this.results[10].Aphoto_principale
-      console.log('déco', this.results)
+      this.deco = res; 
+      this.imgColA1 = this.deco[0].Aphoto_principale
+      this.imgColA2 = this.deco[7].Aphoto_annexe2
+      this.imgColA3 = this.deco[4].Aphoto_annexe2
+      this.imgColA4 = this.deco[5].Aphoto_principale
+      this.imgColA5 = this.deco[11].Aphoto_principale
+      this.imgColB1 = this.deco[1].Aphoto_annexe2
+      this.imgColB2 = this.deco[2].Aphoto_principale
+      this.imgColB3 = this.deco[3].Aphoto_annexe2
+      this.imgColB4 = this.deco[6].Aphoto_principale
+      this.imgColB5 = this.deco[8].Aphoto_principale
+      this.imgColC1 = this.deco[3].Aphoto_principale
+      this.imgColC2 = this.deco[7].Aphoto_principale
+      this.imgColC3 = this.deco[9].Aphoto_principale
+      this.imgColC4 = this.deco[1].Aphoto_annexe2
+      this.imgColC5 = this.deco[2].Aphoto_annexe2
+      this.imgColD1 = this.deco[6].Aphoto_principale
+      this.imgColD2 = this.deco[4].Aphoto_principale
+      this.imgColD3 = this.deco[0].Aphoto_annexe2
+      this.imgColD4 = this.deco[8].Aphoto_annexe2
+      this.imgColD5 =  this.deco[10].Aphoto_principale
+      console.log('déco', this.deco)
       console.log('imgAcol1', this.imgColA1)
     }, (err) => {
       console.log('erreur', err)
+    })
+  }
+
+  openDialog(oeuvre, srcPhoto){
+    // let data = {
+    //   oeuvre : oeuvre, 
+    //   srcPhoto : srcPhoto
+    // }
+    let data = []; 
+    data[0] = oeuvre; 
+    data[1] = srcPhoto
+    // console.log('dans deco Component', data)
+    
+    // console.log('je rentre dans ModalDeco', oeuvre, srcPhoto )
+    let dialogRef = this.dialog.open(ModalDecoComponent, {
+      width : '100vw', 
+      data
+
+    })
+
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(`dialog closed : ${res}`)
+      this.dialogResult = res
     })
   }
 }
