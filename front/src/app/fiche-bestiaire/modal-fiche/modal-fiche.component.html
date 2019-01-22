@@ -4,6 +4,11 @@
             <img src={{urlPhotoPrincipale}} alt="photo modal" class="photoModal">
             <i class="fa fa-times-circle fa-3x close" (click)="onCloseCancel()"></i>
         </div>
+        <div class="col-12">
+            <button [disabled]="PrevIsDisabled"(click)="onPrev()">Précédente</button>
+            <button [disabled]="NextIsDisabled"(click)="onNext()">Suivante</button>
+
+        </div>
     </div>
 </div>
 

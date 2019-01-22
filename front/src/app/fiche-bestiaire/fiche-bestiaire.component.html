@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 containerCard" *ngIf="ficheBestiaire && ficheBestiaire.length > 0">
-        <h3 class="titleOeuvre">{{ficheBestiaire[0].name}}</h3>
+    <div class="col-12 containerCard" *ngIf="ficheBestiaire">
+        <h3 class="titleOeuvre">{{ficheBestiaire.name}}</h3>
         <ul>
           <div class="cardOeuvre">
             <div>
-          <li>{{ficheBestiaire[0].materials}}</li>
-          <li>{{ficheBestiaire[0].width}} cm de large</li>
-          <li>{{ficheBestiaire[0].height}} cm de haut</li>
-          <li>{{ficheBestiaire[0].reproduction}}</li>
+          <li>{{ficheBestiaire.materials}}</li>
+          <li>{{ficheBestiaire.width}} cm de large</li>
+          <li>{{ficheBestiaire.height}} cm de haut</li>
+          <li>{{ficheBestiaire.reproduction}}</li>
             </div>
           <div>
-            <img src={{photoPrincipale}} alt="photo principale" class="photoPrincipale" (click)="openDialog(photoPrincipale)">
+            <img src={{photoPrincipale}} alt="photo principale" class="photoPrincipale" (click)="openDialog(photoPrincipale, this.ficheBestiaire)">
             <div class="clickImage">Cliquez sur l'image pour agrandir</div>
           </div>
         

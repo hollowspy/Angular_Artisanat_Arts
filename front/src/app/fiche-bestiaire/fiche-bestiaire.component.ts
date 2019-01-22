@@ -29,7 +29,8 @@ export class FicheBestiaireComponent implements OnInit {
             .apiService
             .getFicheApi('bestiaire', this.id)
             .subscribe((data : FicheBestiaire) => {
-                this.ficheBestiaire = data
+                this.ficheBestiaire = data[0]
+                console.log('fiche bestiaire', this.ficheBestiaire)
             this.photoPrincipale = data[0].Aphoto_principale
             this.photoPrincipaleAnnexe = data[0].Aphoto_principale
             this.photo_Annexe2 = data[0].Aphoto_annexe2; 
@@ -44,7 +45,12 @@ export class FicheBestiaireComponent implements OnInit {
         this.photoPrincipale = url;
     }
 
-    openDialog(data){
+    openDialog(srcPhotoPrincipale, ficheBestiaire){
+       let data = []
+        data[0] = srcPhotoPrincipale; 
+        data[1] = ficheBestiaire
+        console.log('data avt modal', data[1].id)
+        
         const dialogConfig = new MatDialogConfig();
         dialogConfig.panelClass = 'modalBestiaire', 
         dialogConfig.backdropClass = 'bestiaireModal', 
