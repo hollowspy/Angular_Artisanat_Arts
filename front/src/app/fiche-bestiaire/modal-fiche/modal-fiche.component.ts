@@ -14,16 +14,16 @@ export class ModalFicheComponent implements OnInit {
               ) { }
   urlPhotoPrincipale:string = ''
   ficheBestiaire:any
-  test:Array<string>=[]
-  toto:Array<string>=[]
+  DataObject:Array<string>=[]
+  DataSrcPhoto:Array<string>=[]
   PrevIsDisabled:boolean = false;
   NextIsDisabled:boolean = false;
   
   ngOnInit() {
    this.urlPhotoPrincipale = this.data[0];
    this.ficheBestiaire = this.data[1]
-   this.test = Object.values(this.ficheBestiaire)
-   this.toto = this.test.slice(12,17)
+   this.DataObject = Object.values(this.ficheBestiaire)
+   this.DataSrcPhoto = this.DataObject.slice(12,17)
    
   //  this.ficheBestiaire[0] = this.data[1].Aphoto_principale
   //  this.ficheBestiaire[1] = this.data[1].Aphoto_annexe2
@@ -40,14 +40,16 @@ export class ModalFicheComponent implements OnInit {
   }
 
   onNext(){
-    const item:number = this.toto.length - 1;
-    for (let i = 0; i < this.toto.length; i++) {
+    const item:number = this.DataSrcPhoto.length - 1;
+    this.PrevIsDisabled = false;
+    for (let i = 0; i < this.DataSrcPhoto.length; i++) {
      if(item === i){
-        this.NextIsDisabled = true;
+      console.log('i dans Preov', [i])
+       this.NextIsDisabled = true;
       } else {
-        this.NextIsDisabled = false;
-        if (this.urlPhotoPrincipale === this.toto[i]){
-          this.urlPhotoPrincipale = this.toto[i + 1]
+      
+        if (this.urlPhotoPrincipale === this.DataSrcPhoto[i]){
+          this.urlPhotoPrincipale = this.DataSrcPhoto[i + 1]
          
           return this.urlPhotoPrincipale
         } 
@@ -55,14 +57,15 @@ export class ModalFicheComponent implements OnInit {
   }
 }
 onPrev(){
-  const item:number = this.toto.length - 1;
-  for (let i = 0; i < this.toto.length; i++) {
+  const item:number = this.DataSrcPhoto.length - 1;
+  this.NextIsDisabled = false; 
+  for (let i = 0; i < this.DataSrcPhoto.length; i++) {
     if(i === 0){
       this.PrevIsDisabled = true;
     } else {
-      this.PrevIsDisabled = false;
-      if (this.urlPhotoPrincipale === this.toto[i]){
-        this.urlPhotoPrincipale = this.toto[i -1]
+      
+      if (this.urlPhotoPrincipale === this.DataSrcPhoto[i]){
+        this.urlPhotoPrincipale = this.DataSrcPhoto[i -1]
         
         return this.urlPhotoPrincipale
       } 
